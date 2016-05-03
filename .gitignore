@@ -1,0 +1,13 @@
+.idea/
+.gradle/
+.gradle/*
+build/
+out/
+.idea
+.project
+.classpath
+.settings/
+crm.iml
+crm.ipr
+crm.iws
+
