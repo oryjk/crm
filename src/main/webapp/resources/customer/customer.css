@@ -160,9 +160,11 @@ form {
   margin: 45px auto;
   table-layout: fixed; }
 
-table {
+.content-table {
   margin-top: 30px;
   margin-left: 100px; }
+  .content-table tr {
+    height: 75px; }
 
 h2 {
   margin-top: 80px;
@@ -170,9 +172,6 @@ h2 {
   font-size: 20px;
   color: #333;
   font-weight: normal; }
-
-tr {
-  height: 75px; }
 
 th {
   vertical-align: middle;

@@ -19,9 +19,13 @@ form {
 
 }
 
-table{
+.content-table{
   margin-top: 30px;
   margin-left: 100px;
+
+  tr {
+    height: 75px;
+  }
 }
 
 h2{
@@ -32,10 +36,7 @@ h2{
   font-weight: normal;
 }
 
-tr {
 
-  height: 75px;
-}
 
 th {
   vertical-align: middle;
