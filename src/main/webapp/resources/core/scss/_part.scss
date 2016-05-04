@@ -1,0 +1,46 @@
+@import "variable","commonMixin","commomExtend", 'components';
+$font-gray: #898989;
+$font-gray-dark: #535353;
+$bg-gray: #f3f3f3;
+$border-gray: #cccccc;
+
+
+@mixin header(){
+  .header{
+    width: 100%;
+    height: 60px;
+    background:#81bbe1;
+
+    .header-content{
+      width: 1200px;
+      height: 60px;
+      margin: 0 auto;
+
+      h1{
+        float: left;
+        height: 60px;
+        line-height: 60px;
+        font-size: 23px;
+        color: white;
+      }
+
+      .header-name{
+        float: right;
+        height: 60px;
+        line-height: 60px;
+
+        img{
+          float: left;
+          margin-top: 11px;
+          margin-right: 20px;
+        }
+        span{
+          float: right;
+          color: white;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+}

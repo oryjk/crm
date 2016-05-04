@@ -1,0 +1,213 @@
+/*import
+**************************************************************************************************************************************************/
+/*select*/
+/*color-btn*/
+/*cost*/
+/*progress-bar*/
+/*page-box*/
+/*pop-up*/
+/*file*/
+/*select*/
+/*color-btn*/
+/*cost*/
+/*progress-bar*/
+/*page-box*/
+/*pop-up*/
+/*file*/
+/*
+html5doctor.com Reset Stylesheet
+v1.4.1
+2010-03-01
+Author: Richard Clark - http://richclarkdesign.com
+*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1; }
+
+:focus {
+  outline: 1px; }
+
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+nav ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+input, select {
+  vertical-align: middle; }
+
+body {
+  font-family: 'Microsoft Yahei','\5FAE\8F6F\96C5\9ED1',Arial,'Hiragino Sans GB','\5B8B\4F53', serif; }
+
+ul,
+ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.link-btn {
+  color: #5a98e6; }
+  .link-btn:hover {
+    text-decoration: underline; }
+
+.hide {
+  display: none !important; }
+
+.show {
+  display: block; }
+
+.show-inline {
+  display: inline; }
+
+.header {
+  width: 100%;
+  height: 60px;
+  background: #81bbe1; }
+  .header .header-content {
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto; }
+    .header .header-content h1 {
+      float: left;
+      height: 60px;
+      line-height: 60px;
+      font-size: 23px;
+      color: white; }
+    .header .header-content .header-name {
+      float: right;
+      height: 60px;
+      line-height: 60px; }
+      .header .header-content .header-name img {
+        float: left;
+        margin-top: 11px;
+        margin-right: 20px; }
+      .header .header-content .header-name span {
+        float: right;
+        color: white;
+        font-size: 14px; }
+
+/* style
+*****************************/
+form {
+  width: 1200px;
+  margin: 45px auto;
+  table-layout: fixed; }
+
+table {
+  margin-top: 30px;
+  margin-left: 100px; }
+
+h2 {
+  margin-top: 80px;
+  padding-left: 50px;
+  font-size: 20px;
+  color: #333;
+  font-weight: normal; }
+
+tr {
+  height: 75px; }
+
+th {
+  vertical-align: middle;
+  padding-right: 25px;
+  width: 123px;
+  text-align: right;
+  font-size: 16px;
+  font-weight: normal;
+  color: #666; }
+
+td {
+  vertical-align: middle;
+  width: 400px; }
+
+input {
+  width: 300px;
+  height: 38px;
+  border: 1px solid #ccc; }
+  input:focus {
+    border: 1px solid #81bbe1; }
+
+textarea {
+  width: 300px;
+  border: 1px solid #ccc; }
+
+.invest-wrong {
+  border: 1px solid #f59a99; }
+
+.invest-submit {
+  width: 228px;
+  height: 32px;
+  font-size: 18px;
+  border: none;
+  background: #81bbe1;
+  color: white;
+  cursor: pointer; }
+
+/*# sourceMappingURL=../../maps/customer/customer.css.map */
