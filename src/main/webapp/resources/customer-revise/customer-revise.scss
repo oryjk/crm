@@ -52,6 +52,8 @@ th {
 }
 
 td {
+  font-size: 15px;
+  color: #333;
   vertical-align: middle;
   width: 400px;
 }
@@ -68,6 +70,7 @@ input{
 
 textarea{
   width: 300px;
+
   border: 1px solid #ccc;
   resize : none;
 }
@@ -77,10 +80,83 @@ textarea{
 }
 
 .invest-submit {
-  @include wh(228px, 32px);
+  float: left;
+  padding: 0;
+  margin-right: 30px;
+  @include wh(150px, 32px);
   font-size: 18px;
   border: none;
   background: #81bbe1;
   color: white;
   cursor: pointer;
+  text-align: center;
+  line-height: 30px;
+}
+
+.list-sure{
+  position: fixed;
+  top:50%;
+  left: 50%;
+  width: 300px;
+  height: 180px;
+  margin-top: -100px;
+  margin-left: -150px;
+  border: 1px solid #ccc;
+  border-radius: 5px ;
+  background: white;
+
+
+  .list-sure-title{
+    border-radius: 5px ;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 30px;
+    background:#81bbe1;
+  }
+
+  .list-sure-content{
+    margin:  0 auto;
+    width: 250px;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5 ;
+    color: #333;
+  }
+
+  .list-sure-btn{
+
+    a{
+      margin-top: 30px;
+      margin-left: 80px;
+      padding-right: 40px;
+      float: left;
+      color: #333;
+    }
+
+    .list-sure-btn1{
+      border-right:1px solid #e5e5e5 ;
+    }
+    .list-sure-btn2{
+      margin-left: 40px;
+    }
+  }
+}
+
+.mes-none{
+
+  a{
+    float: left;
+    margin-left: 30px;
+    width: 60px;
+    display: block;
+    padding: 10px ;
+    background:green;
+    color:white;
+  }
+
+  span{
+    margin-top: 10px;
+    float: left;
+    color: red;
+  }
 }

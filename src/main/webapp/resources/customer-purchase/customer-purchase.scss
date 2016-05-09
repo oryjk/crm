@@ -1,0 +1,139 @@
+/*import
+**************************************************************************************************************************************************/
+@import '../core/scss/variable',
+'../core/scss/commomExtend',
+'../core/scss/commonMixin',
+'../core/scss/components',
+'../core/scss/part',
+'../core/scss/reset',
+'../core/scss/generalStyle';
+
+@include header;
+/* style
+*****************************/
+
+.content-name {
+  width: 1200px;
+  height: 125px;
+  margin: 20px auto 40px auto;
+  background: #edf5fa;
+
+  img {
+    margin: 25px 0 0 80px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+  }
+}
+
+.content-name-in {
+  margin-left: 100px;
+  padding-left: 30px;
+  line-height: 125px;
+  height: 125px;
+  float: left;
+  color: #999;
+  background: url("../core/image/name.png") no-repeat 0 center;
+
+  span {
+    color: #666;
+  }
+}
+
+.content-name-phone {
+  margin-left: 50px;
+  padding-left: 30px;
+  line-height: 125px;
+  height: 125px;
+  float: left;
+  color: #999;
+  background: url("../core/image/phone.png") no-repeat 0 center;
+
+  span {
+    color: #666;
+  }
+}
+
+.content-list-menu {
+  width: 1200px;
+  margin: 0 auto;
+
+  tr {
+    height: 60px;
+  }
+
+  td {
+    width: 10%;
+    text-align: center;
+  }
+
+  .list-title {
+    font-size: 19px;
+    .list-first {
+      width: 40%;
+    }
+
+  }
+
+
+}
+
+.content-list{
+  width: 1200px;
+  margin: 0 auto 100px auto;
+  border: 1px solid #e5e5e5;
+
+  tr {
+    height: 40px;
+  }
+
+  td {
+    width: 10%;
+    line-height: 75px;
+    padding: 0;
+    text-align: center;
+  }
+  .list-all {
+
+    td {
+      border-bottom: 1px solid #ccc;
+
+      a{
+        color: #81bbe1;
+      }
+    }
+
+    .list-first {
+      width: 40%;
+      line-height: 20px;
+
+      img {
+        float: left;
+        margin-top: -10px;
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+      }
+
+      span {
+        padding-left: 20px;
+        width: 400px;
+      }
+    }
+  }
+
+  .list-red{
+
+    span{
+      color: red;
+    }
+  }
+
+
+}
+.list-time{
+  width: 20%;
+}
+
+

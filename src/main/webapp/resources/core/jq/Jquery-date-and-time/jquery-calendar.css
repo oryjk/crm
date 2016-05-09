@@ -1,11 +1,11 @@
 ﻿/* calendar styles */
 #calendar_div {
 	display: none;
-	border: 1px solid #777;
 	z-index: 10; 
 	font-size: 12px;
 	padding: 0;
 	margin: 0;
+	border: 1px solid #81bbe1;
 }
 #calendar_div a {
 	cursor: pointer;
@@ -20,14 +20,14 @@ img.calendar_trigger {
 #calendar_control, #calendar_links, #calendar_header, #calendar, #calendar_time {
 	clear: both;
 	float: left;
-	width: 185px;
+	width: 280px;
 	color: #fff;
 }
 #calendar_control {
-	background-color: #400;
+	background-color: #81bbe1;
 }
 #calendar_links {
-	background-color: #000;
+	background-color:#666;
 	height:20px;
 	*line-height:20px;
 }
@@ -52,7 +52,7 @@ img.calendar_trigger {
 #calendar_current {
 	float: left;
 	width: 35%;
-	margin-left:10px;
+	margin-left:30px;
 	text-align: center;
 }
 #calendar_close, #calendar_next {
@@ -84,7 +84,7 @@ img.calendar_trigger {
 }
 #calendar .calendar_titleRow {
 	background: #777;
-	border-width:0px;
+	border-width:0;
     border-color:#777;
 }
 #calendar .calendar_titleRow > td{
@@ -126,7 +126,7 @@ img.calendar_trigger {
 	background: #fcc !important;
 }
 #calendar_currentDay {
-	background: #999 !important;
+	background: #81bbe1 !important;
 }
 #calendar_cover {
     display: none; /*sorry for IE5*/

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="customer-revise.css"/>
+    <link rel="stylesheet" href="../core/jq/Jquery-date-and-time/jquery-calendar.css"/>
+    <script src="../core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+    <script src="../core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
+    <title></title>
+</head>
+<body>
+<!-- header-begin -->
+<div class="header">
+    <div class="header-content">
+        <h1>客户管理</h1>
+        <div class="header-name">
+            <img src="../core/image/touxiang.png" alt=""/>
+            <span>zhouzhou</span>
+        </div>
+    </div>
+</div>
+<!-- header-end -->
+<form action="">
+    <h2>用户信息</h2>
+    <table class="content-table">
+        <tr>
+            <th>用户ID:</th>
+            <td>10002010</td>
+        </tr>
+        <tr>
+            <th>用户名称:</th>
+            <td>周杰伦</td>
+        </tr>
+        <tr>
+            <th>手机号码:</th>
+            <td>18000000000</td>
+        </tr>
+    </table>
+    <h2>产品信息</h2>
+    <table class="content-table">
+        <tr>
+            <th>产品ID:</th>
+            <td>12323213213123</td>
+        </tr>
+        <tr>
+            <th>产品名称:</th>
+            <td>黑曜石项链</td>
+        </tr>
+        <tr>
+            <th>产品型号:</th>
+            <td>cx4444444444</td>
+        </tr>
+        <tr>
+            <th>产品型号:</th>
+            <td>cx4444444444</td>
+        </tr>
+        <tr>
+            <th>产品型号:</th>
+            <td>cx4444444444</td>
+        </tr>
+        <tr>
+            <th>产品型号:</th>
+            <td>cx4444444444</td>
+        </tr>
+
+            <!--有短信内容时显示-->
+        <tr class="mes-time" style="display: none">
+            <th>发送短信时间:</th>
+            <td>2015-1-1 22:20:20</td>
+        </tr>
+        <tr class="mes-content" style="display: none">
+            <th>发送短信内容:</th>
+            <td>哇，真好看！哇，真好看！哇，真好看！
+                哇，真好看！哇，真好看！哇，真好看！哇，真好看
+                ！哇，真好看！哇，真好看！
+            </td>
+        </tr>
+            <!--无短信内容时显示-->
+        <tr class="mes-none" >
+            <th></th>
+            <td><span>暂未添加短信内容</span><a href="#">点击添加</a></td>
+        </tr>
+
+        <tr class="invest-new">
+            <th></th>
+            <td><input class="invest-submit" type="submit" value="修改"/>
+                <a href="javascript:void(0)" id="invest-delete" class="invest-submit" >删除</a></td>
+        </tr>
+    </table>
+    <div id="list-sure" class="list-sure" style="display: none">
+        <div class="list-sure-title"></div>
+        <div class="list-sure-content">
+            确认删除信息？
+        </div>
+        <div class="list-sure-btn">
+            <a class="list-sure-btn1" href="#">确认</a>
+            <a class="list-sure-btn2" href="javascript:viod(0)">取消</a>
+        </div>
+    </div>
+</form>
+</body>
+<script src="../core/jq/Jquery-date-and-time/jquery-1.3.2.js" ></script>
+<script src="customer-revise.js" ></script>
+</html>

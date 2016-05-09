@@ -155,59 +155,84 @@ a {
 
 /* style
 *****************************/
-form {
+.content-name {
   width: 1200px;
-  margin: 45px auto;
-  table-layout: fixed; }
+  height: 125px;
+  margin: 20px auto 40px auto;
+  background: #edf5fa; }
+  .content-name img {
+    margin: 25px 0 0 80px;
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50px; }
 
-.content-table {
-  margin-top: 30px;
-  margin-left: 100px; }
-  .content-table tr {
-    height: 75px; }
+.content-name-in {
+  margin-left: 100px;
+  padding-left: 30px;
+  line-height: 125px;
+  height: 125px;
+  float: left;
+  color: #999;
+  background: url("../core/image/name.png") no-repeat 0 center; }
+  .content-name-in span {
+    color: #666; }
 
-h2 {
-  margin-top: 80px;
-  padding-left: 50px;
-  font-size: 20px;
-  color: #333;
-  font-weight: normal; }
+.content-name-phone {
+  margin-left: 50px;
+  padding-left: 30px;
+  line-height: 125px;
+  height: 125px;
+  float: left;
+  color: #999;
+  background: url("../core/image/phone.png") no-repeat 0 center; }
+  .content-name-phone span {
+    color: #666; }
 
-th {
-  vertical-align: middle;
-  padding-right: 25px;
-  width: 123px;
-  text-align: right;
-  font-size: 16px;
-  font-weight: normal;
-  color: #666; }
+.content-list-menu {
+  width: 1200px;
+  margin: 0 auto; }
+  .content-list-menu tr {
+    height: 60px; }
+  .content-list-menu td {
+    width: 10%;
+    text-align: center; }
+  .content-list-menu .list-title {
+    font-size: 19px; }
+    .content-list-menu .list-title .list-first {
+      width: 40%; }
 
-td {
-  vertical-align: middle;
-  width: 400px; }
+.content-list {
+  width: 1200px;
+  margin: 0 auto 100px auto;
+  border: 1px solid #e5e5e5; }
+  .content-list tr {
+    height: 40px; }
+  .content-list td {
+    width: 10%;
+    line-height: 75px;
+    padding: 0;
+    text-align: center; }
+  .content-list .list-all td {
+    border-bottom: 1px solid #ccc; }
+    .content-list .list-all td a {
+      color: #81bbe1; }
+  .content-list .list-all .list-first {
+    width: 40%;
+    line-height: 20px; }
+    .content-list .list-all .list-first img {
+      float: left;
+      margin-top: -10px;
+      margin-left: 10px;
+      width: 50px;
+      height: 50px; }
+    .content-list .list-all .list-first span {
+      padding-left: 20px;
+      width: 400px; }
+  .content-list .list-red span {
+    color: red; }
 
-input {
-  width: 300px;
-  height: 38px;
-  border: 1px solid #ccc; }
-  input:focus {
-    border: 1px solid #81bbe1; }
+.list-time {
+  width: 20%; }
 
-textarea {
-  width: 300px;
-  border: 1px solid #ccc;
-  resize: none; }
-
-.invest-wrong {
-  border: 1px solid #f59a99; }
-
-.invest-submit {
-  width: 228px;
-  height: 32px;
-  font-size: 18px;
-  border: none;
-  background: #81bbe1;
-  color: white;
-  cursor: pointer; }
-
-/*# sourceMappingURL=../../maps/customer/customer.css.map */
+/*# sourceMappingURL=../../maps/customer-purchase/customer-purchase.css.map */
