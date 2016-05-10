@@ -11,4 +11,4 @@ crm.iml
 crm.ipr
 crm.iws
 classes/
-crm/src/main/webapp/node_modules
+src/main/webapp/node_modules
