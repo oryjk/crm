@@ -1,19 +1,13 @@
 package com.utils;
 
-import java.io.UnsupportedEncodingException;
-import org.apache.commons.httpclient.Header;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.PostMethod;
-
-  /**
+/**
  * Created by 朋肖 on 2016-05-11.
  */
 public class SmsSender {
 
         public static void main(String[] args)throws Exception
         {
-            HttpClient client = new HttpClient();
+            /*HttpClient client = new HttpClient();
             PostMethod post = new PostMethod("http://gbk.sms.webchinese.cn");
             post.addRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=gbk");//在头文件中设置转码
             NameValuePair[] data ={ new NameValuePair("Uid", "本站用户名"),new NameValuePair("Key", "接口安全秘钥"),new NameValuePair("smsMob","手机号码"),new NameValuePair("smsText","验证码：8888")};
@@ -31,9 +25,9 @@ public class SmsSender {
             System.out.println(result); //打印返回消息状态
 
 
-            post.releaseConnection();
+            post.releaseConnection();*/
 
         }
 
-    }
+
 }
