@@ -1,6 +1,7 @@
 package com.data.service;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mchange.v2.resourcepool.CannotAcquireResourceException;
 import com.mybatis.mapper.SchemaMapper;
 import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
@@ -18,14 +19,8 @@ public class MigrateDataService {
     @Autowired
     private ComboPooledDataSource dataSource;
 
-    @Autowired
-    private SchemaMapper schemaMapper;
 
     public void migrate() {
-        int count = schemaMapper.select();
-        if (count != 1) {
-            schemaMapper.createSchema("crm", "UTF-8", "utf8_general_ci");
-        }
 
         try {
             Flyway flyway = new Flyway();
