@@ -5,5 +5,23 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<context:component-scan base-package="com.*">
+		<context:exclude-filter expression="org.springframework.stereotype.Controller"
+								type="annotation"/>
+		<context:exclude-filter type="annotation"
+								expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
+
 	<import resource="persistence3-db.xml"/>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath*:config/mybatis/mappers/*Mapper.xml"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+	</bean>
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.mybatis.mapper.*"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		<property name="markerInterface" value="com.mybatis.mapper.SqlMapper"/>
+	</bean>
 </beans>

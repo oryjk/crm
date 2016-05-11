@@ -8,7 +8,14 @@
 		<param-name>webAppRootKey</param-name>
 		<param-value>webapp.root</param-value>
 	</context-param>
-
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:spring-core-config.xml</param-value>
+	</context-param>
+	<!-- For root context -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<filter>
 		<filter-name>XSSFilter</filter-name>
 		<filter-class>com.filter.XSSFilter</filter-class>
@@ -63,15 +70,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-	<!-- For root context -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:spring-core-config.xml</param-value>
-	</context-param>
 	<welcome-file-list>
 		<welcome-file>/views/jsp/index/index.jsp</welcome-file>
 	</welcome-file-list>
