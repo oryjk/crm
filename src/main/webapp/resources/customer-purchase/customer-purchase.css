@@ -204,7 +204,7 @@ a {
 
 .content-list {
   width: 1200px;
-  margin: 0 auto 100px auto;
+  margin: 0 auto 50px auto;
   border: 1px solid #e5e5e5; }
   .content-list tr {
     height: 40px; }
@@ -234,5 +234,19 @@ a {
 
 .list-time {
   width: 20%; }
+
+.last-btn {
+  width: 1200px;
+  height: 40px;
+  margin: 50px auto; }
+  .last-btn a {
+    float: right;
+    margin-left: 50px;
+    width: 120px;
+    height: 40px;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    background: #81bbe1; }
 
 /*# sourceMappingURL=../../maps/customer-purchase/customer-purchase.css.map */
