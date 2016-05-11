@@ -4,8 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-/**
- * Created by carlwang on 5/10/16.
+/**ww5/10/16.
  */
 @RequestMapping("/")
 @RestController
