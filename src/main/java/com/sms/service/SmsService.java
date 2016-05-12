@@ -30,8 +30,9 @@ public class SmsService {
     private Configuration configuration;
 
 
-    private String sendSms(String phoneNumber, String content, String code) throws IOException {
+    public String sendSms(String phoneNumber, String content, String code) throws IOException {
         String requestUrl = configuration.getSmsUrl();
+
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
