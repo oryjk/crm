@@ -73,10 +73,10 @@ define('OPTIONS','ci_options');
 define('PRINTTEMPLATES','ci_printtemplates');
 $active_group = 'default';
 $active_record = TRUE;
-$db['default']['hostname'] = 'localhost';   //Êý¾Ý¿âµØÖ·
-$db['default']['username'] = 'root';        //Êý¾Ý¿âÓÃ»§Ãû
-$db['default']['password'] = '';            //Êý¾Ý¿âÃÜÂë
-$db['default']['database'] = 'jxc1';   //Êý¾Ý¿âÃû³Æ
+$db['default']['hostname'] = 'localhost';   //ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ö·
+$db['default']['username'] = 'root';        //ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+$db['default']['password'] = 'root';            //ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
+$db['default']['database'] = 'jxc';   //ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
