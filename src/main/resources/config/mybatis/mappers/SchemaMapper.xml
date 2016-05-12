@@ -5,7 +5,7 @@
 	<insert id="createSchema">
 		CREATE DATABASE #{schemaName} DEFAULT CHARACTER SET #{charset} COLLATE #{collate};
 	</insert>
-	<select id="select" resultType="int">
+	<select id="select">
 		SELECT 1 FROM dual;
 	</select>
 </mapper>

@@ -19,6 +19,9 @@ public class MigrateDataService {
     @Autowired
     private ComboPooledDataSource dataSource;
 
+    @Autowired
+    private SchemaMapper schemaMapper;
+
 
     public void migrate() {
 
