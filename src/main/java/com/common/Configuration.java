@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 /**
  * Created by carlwang on 5/11/16.
  */
-@Component
 public class Configuration {
     private String smsUrl;
     private String smsUsername;

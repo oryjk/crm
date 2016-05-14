@@ -30,7 +30,7 @@ public class SmsService {
     private Configuration configuration;
 
 
-    public String sendSms(String phoneNumber, String content, String code) throws IOException {
+    public String sendSms(String phoneNumber, String content) throws IOException {
         String requestUrl = configuration.getSmsUrl();
 
 
@@ -38,10 +38,10 @@ public class SmsService {
 
         HttpPost httpPost = new HttpPost(requestUrl);
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-        nvps.add(new BasicNameValuePair("TODO", configuration.getSmsUsername()));
-        nvps.add(new BasicNameValuePair("TODO", configuration.getSmsPassword()));
-        nvps.add(new BasicNameValuePair("TODO", content + code));
-        nvps.add(new BasicNameValuePair("TODO", phoneNumber));
+        nvps.add(new BasicNameValuePair("account", configuration.getSmsUsername()));
+        nvps.add(new BasicNameValuePair("password", configuration.getSmsPassword()));
+        nvps.add(new BasicNameValuePair("content", content));
+        nvps.add(new BasicNameValuePair("mobile", phoneNumber));
         httpPost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
         CloseableHttpResponse response = httpclient.execute(httpPost);
 

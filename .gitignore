@@ -13,3 +13,4 @@ crm.iws
 classes/
 src/main/webapp/node_modules
 jxc/data/
+.DS_Store
