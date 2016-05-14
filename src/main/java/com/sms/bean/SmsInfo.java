@@ -26,6 +26,10 @@ public class SmsInfo {
     private Date sendDate;
     //短信发送的内容
     private String smsContent;
+    //标示是否已发送
+    private Integer done = 0;
+    //标示定时的类型
+    private Integer smsType = 0;
 
     public int getId() {
         return id;
@@ -105,5 +109,21 @@ public class SmsInfo {
 
     public void setSmsContent(String smsContent) {
         this.smsContent = smsContent;
+    }
+
+    public Integer getSmsType() {
+        return smsType;
+    }
+
+    public void setSmsType(Integer smsType) {
+        this.smsType = smsType;
+    }
+
+    public Integer getDone() {
+        return done;
+    }
+
+    public void setDone(Integer done) {
+        this.done = done;
     }
 }
