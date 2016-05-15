@@ -1,7 +1,6 @@
-package com.sms.mapper;
+package com.sms.bean;
 
 import com.mybatis.mapper.SqlMapper;
-import com.sms.bean.SmsInfo;
 import com.utils.bean.Pagination;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
