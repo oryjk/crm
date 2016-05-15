@@ -64,4 +64,12 @@ public class SmsInfoService {
         LOGGER.debug("End querySmsInfoById.");
         return smsInfo;
     }
+
+    public Integer querySmsInfoCount(SmsInfo smsInfo) {
+        LOGGER.debug("Begin querySmsInfoCount.");
+        Integer count = smsInfoMapper.querySmsInfoCount(smsInfo);
+        LOGGER.debug("The count is {}.", count);
+        LOGGER.debug("End querySmsInfoCount.");
+        return count;
+    }
 }
