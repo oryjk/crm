@@ -11,6 +11,6 @@ crm.iml
 crm.ipr
 crm.iws
 classes/
-src/main/webapp/node_modules
+src/main/webapp/node_modules/
 jxc/data/
 .DS_Store
