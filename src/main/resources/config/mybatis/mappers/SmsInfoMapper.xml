@@ -48,37 +48,37 @@
 	</delete>
 	<sql id="smsInfoQuery">
 		<if test="smsInfo.contactId!=null">
-			AND contact_id=#{smsInfo.contactId}
+			OR contact_id LIKE CONCAT('%', #{smsInfo.contactId}, '%')
 		</if>
 		<if test="smsInfo.contactName!=null">
-			AND contact_name=#{smsInfo.contactName}
+			OR contact_name LIKE CONCAT('%', #{smsInfo.contactName}, '%')
 		</if>
 		<if test="smsInfo.phone!=null">
-			AND phone=#{smsInfo.phone}
+			OR phone LIKE CONCAT('%', #{smsInfo.phone}, '%')
 		</if>
 		<if test="smsInfo.goodsId!=null">
-			AND goods_id=#{smsInfo.goodsId}
+			OR goods_id LIKE CONCAT('%', #{smsInfo.goodsId}, '%')
 		</if>
 		<if test="smsInfo.goodsName!=null">
-			AND goods_name=#{smsInfo.goodsName}
+			OR goods_name LIKE CONCAT('%',#{smsInfo.goodsName}, '%')
 		</if>
 		<if test="smsInfo.goodsModel!=null">
-			AND goods_model=#{smsInfo.goodsModel}
+			OR goods_model LIKE CONCAT('%',#{smsInfo.goodsModel}, '%')
 		</if>
 		<if test="smsInfo.updateDate!=null">
-			AND update_date=#{smsInfo.updateDate}
+			OR update_date LIKE CONCAT('%',#{smsInfo.updateDate}, '%')
 		</if>
 		<if test="smsInfo.sendDate!=null">
-			AND send_date=#{smsInfo.sendDate}
+			OR send_date LIKE CONCAT('%', #{smsInfo.sendDate}, '%')
 		</if>
 		<if test="smsInfo.smsContent!=null">
-			AND sms_content=#{smsInfo.smsContent}
+			OR sms_content LIKE CONCAT('%', #{smsInfo.smsContent}, '%')
 		</if>
 		<if test="smsInfo.done!=null">
-			AND done=#{smsInfo.done}
+			OR done LIKE CONCAT('%',#{smsInfo.done}, '%')
 		</if>
 		<if test="smsInfo.smsType!=null">
-			AND sms_type=#{smsInfo.smsType}
+			OR sms_type LIKE CONCAT('%', #{smsInfo.smsType}, '%')
 		</if>
 	</sql>
 	<sql id="pagination">
