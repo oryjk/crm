@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -49,8 +51,8 @@
                 <td>${info.contactName}</td>
                 <td>${info.phone}</td>
                 <td>${info.goodsName}</td>
-                <td>${info.updateDate}</td>
-                <td>${info.sendDate}</td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.updateDate}"/></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.updateDate}"/></td>
                 <td>
                     <a class="list-delete" href="#">查看详情</a>
                     <a class="list-delete" href="#">购买信息</a>
@@ -63,16 +65,19 @@
         <tr>
             <td><a href="#">首页</a></td>
             <td><a href="#">上一页</a></td>
-            <td><a href="#">1</a></td>
-            <td><a href="#">2</a></td>
-            <td><a href="#">3</a></td>
-            <td><a href="#">4</a></td>
-            <td><a href="#">5</a></td>
-            <td><a href="#">6</a></td>
-            <td><a href="#">7</a></td>
-            <td><a href="#">下一页</a></td>
+
+            <%
+                for (int i = 1; i < Integer.parseInt(request.getParameter("pageCount")); i++) {
+
+            %>
+                    <td><a href="/smsInfo/search?term=${param.term}&currentPage=<%=i%>"><%=i%></a></td>
+            <%
+                }
+            %>
+            <c:if test=""></c:if>
+            <td><a href="/smsInfo/search?term=${param.term}&currentPage=<%=i+1%>">下一页</a></td>
             <td><a href="#">尾页</a></td>
-            <td><a href="#">共10页</a></td>
+            <td>共${pageContext}页</td>
 
         </tr>
     </table>

@@ -23,12 +23,18 @@ public class SmsInfoController {
 
     @RequestMapping("/list")
     public ModelAndView list(ModelAndView modelAndView) {
+        SmsInfo info = new SmsInfo();
+        Pagination pagination = new Pagination();
+        pagination.setCurrentIndex(0);
+        modelAndView.addObject("infoList", smsInfoService.querySmsInfo(info, pagination));
+        modelAndView.addObject("pageCount", smsInfoService.querySmsInfoCount(info) / pagination.getCapacity() + 1);
         modelAndView.setViewName("/customer-list");
         return modelAndView;
     }
 
     @RequestMapping("/search")
     public ModelAndView querySmsInfo(String term, @RequestParam long currentPage, ModelAndView modelAndView) {
+
         SmsInfo smsInfo = new SmsInfo();
         Pagination pagination = new Pagination();
 
@@ -37,10 +43,11 @@ public class SmsInfoController {
         smsInfo.setGoodsModel(term);
         smsInfo.setGoodsName(term);
         smsInfo.setSmsContent(term);
+
+        System.out.printf("currentpage" + currentPage);
         pagination.setCurrentIndex(currentPage);
 
         modelAndView.setViewName("/customer-list");
-        modelAndView.addObject("term", term);
         modelAndView.addObject("infoList", smsInfoService.querySmsInfo(smsInfo, pagination));
 
         return modelAndView;

@@ -36,29 +36,48 @@ public class SmsInfoServiceTest {
 
     @Test
     public void createSmsInfo() {
-        SmsInfo smsInfo = new SmsInfo();
-        smsInfo.setContactId(1);
-        smsInfo.setContactName("carlwang");
-        smsInfo.setDone(1);
-        smsInfo.setGoodsId(9);
-        smsInfo.setGoodsModel("中型");
-        smsInfo.setGoodsName("推杆");
-        smsInfo.setPhone("18602812970");
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2016, 6, 10);
-        smsInfo.setSendDate(calendar.getTime());
-        smsInfo.setSmsContent("您好，欢迎使用高尔夫工具");
-        smsInfo.setSmsType(SMS_TYPE.FIX_TIME.getValue());
-        smsInfo.setUpdateDate(new Date());
-        smsInfoService.createSmsInfo(smsInfo);
-        LOGGER.info("sms info id is {}.", smsInfo.getId());
+        for (int i = 0; i < 5; i++) {
+            SmsInfo smsInfo = new SmsInfo();
+            smsInfo.setContactId(1);
+            smsInfo.setContactName("carlwang");
+            smsInfo.setDone(1);
+            smsInfo.setGoodsId(9);
+            smsInfo.setGoodsModel("中型");
+            smsInfo.setGoodsName("推杆");
+            smsInfo.setPhone("18602812970");
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(2016, 6, 10);
+            smsInfo.setSendDate(calendar.getTime());
+            smsInfo.setSmsContent("您好，欢迎使用高尔夫工具");
+            smsInfo.setSmsType(SMS_TYPE.FIX_TIME.getValue());
+            smsInfo.setUpdateDate(new Date());
+            smsInfoService.createSmsInfo(smsInfo);
+            LOGGER.info("sms info id is {}.", smsInfo.getId());
+
+            SmsInfo smsInfo2 = new SmsInfo();
+            smsInfo2.setContactId(2);
+            smsInfo2.setContactName("sarahzhou");
+            smsInfo2.setDone(1);
+            smsInfo2.setGoodsId(10);
+            smsInfo2.setGoodsModel("中型");
+            smsInfo2.setGoodsName("推杆");
+            smsInfo2.setPhone("18782283084");
+            Calendar cal2 = Calendar.getInstance();
+            cal2.set(2016, 6, 10);
+            smsInfo2.setSendDate(cal2.getTime());
+            smsInfo2.setSmsContent("您好，欢迎使用高尔夫工具");
+            smsInfo2.setSmsType(SMS_TYPE.FIX_TIME.getValue());
+            smsInfo2.setUpdateDate(new Date());
+            smsInfoService.createSmsInfo(smsInfo2);
+            LOGGER.info("sms info id is {}.", smsInfo2.getId());
+        }
     }
 
     @Test
     public void querySmsInfo() {
         SmsInfo smsInfo = smsInfoService.querySmsInfoById(1);
         Assert.assertNotNull(smsInfo);
-        Pagination pagination=new Pagination();
+        Pagination pagination = new Pagination();
         pagination.setAsc(false);
         pagination.setCapacity(100);
         pagination.setCurrentIndex(0);

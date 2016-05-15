@@ -6,7 +6,7 @@ package com.utils.bean;
 public class Pagination {
 
     //一页的容量
-    private long capacity = 20;
+    private long capacity = 4;
     //当前的页面，从0开始
     private long currentIndex;
 

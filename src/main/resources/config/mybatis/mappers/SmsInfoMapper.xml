@@ -38,7 +38,6 @@
 	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultMap="smsInfoResult">
 		SELECT COUNT(ID) FROM CI_SMS_INFO WHERE 1=1
 		<include refid="smsInfoQuery"/>
-		<include refid="pagination"/>
 	</select>
 	<select id="querySmsInfoById" parameterType="int" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE id=#{id}
