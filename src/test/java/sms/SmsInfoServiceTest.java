@@ -56,7 +56,7 @@ public class SmsInfoServiceTest {
     public void querySmsInfo() {
         SmsInfo smsInfo = smsInfoService.querySmsInfoById(1);
         Assert.assertNotNull(smsInfo);
-        List<SmsInfo> smsInfos = smsInfoService.querySmsInfo(smsInfo);
+        List<SmsInfo> smsInfos = smsInfoService.querySmsInfo(smsInfo, null);
         Assert.assertNotNull(smsInfos);
         Assert.assertNotNull(smsInfos.get(0));
 

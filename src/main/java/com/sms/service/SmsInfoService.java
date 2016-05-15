@@ -3,6 +3,7 @@ package com.sms.service;
 import com.aspect.annotation.LogAnnotation;
 import com.sms.bean.SmsInfo;
 import com.sms.mapper.SmsInfoMapper;
+import com.utils.bean.Pagination;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class SmsInfoService {
     }
 
     @LogAnnotation(description = "querySmsInfo")
-    public List<SmsInfo> querySmsInfo(SmsInfo smsInfo) {
+    public List<SmsInfo> querySmsInfo(SmsInfo smsInfo, Pagination pagination) {
         LOGGER.debug("Begin querySmsInfo.");
         List<SmsInfo> smsInfos = smsInfoMapper.querySmsInfo(smsInfo);
         LOGGER.debug("The result size is {}.", smsInfos.size());
