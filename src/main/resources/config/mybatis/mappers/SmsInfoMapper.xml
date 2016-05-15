@@ -33,7 +33,7 @@
 	<select id="querySmsInfo" parameterMap="smsInfoParam" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE 1=1
 		<include refid="smsInfoQuery"/>
-
+		<include refid="pagination"/>
 	</select>
 	<select id="querySmsInfoById" parameterType="int" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE id=#{id}
@@ -42,40 +42,46 @@
 		DELETE FROM CI_SMS_INFO WHERE ID=${id}
 	</delete>
 	<sql id="smsInfoQuery">
-		<if test="contactId!=null">
-			AND contact_id=#{contactId}
+		<if test="smsInfo.contactId!=null">
+			AND contact_id=#{smsInfo.contactId}
 		</if>
-		<if test="contactName!=null">
-			AND contact_name=#{contactName}
+		<if test="smsInfo.contactName!=null">
+			AND contact_name=#{smsInfo.contactName}
 		</if>
-		<if test="phone!=null">
-			AND phone=#{phone}
+		<if test="smsInfo.phone!=null">
+			AND phone=#{smsInfo.phone}
 		</if>
-		<if test="goodsId!=null">
-			AND goods_id=#{goodsId}
+		<if test="smsInfo.goodsId!=null">
+			AND goods_id=#{smsInfo.goodsId}
 		</if>
-		<if test="goodsName!=null">
-			AND goods_name=#{goodsName}
+		<if test="smsInfo.goodsName!=null">
+			AND goods_name=#{smsInfo.goodsName}
 		</if>
-		<if test="goodsModel!=null">
-			AND goods_model=#{goodsModel}
+		<if test="smsInfo.goodsModel!=null">
+			AND goods_model=#{smsInfo.goodsModel}
 		</if>
-		<if test="updateDate!=null">
-			AND update_date=#{updateDate}
+		<if test="smsInfo.updateDate!=null">
+			AND update_date=#{smsInfo.updateDate}
 		</if>
-		<if test="sendDate!=null">
-			AND send_date=#{sendDate}
+		<if test="smsInfo.sendDate!=null">
+			AND send_date=#{smsInfo.sendDate}
 		</if>
-		<if test="smsContent!=null">
-			AND sms_content=#{smsContent}
+		<if test="smsInfo.smsContent!=null">
+			AND sms_content=#{smsInfo.smsContent}
 		</if>
-		<if test="done!=null">
-			AND done=#{done}
+		<if test="smsInfo.done!=null">
+			AND done=#{smsInfo.done}
 		</if>
-		<if test="smsType!=null">
-			AND sms_type=#{smsType}
+		<if test="smsInfo.smsType!=null">
+			AND sms_type=#{smsInfo.smsType}
 		</if>
 	</sql>
-
+	<sql id="pagination">
+		ORDER BY #{pagination.sortFiledName}
+		<if test="!pagination.asc">
+			DESC
+		</if>
+		limit #{pagination.from},#{pagination.to}
+	</sql>
 
 </mapper>
