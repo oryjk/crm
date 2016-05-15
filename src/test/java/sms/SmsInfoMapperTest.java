@@ -2,6 +2,7 @@ package sms;
 
 import com.sms.bean.SMS_TYPE;
 import com.sms.bean.SmsInfo;
+import com.sms.bean.mapper.SmsInfoMapper;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
