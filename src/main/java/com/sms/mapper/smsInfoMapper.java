@@ -2,6 +2,7 @@ package com.sms.mapper;
 
 import com.mybatis.mapper.SqlMapper;
 import com.sms.bean.SmsInfo;
+import com.utils.bean.Pagination;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface SmsInfoMapper extends SqlMapper {
 
     void updateSmsInfo(SmsInfo smsInfo);
 
-    List<SmsInfo> querySmsInfo(SmsInfo smsInfo);
+    List<SmsInfo> querySmsInfo(SmsInfo smsInfo, Pagination pagination);
 
     void delete(SmsInfo smsInfo);
 

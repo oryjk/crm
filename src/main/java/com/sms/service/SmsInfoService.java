@@ -52,7 +52,7 @@ public class SmsInfoService {
     @LogAnnotation(description = "querySmsInfo")
     public List<SmsInfo> querySmsInfo(SmsInfo smsInfo, Pagination pagination) {
         LOGGER.debug("Begin querySmsInfo.");
-        List<SmsInfo> smsInfos = smsInfoMapper.querySmsInfo(smsInfo);
+        List<SmsInfo> smsInfos = smsInfoMapper.querySmsInfo(smsInfo, pagination);
         LOGGER.debug("The result size is {}.", smsInfos.size());
         LOGGER.debug("End querySmsInfo.");
         return smsInfos;

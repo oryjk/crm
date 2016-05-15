@@ -56,7 +56,7 @@ public class SmsInfoMapperTest {
     public void querySmsInfo() {
         SmsInfo smsInfo = smsInfoMapper.querySmsInfoById(1);
         Assert.assertNotNull(smsInfo);
-        List<SmsInfo> smsInfos = smsInfoMapper.querySmsInfo(smsInfo);
+        List<SmsInfo> smsInfos = smsInfoMapper.querySmsInfo(smsInfo, null);
         Assert.assertNotNull(smsInfos);
         Assert.assertNotNull(smsInfos.get(0));
 
