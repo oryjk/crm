@@ -3,6 +3,7 @@ package com.utils.bean;
 /**
  * Created by carlwang on 5/15/16.
  */
+
 public class Pagination {
 
     //一页的容量
