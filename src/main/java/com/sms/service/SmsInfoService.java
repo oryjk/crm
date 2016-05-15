@@ -2,7 +2,7 @@ package com.sms.service;
 
 import com.aspect.annotation.LogAnnotation;
 import com.sms.bean.SmsInfo;
-import com.sms.mapper.SmsInfoMapper;
+import com.sms.bean.mapper.SmsInfoMapper;
 import com.utils.bean.Pagination;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
