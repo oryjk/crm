@@ -1,4 +1,4 @@
-package com.sms.bean.mapper;
+package com.sms.mapper;
 
 import com.mybatis.mapper.SqlMapper;
 import com.sms.bean.SmsInfo;
