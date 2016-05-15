@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -5,11 +6,12 @@
   Time: 上午10:29
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="customer-list.css"/>
+    <link rel="stylesheet" href="/resources/customer-list/customer-list.css"/>
     <title></title>
 </head>
 <body>
@@ -19,7 +21,7 @@
         <h1>客户管理</h1>
 
         <div class="header-name">
-            <img src="../core/image/touxiang.png" alt=""/>
+            <img src="/resources/core/image/touxiang.png" alt=""/>
             <span>zhouzhou</span>
         </div>
     </div>
@@ -28,8 +30,10 @@
 
 <div class="content">
     <div class="content-searchBox">
-        <input class="content-search" type="search" placeholder="请输入搜索信息">
-        <button class="content-search-btn"></button>
+        <form action="/smsInfo/">
+            <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
+            <button class="content-search-btn" type="submit"></button>
+        </form>
     </div>
     <table class="content-list">
         <tr class="list-title">
@@ -40,126 +44,20 @@
             <td>短信发送日期</td>
             <td>操作</td>
         </tr>
-        <tr class="list-top">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-bottom">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-top">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-bottom">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-top">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-bottom">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-top">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-bottom">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-top">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
-        <tr class="list-bottom">
-            <td>周杰伦</td>
-            <td>18000000000</td>
-            <td>黑曜石</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>2015-1-1 12:20:24</td>
-            <td>
-                <a class="list-delete" href="#">查看详情</a>
-                <a class="list-delete" href="#">购买信息</a>
-                <a class="list-delete" href="javascript:viod(0)">删除</a>
-            </td>
-        </tr>
+        <c:forEach items="${infoList}" var="info">
+            <tr class="list-top">
+                <td>${info.contactName}</td>
+                <td>${info.phone}</td>
+                <td>${info.goodsName}</td>
+                <td>${info.updateDate}</td>
+                <td>${info.sendDate}</td>
+                <td>
+                    <a class="list-delete" href="#">查看详情</a>
+                    <a class="list-delete" href="#">购买信息</a>
+                    <a class="list-delete" href="javascript:viod(0)">删除</a>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
     <table class="list-page">
         <tr>
@@ -190,6 +88,6 @@
     </div>
 </div>
 </body>
-<script src="../core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
-<script src="customer-list.js"></script>
+<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+<script src="/resources/customer-list/customer-list.js"></script>
 </html>
