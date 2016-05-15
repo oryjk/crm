@@ -15,6 +15,7 @@
 		<context:include-filter type="annotation"
 								expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:annotation-driven
 			conversion-service="conversionService"
 			validator="validatorFactoryBean">
