@@ -14,8 +14,14 @@
 	<logger name="org.springframework" level="debug" additivity="false">
 		<appender-ref ref="STDOUT"/>
 	</logger>
+	<logger name="java.sql" level="debug">
+		<appender-ref ref="STDOUT"/>
+	</logger>
 
-	<logger name="org.mybatis" level="debug" additivity="true">
+	<logger name="org.mybatis.*" level="debug" additivity="true">
+		<appender-ref ref="STDOUT"/>
+	</logger>
+	<logger name="com.ibatis.*" level="debug" additivity="true">
 		<appender-ref ref="STDOUT"/>
 	</logger>
 

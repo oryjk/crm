@@ -85,6 +85,8 @@ public class SmsInfoServiceTest {
         List<SmsInfo> smsInfos = smsInfoService.querySmsInfo(smsInfo, pagination);
         Assert.assertNotNull(smsInfos);
         Assert.assertNotNull(smsInfos.get(0));
+        Integer count = smsInfoService.querySmsInfoCount(smsInfo);
+        Assert.assertNotNull(count);
 
     }
 
