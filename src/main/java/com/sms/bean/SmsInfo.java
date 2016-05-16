@@ -31,6 +31,8 @@ public class SmsInfo {
     //标示定时的类型
     private Integer smsType = 0;
 
+    private Date billDate;
+
     public int getId() {
         return id;
     }
@@ -125,5 +127,13 @@ public class SmsInfo {
 
     public void setDone(Integer done) {
         this.done = done;
+    }
+
+    public Date getBillDate() {
+        return billDate;
+    }
+
+    public void setBillDate(Date billDate) {
+        this.billDate = billDate;
     }
 }
