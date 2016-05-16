@@ -58,7 +58,7 @@ public class SmsInfoServiceTest {
     public void querySmsInfo() {
         SmsInfo smsInfo = smsInfoService.querySmsInfoById(1);
         Assert.assertNotNull(smsInfo);
-        Pagination pagination=new Pagination();
+        Pagination pagination = new Pagination();
         pagination.setAsc(false);
         pagination.setCapacity(100);
         pagination.setCurrentIndex(0);
@@ -66,6 +66,8 @@ public class SmsInfoServiceTest {
         List<SmsInfo> smsInfos = smsInfoService.querySmsInfo(smsInfo, pagination);
         Assert.assertNotNull(smsInfos);
         Assert.assertNotNull(smsInfos.get(0));
+        Integer count = smsInfoService.querySmsInfoCount(smsInfo);
+        Assert.assertNotNull(count);
 
     }
 
