@@ -40,13 +40,13 @@ public class SmsInfoController {
         //联系人名字
         smsInfo.setContactName(term);
         //手机号
-//        smsInfo.setPhone(term);
-//        //产品类别
-//        smsInfo.setGoodsModel(term);
-//        //产品名字
-//        smsInfo.setGoodsName(term);
-//        //短信内容
-//        smsInfo.setSmsContent(term);
+        smsInfo.setPhone(term);
+        //产品类别
+        smsInfo.setGoodsModel(term);
+        //产品名字
+        smsInfo.setGoodsName(term);
+        //短信内容
+        smsInfo.setSmsContent(term);
 
         Pagination pagination = new Pagination();
         if(currentPage == null || currentPage <= 0){

@@ -27,9 +27,9 @@ public class SmsInfo {
     //短信发送的内容
     private String smsContent;
     //标示是否已发送
-    private Integer done = 0;
+    private Integer done = null;
     //标示定时的类型
-    private Integer smsType = 0;
+    private Integer smsType = null;
     //购买日期
     private Date billDate;
 
