@@ -1,5 +1,9 @@
 package com.sms.bean;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 /**
@@ -8,23 +12,39 @@ import java.util.Date;
 public class SmsInfo {
 
     private Integer id;
+
     //客户的id
+    @NotNull(message = "{contactId.required}")
     private Integer contactId;
+
     //客户的名字
+    @NotEmpty(message = "{contactName.required}")
     private String contactName;
+
     //客户的电话
+    @Pattern(regexp = "^1\\d{10}$", message = "{phone.invalid}")
     private String phone;
+
     //客户购买的商品的id
+    @NotNull(message = "{goodsId.required}")
     private Integer goodsId;
+
     //客户购买的商品名称
+    @NotEmpty(message = "{goodsName.required}")
     private String goodsName;
+
     //客户购买的商品型号
     private String goodsModel;
+
     //该条记录最后更新的时间
     private Date updateDate;
+
     //短信发送的时间
+    @NotNull(message = "{sendDate.required}")
     private Date sendDate;
+
     //短信发送的内容
+    @NotEmpty(message = "{smsContent.required}")
     private String smsContent;
     //标示是否已发送
     private Integer done = null;
@@ -32,6 +52,10 @@ public class SmsInfo {
     private Integer smsType = null;
     //购买日期
     private Date billDate;
+
+    public SmsInfo() {
+
+    }
 
     public Integer getId() {
         return id;
