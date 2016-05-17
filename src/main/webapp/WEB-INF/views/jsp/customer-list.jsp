@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -30,7 +32,7 @@
 
 <div class="content">
     <div class="content-searchBox">
-        <form action="/smsInfo/">
+        <form action="/smsInfo/list" method="get">
             <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
             <button class="content-search-btn" type="submit"></button>
         </form>
@@ -49,30 +51,31 @@
                 <td>${info.contactName}</td>
                 <td>${info.phone}</td>
                 <td>${info.goodsName}</td>
-                <td>${info.updateDate}</td>
-                <td>${info.sendDate}</td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
                 <td>
                     <a class="list-delete" href="#">查看详情</a>
                     <a class="list-delete" href="#">购买信息</a>
-                    <a class="list-delete" href="javascript:viod(0)">删除</a>
+                    <a class="list-delete" href="javascript:void(0)">删除</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <table class="list-page">
         <tr>
-            <td><a href="#">首页</a></td>
-            <td><a href="#">上一页</a></td>
-            <td><a href="#">1</a></td>
-            <td><a href="#">2</a></td>
-            <td><a href="#">3</a></td>
-            <td><a href="#">4</a></td>
-            <td><a href="#">5</a></td>
-            <td><a href="#">6</a></td>
-            <td><a href="#">7</a></td>
-            <td><a href="#">下一页</a></td>
-            <td><a href="#">尾页</a></td>
-            <td><a href="#">共10页</a></td>
+            <c:if test="${currentPage>1}">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=1">首页</a></td>
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
+            </c:if>
+
+            <c:forEach begin="1" end="${totalPage}" var="i">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
+            </c:forEach>
+            <c:if test="${currentPage<totalPage}">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
+                <td><a href=/smsInfo/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
+            </c:if>
+                <td>共${totalPage}页</td>
 
         </tr>
     </table>
