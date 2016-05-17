@@ -14,8 +14,7 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/resources/customer-revise/customer-revise.css"/>
   <link rel="stylesheet" href="/resources/core/jq/Jquery-date-and-time/jquery-calendar.css"/>
-  <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
-  <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
+  <!--<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>-->
   <title></title>
 </head>
 <body>
@@ -44,7 +43,7 @@
     <tr>
       <th>手机号码:</th>
       <td>${smsInfo.phone}</td>
-    </tr>
+  </tr>
   </table>
   <h2>产品信息</h2>
   <table class="content-table">
@@ -60,14 +59,16 @@
       <th>产品型号:</th>
       <td>${smsInfo.goodsModel}</td>
     </tr>
+
     <tr>
       <th>发送短信时间:</th>
-      <td><fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+      <td><fmt:formatDate  value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
     </tr>
     <tr>
       <th>发送短信内容:</th>
       <td class="mes-content" style="display: block">${smsInfo.smsContent}</td>
     </tr>
+
 
 
   <%--<!--有短信内容时显示-->--%>
@@ -98,7 +99,8 @@
     </div>
   </div>
 </form>
-</body>
-<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js" ></script>
+<script src="/resources/core/jq/jquery-1.11.1.js" ></script>
+<script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
 <script src="/resources/customer-revise/customer-revise.js" ></script>
+</body>
 </html>

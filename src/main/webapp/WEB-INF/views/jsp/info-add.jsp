@@ -14,8 +14,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/resources/customer/customer.css"/>
     <link rel="stylesheet" href="/resources/core/jq/Jquery-date-and-time/jquery-calendar.css"/>
-    <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
-    <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
+
     <title></title>
   </head>
   <body>
@@ -40,6 +39,7 @@
           <input name="contactId" type="text" value="${smsInfo.contactId}"/>
           <form:errors path="smsInfo.contactId" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>用户名称:</th>
@@ -47,6 +47,7 @@
           <input name="contactName" type="text" value="${smsInfo.contactName}"/>
           <form:errors path="smsInfo.contactName" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>手机号码:</th>
@@ -54,6 +55,7 @@
           <input name="phone" class="invest-text" type="text" value="${smsInfo.phone}"/>
           <form:errors path="smsInfo.phone" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
     </table>
     <h2>产品信息</h2>
@@ -64,6 +66,7 @@
           <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}"/>
           <form:errors path="smsInfo.goodsId" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>产品名称:</th>
@@ -71,12 +74,14 @@
           <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}"/>
           <form:errors path="smsInfo.goodsName" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>产品型号:</th>
         <td>
           <input name="goodsModel" class="invest-text" type="text" value="${smsInfo.goodsModel}"/>
         </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>发送短信时间:</th>
@@ -84,6 +89,18 @@
           <input name="sendDate" value="${smsInfo.sendDate}" id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
           <form:errors path="smsInfo.sendDate" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text">supersoup:每一行这个位置都有一个错误信息,你可以直接在这里插入</td>
+      </tr>
+      <tr>
+        <th>发送短信模板:</th>
+        <td>
+          <select class="choose-message" id="chooseMessage">
+            <option value="请在此处写上这个模板的详细内容1">模板1</option>
+            <option value="请在此处写上这个模板的详细内容2">模板2</option>
+            <option value="请在此处写上这个模板的详细内容3">模板3</option>
+          </select>
+        </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th>发送短信内容:</th>
@@ -91,6 +108,14 @@
           <textarea name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
           <form:errors path="smsInfo.smsContent" cssStyle="color: red"/>
         </td>
+        <td class="wrong-text"></td>
+      </tr>
+      <tr>
+        <th></th>
+        <td>
+          请注意:只有 [ ] 里面的内容可以进行修改
+        </td>
+        <td class="wrong-text"></td>
       </tr>
       <tr>
         <th></th>
@@ -98,5 +123,10 @@
       </tr>
     </table>
   </form>
+
+  <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+  <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
+  <script src="/resources/customer/customer.js" ></script>
+
   </body>
 </html>
