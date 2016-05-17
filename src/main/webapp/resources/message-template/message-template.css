@@ -194,14 +194,18 @@ a {
     line-height: 50px;
     color: #333;
     background: #f3f3f3; }
+  .content-list .list-bottom .list-modify,
   .content-list .list-bottom .list-delete,
+  .content-list .list-top .list-modify,
   .content-list .list-top .list-delete {
     padding: 3px;
     height: 20px;
     width: 10px;
     color: #81bbe1;
     font-size: 14px; }
+    .content-list .list-bottom .list-modify:hover,
     .content-list .list-bottom .list-delete:hover,
+    .content-list .list-top .list-modify:hover,
     .content-list .list-top .list-delete:hover {
       color: red; }
   .content-list .list-bottom td {

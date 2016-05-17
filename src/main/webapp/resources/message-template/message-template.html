@@ -30,29 +30,32 @@
             <td>模板1</td>
             <td class="list-template-content">内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人</td>
             <td>
-                <a class="list-delete" href="#">修改</a>
-                <a class="list-delete" href="javascript:void(0);">删除</a>
+                <a class="list-modify" href="#">修改</a>
+                <a class="list-delete" href="javascript:void(0);"  data-value="2">删除</a>
             </td>
         </tr>
         <tr class="list-bottom">
             <td>模板1</td>
             <td class="list-template-content">内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人内容内人人人人人人人人人人人人人人</td>
             <td>
-                <a class="list-delete" href="#">修改</a>
-                <a class="list-delete" href="javascript:void(0);">删除</a>
+                <a class="list-modify" href="#">修改</a>
+                <!--supersoup: data-value为id号-->
+                <a class="list-delete" href="javascript:void(0);" data-value="1">删除</a>
             </td>
         </tr>
     </table>
-    <div id="list-sure" class="list-sure" style="display: none">
+    <div id="listSure" class="list-sure" style="display: none">
         <div class="list-sure-title"></div>
         <div class="list-sure-content">
             确认删除信息？
         </div>
         <div class="list-sure-btn">
-            <a class="list-sure-btn1" href="#">确认</a>
+            <a class="list-sure-btn1" href="javascript:void(0);">确认</a>
             <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
         </div>
     </div>
 </div>
+<script src="../core/jq/jquery-1.11.1.js"></script>
+<script src="message-template.js"></script>
 </body>
 </html>
