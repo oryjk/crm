@@ -94,6 +94,7 @@
       <tr>
         <th>发送短信模板:</th>
         <td>
+          <!--请在option的value里面写上模板的具体内容-->
           <select class="choose-message" id="chooseMessage">
             <option value="请在此处写上这个模板的详细内容1">模板1</option>
             <option value="请在此处写上这个模板的详细内容2">模板2</option>
