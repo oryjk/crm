@@ -7,15 +7,15 @@ import java.util.Date;
  */
 public class SmsInfo {
 
-    private int id;
+    private Integer id;
     //客户的id
-    private int contactId;
+    private Integer contactId;
     //客户的名字
     private String contactName;
     //客户的电话
     private String phone;
     //客户购买的商品的id
-    private int goodsId;
+    private Integer goodsId;
     //客户购买的商品名称
     private String goodsName;
     //客户购买的商品型号
@@ -27,26 +27,34 @@ public class SmsInfo {
     //短信发送的内容
     private String smsContent;
     //标示是否已发送
-    private Integer done = 0;
+    private Integer done = null;
     //标示定时的类型
-    private Integer smsType = 0;
-
+    private Integer smsType = null;
+    //购买日期
     private Date billDate;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getContactId() {
+    public Integer getContactId() {
         return contactId;
     }
 
-    public void setContactId(int contactId) {
+    public void setContactId(Integer contactId) {
         this.contactId = contactId;
+    }
+
+    public Integer getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getContactName() {
@@ -63,14 +71,6 @@ public class SmsInfo {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public int getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(int goodsId) {
-        this.goodsId = goodsId;
     }
 
     public String getGoodsName() {
