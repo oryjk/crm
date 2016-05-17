@@ -40,4 +40,11 @@
 		<property name="smsUsername" value="cf_aigolf"/>
 		<property name="smsPassword" value="00fe77e5b5ced7090785cccddab7b2f9"/>
 	</bean>
+
+	<!-- smsinfo表单字段验证-->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:message"></property>
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="cacheSeconds" value="120"></property>
+	</bean>
 </beans>

@@ -3,9 +3,11 @@ package com.controller;
 import com.sms.bean.SmsInfo;
 import com.sms.service.SmsInfoService;
 import com.utils.bean.Pagination;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +25,9 @@ public class SmsInfoController {
     @Autowired
     private SmsInfoService smsInfoService;
 
-
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView querySmsInfo(@RequestParam(value = "term", required = false) String term, @RequestParam(value = "currentPage", required = false) Integer currentPage, ModelAndView modelAndView) {
-        if(StringUtils.isBlank(term)){
+        if (StringUtils.isBlank(term)) {
             term = null;
         }
         SmsInfo smsInfo = new SmsInfo();
@@ -49,7 +50,7 @@ public class SmsInfoController {
         smsInfo.setSmsContent(term);
 
         Pagination pagination = new Pagination();
-        if(currentPage == null || currentPage <= 0){
+        if (currentPage == null || currentPage <= 0) {
             currentPage = 1;
         }
         pagination.setCurrentPage(currentPage);
@@ -67,9 +68,43 @@ public class SmsInfoController {
         } else {
             totalPage = totalCount / pagination.getPageSize() + 1;
         }
+        modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("totalPage", totalPage);
-        modelAndView.setViewName("/customer-list");
 
+        //没有购买记录
+        if (StringUtils.isBlank(term) && totalCount == 0) {
+            modelAndView.setViewName("info-list-none");
+        } else {
+            modelAndView.setViewName("info-list");
+        }
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView addSmsInfo(ModelAndView modelAndView) {
+        modelAndView.addObject("smsInfo", new SmsInfo());
+        modelAndView.setViewName("info-add");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("info-add");
+        } else {
+            smsInfoService.createSmsInfo(smsInfo);
+            modelAndView.addObject("smsInfo", smsInfo);
+            modelAndView.setViewName("info-add-success");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/view")
+    public ModelAndView test(ModelAndView modelAndView, @RequestParam Integer id) {
+        modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        modelAndView.setViewName("info-detail");
         return modelAndView;
     }
 }

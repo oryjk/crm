@@ -46,21 +46,31 @@
             <td>短信发送日期</td>
             <td>操作</td>
         </tr>
-        <c:forEach items="${infoList}" var="info">
-            <tr class="list-top">
-                <td>${info.contactName}</td>
-                <td>${info.phone}</td>
-                <td>${info.goodsName}</td>
-                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
-                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
-                <td>
-                    <a class="list-delete" href="#">查看详情</a>
-                    <a class="list-delete" href="#">购买信息</a>
-                    <a class="list-delete" href="javascript:void(0)">删除</a>
-                </td>
-            </tr>
-        </c:forEach>
+        <c:choose>
+            <c:when test="${totalCount == 0}">
+                <div class="content">
+                    <div class="list-none">很遗憾，没有相关的购买记录</div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <c:forEach items="${infoList}" var="info">
+                    <tr class="list-top">
+                        <td>${info.contactName}</td>
+                        <td>${info.phone}</td>
+                        <td>${info.goodsName}</td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
+                        <td>
+                            <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
+                            <a class="list-delete" href="#">购买信息</a>
+                            <a class="list-delete" href="javascript:void(0)">删除</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
     </table>
+
     <table class="list-page">
         <tr>
             <c:if test="${currentPage>1}">
