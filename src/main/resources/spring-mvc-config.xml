@@ -11,16 +11,21 @@
 
 	<context:component-scan base-package="com.*">
 		<context:include-filter expression="org.springframework.stereotype.Controller"
-								type="annotation" />
+								type="annotation"/>
 		<context:include-filter type="annotation"
-								expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+								expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
-	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
 	<mvc:annotation-driven
 			conversion-service="conversionService"
 			validator="validatorFactoryBean">
 	</mvc:annotation-driven>
 	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.common.converter.DateConverter"></bean>
+			</set>
+		</property>
 	</bean>
 	<!-- validator-->
 	<bean id="validatorFactoryBean" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
@@ -40,4 +45,6 @@
 		<property name="prefix" value="/WEB-INF/views/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
+
+
 </beans>
