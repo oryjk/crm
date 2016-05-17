@@ -32,12 +32,16 @@
 	</update>
 	<select id="querySmsInfo" parameterMap="smsInfoParam" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE 1=1
-		<include refid="smsInfoQuery"/>
+		<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">
+			AND (1=0 <include refid="smsInfoQuery"/>)
+		</if>
 		<include refid="pagination"/>
 	</select>
-	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultMap="smsInfoResult">
+	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultType="int">
 		SELECT COUNT(ID) FROM CI_SMS_INFO WHERE 1=1
-		<include refid="smsInfoQuery"/>
+		<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">
+			AND (1=0 <include refid="smsInfoQuery"/>)
+		</if>
 	</select>
 	<select id="querySmsInfoById" parameterType="int" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE id=#{id}
@@ -64,12 +68,6 @@
 		<if test="smsInfo.goodsModel!=null">
 			OR goods_model LIKE CONCAT('%',#{smsInfo.goodsModel}, '%')
 		</if>
-		<if test="smsInfo.updateDate!=null">
-			OR update_date LIKE CONCAT('%',#{smsInfo.updateDate}, '%')
-		</if>
-		<if test="smsInfo.sendDate!=null">
-			OR send_date LIKE CONCAT('%', #{smsInfo.sendDate}, '%')
-		</if>
 		<if test="smsInfo.smsContent!=null">
 			OR sms_content LIKE CONCAT('%', #{smsInfo.smsContent}, '%')
 		</if>
@@ -81,11 +79,18 @@
 		</if>
 	</sql>
 	<sql id="pagination">
-		ORDER BY #{pagination.sortFiledName}
+		<choose>
+			<when test="pagination.sortFiledName != null">
+				ORDER BY #{pagination.sortFiledName}
+			</when>
+			<otherwise>
+				ORDER BY bill_date
+			</otherwise>
+		</choose>
 		<if test="!pagination.asc">
 			DESC
 		</if>
-		limit #{pagination.from},#{pagination.to}
+		limit #{pagination.from},#{pagination.pageSize}
 	</sql>
 
 </mapper>

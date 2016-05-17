@@ -32,7 +32,7 @@
 
 <div class="content">
     <div class="content-searchBox">
-        <form action="/smsInfo/">
+        <form action="/smsInfo/list" method="get">
             <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
             <button class="content-search-btn" type="submit"></button>
         </form>
@@ -51,33 +51,31 @@
                 <td>${info.contactName}</td>
                 <td>${info.phone}</td>
                 <td>${info.goodsName}</td>
-                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.updateDate}"/></td>
-                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.updateDate}"/></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
                 <td>
                     <a class="list-delete" href="#">查看详情</a>
                     <a class="list-delete" href="#">购买信息</a>
-                    <a class="list-delete" href="javascript:viod(0)">删除</a>
+                    <a class="list-delete" href="javascript:void(0)">删除</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <table class="list-page">
         <tr>
-            <td><a href="#">首页</a></td>
-            <td><a href="#">上一页</a></td>
+            <c:if test="${currentPage>1}">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=1">首页</a></td>
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
+            </c:if>
 
-            <%
-                for (int i = 1; i < Integer.parseInt(request.getParameter("pageCount")); i++) {
-
-            %>
-                    <td><a href="/smsInfo/search?term=${param.term}&currentPage=<%=i%>"><%=i%></a></td>
-            <%
-                }
-            %>
-            <c:if test=""></c:if>
-            <td><a href="/smsInfo/search?term=${param.term}&currentPage=<%=i+1%>">下一页</a></td>
-            <td><a href="#">尾页</a></td>
-            <td>共${pageContext}页</td>
+            <c:forEach begin="1" end="${totalPage}" var="i">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
+            </c:forEach>
+            <c:if test="${currentPage<totalPage}">
+                <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
+                <td><a href=/smsInfo/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
+            </c:if>
+                <td>共${totalPage}页</td>
 
         </tr>
     </table>

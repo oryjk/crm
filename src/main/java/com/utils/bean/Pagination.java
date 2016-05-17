@@ -7,31 +7,31 @@ package com.utils.bean;
 public class Pagination {
 
     //一页的容量
-    private long capacity = 4;
-    //当前的页面，从0开始
-    private long currentIndex;
+    private int pageSize = 4;
+    //当前的页面，从1开始,默认为1
+    private int currentPage = 1;
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
 
     //总的页数
     private long totalAmount;
     //按照哪个属性进行排序
     private String sortFiledName;
     private boolean asc = true;
-
-    public long getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(long capacity) {
-        this.capacity = capacity;
-    }
-
-    public long getCurrentIndex() {
-        return currentIndex;
-    }
-
-    public void setCurrentIndex(long currentIndex) {
-        this.currentIndex = currentIndex;
-    }
 
     public long getTotalAmount() {
         return totalAmount;
@@ -51,11 +51,11 @@ public class Pagination {
 
 
     public long getFrom() {
-        return currentIndex * capacity;
+        return (currentPage-1) * pageSize;
     }
 
     public long getTo() {
-        return (currentIndex + 1) * capacity;
+        return currentPage * pageSize -1;
     }
 
 
