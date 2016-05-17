@@ -258,3 +258,21 @@ a {
   line-height: 250px;
   color: #666;
   background: url("../core/image/list-none.png") no-repeat 300px center; }
+
+.sort-up {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background: url("../core/image/up.png"); }
+  .sort-up.sort-choose {
+    background: url("../core/image/up-now.png"); }
+
+.sort-down {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background: url("../core/image/down.png"); }
+  .sort-down.sort-choose {
+    background: url("../core/image/down-now.png"); }

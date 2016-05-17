@@ -42,8 +42,17 @@
             <td>用户姓名</td>
             <td>手机号码</td>
             <td>产品名称</td>
-            <td>购买日期</td>
-            <td>短信发送日期</td>
+            <!--super:购买日期和短信发送日期的.sort-up及.sort-down当中,4个中被选中的一个需要添加类sort-choose-->
+            <td>
+                购买日期
+                <a class="sort-up sort-choose" href="javascript:void(0);"></a>
+                <a class="sort-down" href="javascript:void(0);"></a>
+            </td>
+            <td>
+                短信发送日期
+                <a class="sort-up" href="javascript:void(0);"></a>
+                <a class="sort-down" href="javascript:void(0);"></a>
+            </td>
             <td>操作</td>
         </tr>
         <c:choose>
