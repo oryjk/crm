@@ -19,25 +19,15 @@
   margin: 50px auto;
 }
 
-.content-searchBox{
-  width: 660px;
-  margin: 40px auto;
-}
-
-.content-search{
-  float: left;
-  border: 1px solid #d0e4f2;
-  width: 600px;
+.add-template {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100px;
   height: 40px;
-  padding: 5px 10px;
-
-}
-
-.content-search-btn{
-  border: none;
-  width: 60px;
-  height: 40px;
-  background:#d0e4f2 url("../core/image/search.png") no-repeat center center;
+  padding-left: 50px;
+  line-height: 40px;
+  color: white;
+  background: #45a5e3 url("../core/image/add.png") no-repeat 22px 11px;
 }
 
 .content-list{
