@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增模板</title>
+    <title>修改模板</title>
+    <link rel="stylesheet" href="template-add-and-modify.css"/>
+</head>
+<body>
+<!-- header-begin -->
+<div class="header">
+    <div class="header-content">
+        <h1>客户管理</h1>
+        <div class="header-name">
+            <img src="../core/image/touxiang.png" alt=""/>
+            <span>zhouzhou</span>
+        </div>
+    </div>
+</div>
+<!-- header-end -->
+
+
+<form action="/" method="post">
+    <!--supersoup:下面两个h2根据具体情况显示其中一个-->
+    <h2>新增模板</h2>
+    <h2>修改模板</h2>
+    <table class="content-table">
+        <!--supersoup:只有修改模板时才显示id这一行-->
+        <tr>
+            <th>模板id:</th>
+            <td>123</td>
+        </tr>
+        <tr>
+            <th>模板标题:</th>
+            <td><input name="" type="text"/></td>
+            <td class="wrong-text"></td>
+        </tr>
+        <tr>
+            <th>模板内容:</th>
+            <td><textarea name="" cols="30" rows="10"  maxlength="200"></textarea>
+            </td>
+            <td class="wrong-text"></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input class="invest-submit" type="submit" value="保存"/></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
