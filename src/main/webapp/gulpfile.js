@@ -9,11 +9,8 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('style', function() {
     //源路径
      gulp.src('./resources/**/*.scss')
-         .pipe(sourcemaps.init())
          //进行sass编译
         .pipe(sass())
-         //生成map文件
-         .pipe(sourcemaps.write('../maps'))
          //生成css文件在目标路径
         .pipe(gulp.dest('./resources'));
 });

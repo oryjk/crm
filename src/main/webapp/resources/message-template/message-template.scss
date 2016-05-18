@@ -10,15 +10,13 @@
 
 @include header;
 
-
-
 /*style
 **************************************************/
 
 .content{
   width: 1200px;
   height: 800px;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
 .content-searchBox{
@@ -72,6 +70,7 @@
       background: #f3f3f3;
     }
 
+    .list-modify,
     .list-delete{
       padding: 3px;
       height: 20px;
@@ -165,26 +164,11 @@
   background: url("../core/image/list-none.png") no-repeat 300px center;
 }
 
-.sort-up {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/up.png");
-  &.sort-choose {
-    background: url("../core/image/up-now.png");
-  }
-}
-
-.sort-down {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/down.png");
-  &.sort-choose {
-    background: url("../core/image/down-now.png");
-  }
+.list-template-content {
+  padding-bottom: 20px;
+  text-align: left !important;
+  font-size: 14px;
+  line-height: 1.2 !important;
 }
 
 

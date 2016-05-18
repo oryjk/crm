@@ -158,7 +158,7 @@ a {
 .content {
   width: 1200px;
   height: 800px;
-  margin: 0 auto; }
+  margin: 50px auto; }
 
 .content-searchBox {
   width: 660px;
@@ -194,14 +194,18 @@ a {
     line-height: 50px;
     color: #333;
     background: #f3f3f3; }
+  .content-list .list-bottom .list-modify,
   .content-list .list-bottom .list-delete,
+  .content-list .list-top .list-modify,
   .content-list .list-top .list-delete {
     padding: 3px;
     height: 20px;
     width: 10px;
     color: #81bbe1;
     font-size: 14px; }
+    .content-list .list-bottom .list-modify:hover,
     .content-list .list-bottom .list-delete:hover,
+    .content-list .list-top .list-modify:hover,
     .content-list .list-top .list-delete:hover {
       color: red; }
   .content-list .list-bottom td {
@@ -259,20 +263,8 @@ a {
   color: #666;
   background: url("../core/image/list-none.png") no-repeat 300px center; }
 
-.sort-up {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/up.png"); }
-  .sort-up.sort-choose {
-    background: url("../core/image/up-now.png"); }
-
-.sort-down {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/down.png"); }
-  .sort-down.sort-choose {
-    background: url("../core/image/down-now.png"); }
+.list-template-content {
+  padding-bottom: 20px;
+  text-align: left !important;
+  font-size: 14px;
+  line-height: 1.2 !important; }
