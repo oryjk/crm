@@ -32,16 +32,12 @@
 	</update>
 	<select id="querySmsInfo" parameterMap="smsInfoParam" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE 1=1
-		<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">
-			AND (1=0 <include refid="smsInfoQuery"/>)
-		</if>
+		<include refid="conditionalQuery"/>
 		<include refid="pagination"/>
 	</select>
 	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultType="int">
 		SELECT COUNT(ID) FROM CI_SMS_INFO WHERE 1=1
-		<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">
-			AND (1=0 <include refid="smsInfoQuery"/>)
-		</if>
+		<include refid="conditionalQuery"/>
 	</select>
 	<select id="querySmsInfoById" parameterType="int" resultMap="smsInfoResult">
 		SELECT * FROM CI_SMS_INFO WHERE id=#{id}
@@ -49,6 +45,13 @@
 	<delete id="deleteSmsInfo" parameterType="int">
 		DELETE FROM CI_SMS_INFO WHERE ID=${id}
 	</delete>
+	<sql id="conditionalQuery">
+		<if test="smsInfo!=null">
+			<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">
+				AND (1=0 <include refid="smsInfoQuery"/>)
+			</if>
+		</if>
+	</sql>
 	<sql id="smsInfoQuery">
 		<if test="smsInfo.contactId!=null">
 			OR contact_id LIKE CONCAT('%', #{smsInfo.contactId}, '%')

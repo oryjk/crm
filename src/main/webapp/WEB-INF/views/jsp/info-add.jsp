@@ -1,6 +1,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -30,8 +31,15 @@
     </div>
   </div>
   <!-- header-end -->
-
-  <form action="/smsInfo/add" method="post">
+  <c:choose>
+    <c:when test="${smsInfo.id == null}">
+      <form action="/smsInfo/add" method="post"/>
+    </c:when>
+    <c:otherwise>
+      <form action="/smsInfo/update" method="post"/>
+    </c:otherwise>
+  </c:choose>
+    <input name="id" type="hidden" value="${smsInfo.id}"/>
     <h2>用户信息</h2>
     <table class="content-table">
       <tr>
@@ -81,7 +89,7 @@
       <tr>
         <th>发送短信时间:</th>
         <td>
-          <input name="sendDate" value="${smsInfo.sendDate}" id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
+          <input name="sendDate" value='<fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/>' id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
           <form:errors path="smsInfo.sendDate" cssStyle="color: red"/>
         </td>
       </tr>

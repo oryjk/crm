@@ -30,7 +30,6 @@
   </div>
 </div>
 <!-- header-end -->
-<form action="">
   <h2>用户信息</h2>
   <table class="content-table">
     <tr>
@@ -83,8 +82,10 @@
 
     <tr class="invest-new">
       <th></th>
-      <td><input class="invest-submit" type="submit" value="修改"/>
-        <a href="javascript:void(0)" id="invest-delete" class="invest-submit" >删除</a></td>
+      <td>
+        <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
+        <a href="/smsInfo/delete?id=${smsInfo.id}" id="invest-delete" class="invest-submit">删除</a>
+      </td>
     </tr>
   </table>
   <div id="list-sure" class="list-sure" style="display: none">
@@ -97,7 +98,6 @@
       <a class="list-sure-btn2" href="javascript:void(0)">取消</a>
     </div>
   </div>
-</form>
 </body>
 <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js" ></script>
 <script src="/resources/customer-revise/customer-revise.js" ></script>

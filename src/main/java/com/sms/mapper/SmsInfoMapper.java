@@ -21,7 +21,7 @@ public interface SmsInfoMapper extends SqlMapper {
 
     Integer querySmsInfoCount(@Param("smsInfo") SmsInfo smsInfo);
 
-    void delete(SmsInfo smsInfo);
+    void deleteSmsInfo(SmsInfo smsInfo);
 
     SmsInfo querySmsInfoById(int id);
 }

@@ -27,6 +27,64 @@ public class SmsInfoController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView querySmsInfo(@RequestParam(value = "term", required = false) String term, @RequestParam(value = "currentPage", required = false) Integer currentPage, ModelAndView modelAndView) {
+        buildList(term, currentPage, modelAndView);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
+        if (id == null) {
+            modelAndView.addObject("smsInfo", new SmsInfo());
+        } else {
+            modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        }
+        modelAndView.setViewName("info-add");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("info-add");
+        } else {
+            smsInfoService.createSmsInfo(smsInfo);
+            modelAndView.addObject("smsInfo", smsInfo);
+            modelAndView.setViewName("info-add-success");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete")
+    public ModelAndView delete(ModelAndView modelAndView, @RequestParam Integer id) {
+        smsInfoService.deleteSmsInfo(id);
+        buildList(null, 1, modelAndView);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
+    public ModelAndView update(ModelAndView modelAndView, SmsInfo smsInfo) {
+        modelAndView.addObject("smsInfo", smsInfo);
+        modelAndView.setViewName("info-add");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ModelAndView updateSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+        smsInfoService.updateSmsInfo(smsInfo);
+        buildList(null, 1, modelAndView);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView viewSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
+        modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        modelAndView.setViewName("info-detail");
+        return modelAndView;
+    }
+
+
+    private void buildList(String term, Integer currentPage, ModelAndView modelAndView) {
         if (StringUtils.isBlank(term)) {
             term = null;
         }
@@ -77,34 +135,5 @@ public class SmsInfoController {
         } else {
             modelAndView.setViewName("info-list");
         }
-
-        return modelAndView;
-    }
-
-
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addSmsInfo(ModelAndView modelAndView) {
-        modelAndView.addObject("smsInfo", new SmsInfo());
-        modelAndView.setViewName("info-add");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("info-add");
-        } else {
-            smsInfoService.createSmsInfo(smsInfo);
-            modelAndView.addObject("smsInfo", smsInfo);
-            modelAndView.setViewName("info-add-success");
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/view")
-    public ModelAndView test(ModelAndView modelAndView, @RequestParam Integer id) {
-        modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
-        modelAndView.setViewName("info-detail");
-        return modelAndView;
     }
 }

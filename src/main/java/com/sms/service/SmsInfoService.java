@@ -49,6 +49,14 @@ public class SmsInfoService {
 
     }
 
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+    public void deleteSmsInfo(Integer id){
+        SmsInfo smsInfo = new SmsInfo();
+        smsInfo.setId(id);
+        LOGGER.debug("Delete sms info : " + id);
+        smsInfoMapper.deleteSmsInfo(smsInfo);
+    }
+
     @LogAnnotation(description = "querySmsInfo")
     public List<SmsInfo> querySmsInfo(SmsInfo smsInfo, Pagination pagination) {
         LOGGER.debug("Begin querySmsInfo.");
