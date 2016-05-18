@@ -84,15 +84,20 @@
 	<sql id="pagination">
 		<choose>
 			<when test="pagination.sortFiledName != null">
-				ORDER BY #{pagination.sortFiledName}
+				ORDER BY ${pagination.sortFiledName}
 			</when>
 			<otherwise>
 				ORDER BY bill_date
 			</otherwise>
 		</choose>
-		<if test="!pagination.asc">
-			DESC
-		</if>
+		<choose>
+			<when test="pagination.asc">
+				ASC
+			</when>
+			<otherwise>
+				DESC
+			</otherwise>
+		</choose>
 		limit #{pagination.from},#{pagination.pageSize}
 	</sql>
 

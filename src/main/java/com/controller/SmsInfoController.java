@@ -1,7 +1,10 @@
 package com.controller;
 
 import com.sms.bean.SmsInfo;
+import com.sms.bean.SmsTemplate;
 import com.sms.service.SmsInfoService;
+import com.sms.service.SmsTempService;
+import com.utils.Constant;
 import com.utils.bean.Pagination;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -25,9 +28,12 @@ public class SmsInfoController {
     @Autowired
     private SmsInfoService smsInfoService;
 
+    @Autowired
+    private SmsTempService smsTempService;
+
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView querySmsInfo(@RequestParam(value = "term", required = false) String term, @RequestParam(value = "currentPage", required = false) Integer currentPage, ModelAndView modelAndView) {
-        buildList(term, currentPage, modelAndView);
+        buildInfoList(term, currentPage, modelAndView, Constant.PURCHASE_UP);
         return modelAndView;
     }
 
@@ -46,6 +52,7 @@ public class SmsInfoController {
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            modelAndView.addObject("smsInfo", smsInfo);
             modelAndView.setViewName("info-add");
         } else {
             smsInfoService.createSmsInfo(smsInfo);
@@ -55,10 +62,10 @@ public class SmsInfoController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete")
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete(ModelAndView modelAndView, @RequestParam Integer id) {
         smsInfoService.deleteSmsInfo(id);
-        buildList(null, 1, modelAndView);
+        buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
         return modelAndView;
     }
 
@@ -71,8 +78,13 @@ public class SmsInfoController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            modelAndView.addObject("smsInfo", smsInfo);
+            modelAndView.setViewName("info-add");
+            return modelAndView;
+        }
         smsInfoService.updateSmsInfo(smsInfo);
-        buildList(null, 1, modelAndView);
+        buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
         return modelAndView;
     }
 
@@ -83,8 +95,83 @@ public class SmsInfoController {
         return modelAndView;
     }
 
+    //  添加或者更新短信模板,若id为空,则说明新加模板,否则是更新原有模板
+    @RequestMapping(value = "/addOrUpdateTemp", method = RequestMethod.GET)
+    public ModelAndView addOrUpdateTemplate(ModelAndView modelAndView, @RequestParam(required = false) Integer id) {
+        if (id != null) {
+            modelAndView.addObject("smsTemp", smsTempService.querySmsTempById(id));
+        } else {
+            modelAndView.addObject("smsTemp", new SmsTemplate());
+        }
+        modelAndView.setViewName("temp-add");
+        return modelAndView;
+    }
 
-    private void buildList(String term, Integer currentPage, ModelAndView modelAndView) {
+    //  编辑完短信模板后,保存,可能添加或更新
+    @RequestMapping(value = "/saveTemp", method = RequestMethod.POST)
+    public ModelAndView saveTemplate(ModelAndView modelAndView, @Validated SmsTemplate smsTemplate, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            modelAndView.addObject("smsTemp", smsTemplate);
+            modelAndView.setViewName("temp-add");
+            return modelAndView;
+        }
+        //新增
+        if (smsTemplate.getId() == null) {
+            smsTempService.createSmsTemp(smsTemplate);
+        } else {//更新
+            smsTempService.updateSmsTemp(smsTemplate);
+        }
+        buildTempList(1, modelAndView);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/listTemp", method = RequestMethod.GET)
+    public ModelAndView listTemp(ModelAndView modelAndView, @RequestParam(value = "currentPage", required = false) Integer currentPage) {
+        buildTempList(currentPage, modelAndView);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/deleteTemp", method = RequestMethod.GET)
+    public ModelAndView deleteSmsTempById(ModelAndView modelAndView, Integer id) {
+        smsTempService.deleteSmsTempById(id);
+        buildTempList(1, modelAndView);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/sortby", method = RequestMethod.GET)
+    public ModelAndView sortBy(ModelAndView modelAndView, @RequestParam(value = "term", required = false) String term, @RequestParam(value = "sort", required = true) int sort) {
+        buildInfoList(term, 1, modelAndView, sort);
+        return modelAndView;
+    }
+
+
+    //未包含search功能
+    private void buildTempList(Integer currentPage, ModelAndView modelAndView) {
+        Pagination pagination = new Pagination();
+        if (currentPage == null || currentPage <= 0) {
+            currentPage = 1;
+        }
+        pagination.setCurrentPage(1);
+
+        //总条数
+        int totalCount = smsTempService.querySmsTempCount();
+        //总页数
+        int totalPage = 0;
+        if (totalCount % pagination.getPageSize() == 0) {
+            totalPage = totalCount / pagination.getPageSize();
+        } else {
+            totalPage = totalCount / pagination.getPageSize() + 1;
+        }
+        modelAndView.addObject("smsTemps", smsTempService.querySmsTemp(pagination));
+        modelAndView.addObject("currentPage", currentPage);
+        modelAndView.addObject("totalCount", totalCount);
+        modelAndView.addObject("totalPage", totalPage);
+        modelAndView.setViewName("temp-list");
+    }
+
+    //包含search功能
+    private void buildInfoList(String term, Integer currentPage, ModelAndView modelAndView, int sort) {
         if (StringUtils.isBlank(term)) {
             term = null;
         }
@@ -113,10 +200,6 @@ public class SmsInfoController {
         }
         pagination.setCurrentPage(currentPage);
 
-        modelAndView.addObject("infoList", smsInfoService.querySmsInfo(smsInfo, pagination));
-        modelAndView.addObject("term", term);
-        modelAndView.addObject("currentPage", currentPage);
-
         //总条数
         int totalCount = smsInfoService.querySmsInfoCount(smsInfo);
         //总页数
@@ -126,8 +209,33 @@ public class SmsInfoController {
         } else {
             totalPage = totalCount / pagination.getPageSize() + 1;
         }
+
+        //处理排序字段
+        switch (sort) {
+            case Constant.PURCHASE_UP:
+                pagination.setAsc(true);
+                pagination.setSortFiledName("bill_date");
+                break;
+            case Constant.PURCHASE_DOWN:
+                pagination.setAsc(false);
+                pagination.setSortFiledName("bill_date");
+                break;
+            case Constant.SEND_UP:
+                pagination.setAsc(true);
+                pagination.setSortFiledName("send_date");
+                break;
+            case Constant.SEND_DOWN:
+                pagination.setAsc(false);
+                pagination.setSortFiledName("send_date");
+                break;
+        }
+
+        modelAndView.addObject("infoList", smsInfoService.querySmsInfo(smsInfo, pagination));
+        modelAndView.addObject("term", term);
+        modelAndView.addObject("currentPage", currentPage);
         modelAndView.addObject("totalCount", totalCount);
         modelAndView.addObject("totalPage", totalPage);
+        modelAndView.addObject("sort", sort);
 
         //没有购买记录
         if (StringUtils.isBlank(term) && totalCount == 0) {

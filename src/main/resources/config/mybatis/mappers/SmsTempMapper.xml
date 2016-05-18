@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sms.mapper.SmsTemplateMapper">
+	<parameterMap id="smsTempParam" type="com.sms.bean.SmsTemplate">
+	</parameterMap>
+	<resultMap id="smsTempResult" type="com.sms.bean.SmsTemplate">
+		<id column="id" property="id"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+	</resultMap>
+
+	<insert id="createSmsTemp" parameterMap="smsTempParam" useGeneratedKeys="true" keyColumn="id">
+		INSERT INTO ci_sms_temp(title,content) VALUES (#{title},#{content})
+	</insert>
+
+	<update id="updateSmsTemp" parameterMap="smsTempParam">
+		UPDATE ci_sms_temp SET title=#{title},content=#{content} WHERE id=#{id}
+	</update>
+
+	<select id="querySmsTemp" resultMap="smsTempResult">
+		SELECT * FROM ci_sms_temp limit #{pagination.from},#{pagination.pageSize}
+	</select>
+
+	<select id="querySmsTempCount" resultType="int">
+		SELECT count(id) FROM ci_sms_temp
+	</select>
+
+	<delete id="deleteSmsTempById" parameterType="int">
+		DELETE FROM ci_sms_temp WHERE id=#{id}
+	</delete>
+
+	<select id="querySmsTempById" parameterType="int" resultMap="smsTempResult">
+		SELECT * FROM ci_sms_temp WHERE id=#{id}
+	</select>
+</mapper>

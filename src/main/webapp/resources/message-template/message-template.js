@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $('.list-sure-btn1').click(function () {
         //请在此处写上具体的url
-        window.location = '' + id;
+        window.location = '/smsInfo/deleteTemp?id=' + id;
     });
 
     $(document).on('click', '.list-delete', function () {

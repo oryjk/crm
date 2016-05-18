@@ -29,7 +29,7 @@
     </div>
 </div>
 <!-- header-end -->
-
+<input id="sort" type="hidden" value="${sort}"/>
 <div class="content">
     <div class="content-searchBox">
         <form action="/smsInfo/list" method="get">
@@ -45,13 +45,13 @@
             <!--super:购买日期和短信发送日期的.sort-up及.sort-down当中,4个中被选中的一个需要添加类sort-choose-->
             <td>
                 购买日期
-                <a class="sort-up sort-choose" href="javascript:void(0);"></a>
-                <a class="sort-down" href="javascript:void(0);"></a>
+                <a id="pup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=1"></a>
+                <a id="pdown" class="sort-down" href="/smsInfo/sortby?term=${term}&sort=2"></a>
             </td>
             <td>
                 短信发送日期
-                <a class="sort-up" href="javascript:void(0);"></a>
-                <a class="sort-down" href="javascript:void(0);"></a>
+                <a id="sup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=3"></a>
+                <a id="sdown" class="sort-down" href="/smsInfo/sortby?term=${term}&sort=4"></a>
             </td>
             <td>操作</td>
         </tr>
@@ -72,7 +72,7 @@
                         <td>
                             <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
                             <a class="list-delete" href="#">购买信息</a>
-                            <a class="list-delete" href="javascript:void(0)">删除</a>
+                            <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${info.id}">删除</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -98,14 +98,14 @@
 
         </tr>
     </table>
-    <div id="list-sure" class="list-sure" style="display: none">
+    <div id="listSure" class="list-sure" style="display: none">
         <div class="list-sure-title"></div>
         <div class="list-sure-content">
             确认删除信息？
         </div>
         <div class="list-sure-btn">
-            <a class="list-sure-btn1" href="#">确认</a>
-            <a class="list-sure-btn2" href="javascript:viod(0)">取消</a>
+            <a class="list-sure-btn1" href="javascript:void(0)">确认</a>
+            <a class="list-sure-btn2" href="javascript:void(0)">取消</a>
         </div>
     </div>
 </div>
