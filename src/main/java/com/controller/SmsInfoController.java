@@ -39,12 +39,13 @@ public class SmsInfoController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
+    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id) {
         if (id == null) {
             modelAndView.addObject("smsInfo", new SmsInfo());
         } else {
             modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
         }
+        modelAndView.addObject("temps", smsTempService.queryAllTemp());
         modelAndView.setViewName("info-add");
         return modelAndView;
     }
@@ -53,6 +54,7 @@ public class SmsInfoController {
     public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("smsInfo", smsInfo);
+            modelAndView.addObject("temps", smsTempService.queryAllTemp());
             modelAndView.setViewName("info-add");
         } else {
             smsInfoService.createSmsInfo(smsInfo);

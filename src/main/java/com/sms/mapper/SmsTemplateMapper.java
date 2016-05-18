@@ -18,6 +18,8 @@ public interface SmsTemplateMapper extends SqlMapper{
 
     void updateSmsTemp(SmsTemplate smsTemplate);
 
+    List<SmsTemplate> queryAllTemp();
+
     //查询模板列表,只有分页功能,没有关键字查询功能
     List<SmsTemplate> querySmsTemp(@Param("pagination") Pagination pagination);
 

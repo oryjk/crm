@@ -18,6 +18,10 @@
 		UPDATE ci_sms_temp SET title=#{title},content=#{content} WHERE id=#{id}
 	</update>
 
+	<select id="queryAllTemp" resultMap="smsTempResult">
+		SELECT * FROM ci_sms_temp
+	</select>
+
 	<select id="querySmsTemp" resultMap="smsTempResult">
 		SELECT * FROM ci_sms_temp limit #{pagination.from},#{pagination.pageSize}
 	</select>

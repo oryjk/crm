@@ -46,6 +46,10 @@ public class SmsTempService {
         LOGGER.debug("Update sms template end.");
     }
 
+    public List<SmsTemplate> queryAllTemp(){
+        return smsTemplateMapper.queryAllTemp();
+    }
+
     public List<SmsTemplate> querySmsTemp(Pagination pagination){
         return smsTemplateMapper.querySmsTemp(pagination);
     }
