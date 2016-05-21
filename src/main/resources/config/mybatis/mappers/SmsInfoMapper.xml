@@ -45,6 +45,11 @@
 	<delete id="deleteSmsInfo" parameterType="int">
 		DELETE FROM CI_SMS_INFO WHERE ID=${id}
 	</delete>
+
+	<select id="queryUnsendInfo" parameterType="java.util.Date" resultMap="smsInfoResult">
+		SELECT * FROM CI_SMS_INFO WHERE send_date&lt;=#{now} AND done=0
+	</select>
+
 	<sql id="conditionalQuery">
 		<if test="smsInfo!=null">
 			<if test="smsInfo.contactId!=null or smsInfo.contactName!=null or smsInfo.phone!=null or smsInfo.goodsId!=null or smsInfo.goodsName!=null or smsInfo.goodsModel!=null or smsInfo.smsContent!=null or smsInfo.done!=null or smsInfo.smsType!=null">

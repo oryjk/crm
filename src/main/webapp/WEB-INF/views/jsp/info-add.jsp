@@ -46,21 +46,21 @@
         <td>
           <input name="contactId" type="text" value="${smsInfo.contactId}"/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.contactId" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.contactId"/></td>
       </tr>
       <tr>
         <th>用户名称:</th>
         <td>
           <input name="contactName" type="text" value="${smsInfo.contactName}"/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.contactName" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.contactName"/></td>
       </tr>
       <tr>
         <th>手机号码:</th>
         <td>
           <input name="phone" class="invest-text" type="text" value="${smsInfo.phone}"/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.phone" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
       </tr>
     </table>
     <h2>产品信息</h2>
@@ -70,14 +70,14 @@
         <td>
           <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}"/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.goodsId" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.goodsId"/></td>
       </tr>
       <tr>
         <th>产品名称:</th>
         <td>
           <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}"/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.goodsName" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
       </tr>
       <tr>
         <th>产品型号:</th>
@@ -91,7 +91,7 @@
         <td>
           <input name="sendDate" value='<fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/>' id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.sendDate" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.sendDate"/></td>
       </tr>
       <tr>
         <th>发送短信模板:</th>
@@ -111,7 +111,7 @@
         <td>
           <textarea id="smsContent" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
         </td>
-        <td class="wrong-text"><form:errors path="smsInfo.smsContent" cssStyle="color: red"/></td>
+        <td class="wrong-text"><form:errors path="smsInfo.smsContent"/></td>
       </tr>
       <tr>
         <th></th>

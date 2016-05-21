@@ -1,7 +1,5 @@
 package com.common;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Created by carlwang on 5/11/16.
  */

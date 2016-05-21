@@ -6,6 +6,7 @@ import com.utils.bean.Pagination;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,4 +25,6 @@ public interface SmsInfoMapper extends SqlMapper {
     void deleteSmsInfo(SmsInfo smsInfo);
 
     SmsInfo querySmsInfoById(int id);
+
+    List<SmsInfo> queryUnsendInfo(Date now);
 }
