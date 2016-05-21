@@ -2,12 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.user.mapper.ContactMapper">
-	<resultMap id="resultContact" type="com.user.bean.Contact" >
+	<resultMap id="resultContact" type="com.user.bean.Contact">
 		<id column="id" property="id"/>
 		<result column="name" property="name"/>
+		<result column="number" property="number"/>
 		<result column="linkMans" property="phone" typeHandler="com.user.typeHandler.LinkMansHandler"></result>
+		<result column="linkMans" property="mobile" typeHandler="com.user.typeHandler.LinkMansHandler"></result>
 	</resultMap>
+
+
 	<select id="queryContactById" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE ID=#{id};
+		SELECT * FROM CI_CONTACT WHERE ID=#{id} AND TYPE=-10;
+	</select>
+	<select id="queryAll" resultMap="resultContact">
+		SELECT * FROM CI_CONTACT WHERE TYPE=-10 limit #{pagination.from},#{pagination.pageSize}
+	</select>
+	<select id="queryContact" resultMap="resultContact">
+		SELECT * FROM CI_CONTACT WHERE TYPE=-10 limit #{pagination.from},#{pagination.pageSize}
+	</select>
+	<select id="queryContactCount" resultType="int">
+		SELECT count(*) FROM CI_CONTACT WHERE TYPE=-10
 	</select>
 </mapper>

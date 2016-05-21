@@ -29,7 +29,7 @@ public class LinkMansHandler extends BaseTypeHandler {
             return null;
         }
         Map<String, Object> value = linkManList.get(0);
-        String phoneNumber = (String) value.get("linkMobile");
+        String phoneNumber = (String) value.get("linkPhone");
         return phoneNumber;
     }
 
