@@ -10,6 +10,7 @@ public class Pagination {
     private int pageSize = 4;
     //当前的页面，从1开始,默认为1
     private int currentPage = 1;
+    private long totalPage = 0;
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
@@ -51,11 +52,11 @@ public class Pagination {
 
 
     public long getFrom() {
-        return (currentPage-1) * pageSize;
+        return (currentPage - 1) * pageSize;
     }
 
     public long getTo() {
-        return currentPage * pageSize -1;
+        return currentPage * pageSize - 1;
     }
 
 
@@ -66,4 +67,12 @@ public class Pagination {
     public void setAsc(boolean asc) {
         this.asc = asc;
     }
+
+    public long getTotalPage() {
+        if (this.pageSize != 0) {
+            return this.totalAmount / this.pageSize + 1;
+        }
+        return totalPage;
+    }
+
 }
