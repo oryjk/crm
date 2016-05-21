@@ -74,6 +74,12 @@
         <a href="/smsInfo/delete?id=${smsInfo.id}" id="invest-delete" class="invest-submit">删除</a>
       </td>
     </tr>
+    <tr>
+      <th></th>
+      <td>
+        <a class="back" href="#">返回</a>
+      </td>
+    </tr>
   </table>
   <div id="list-sure" class="list-sure" style="display: none">
     <div class="list-sure-title"></div>

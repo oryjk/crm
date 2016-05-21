@@ -122,7 +122,10 @@
       </tr>
       <tr>
         <th></th>
-        <td><input class="invest-submit" type="submit" value="保存"/></td>
+        <td>
+          <input class="invest-submit" type="submit" value="保存"/>
+          <a class="back" href="#">返回</a>
+        </td>
       </tr>
     </table>
   </form>
