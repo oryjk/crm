@@ -29,13 +29,20 @@
     </div>
 </div>
 <!-- header-end -->
+
+
 <input id="sort" type="hidden" value="${sort}"/>
 <div class="content">
-    <div class="content-searchBox">
-        <form action="/smsInfo/list" method="get">
-            <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
-            <button class="content-search-btn" type="submit"></button>
-        </form>
+    <div class="content-head">
+        <div class="home-btn-box">
+            <a class="home-btn" href="#">首页</a>
+        </div>
+        <div class="content-searchBox">
+            <form action="/smsInfo/list" method="get">
+                <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
+                <button class="content-search-btn" type="submit"></button>
+            </form>
+        </div>
     </div>
     <table class="content-list">
         <tr class="list-title">

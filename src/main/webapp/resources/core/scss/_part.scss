@@ -40,6 +40,16 @@ $border-gray: #cccccc;
           font-size: 14px;
         }
       }
+
+      .header-logout {
+        float: right;
+        height: 60px;
+        line-height: 60px;
+
+        a {
+          color: white;
+        }
+      }
     }
   }
 

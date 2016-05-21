@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="user-list.css"/>
+    <title></title>
+</head>
+<body>
+<!-- header-begin -->
+<div class="header">
+    <div class="header-content">
+        <h1>客户管理</h1>
+
+        <div class="header-logout">
+            <a href="#">退出 >></a>
+        </div>
+    </div>
+</div>
+<!-- header-end -->
+
+<div class="content">
+    <div class="content-head">
+        <div class="home-btn-box">
+            <a class="home-btn" href="#">首页</a>
+        </div>
+        <div class="content-searchBox">
+            <input class="content-search" type="search" placeholder="请输入搜索信息">
+            <button class="content-search-btn"></button>
+        </div>
+    </div>
+    <table class="content-list">
+        <tr class="list-title">
+            <td>客户名称</td>
+            <td>客户编号</td>
+            <td>客户类型</td>
+            <td>联系人</td>
+            <td>手机</td>
+            <td>座机</td>
+            <td>查看购买记录</td>
+        </tr>
+        <tr class="list-top">
+            <td>周杰伦</td>
+            <td>9527</td>
+            <td>傻逼</td>
+            <td>方文山</td>
+            <td>18602812970</td>
+            <td>186022970</td>
+            <td>
+                <a class="look-buy-list" href="#">查看</a>
+            </td>
+        </tr>
+        <tr class="list-bottom">
+            <td>周杰伦</td>
+            <td>9527</td>
+            <td>傻逼</td>
+            <td>方文山</td>
+            <td>18602812970</td>
+            <td>186022970</td>
+            <td>
+                <a class="look-buy-list" href="#">查看</a>
+            </td>
+        </tr>
+    </table>
+    <table class="list-page">
+        <tr>
+            <td><a href="#">首页</a></td>
+            <td><a href="#">上一页</a></td>
+            <td><a class="current-page" href="#">1</a></td>
+            <td><a href="#">2</a></td>
+            <td><a href="#">3</a></td>
+            <td><a href="#">4</a></td>
+            <td><a href="#">5</a></td>
+            <td><a href="#">6</a></td>
+            <td><a href="#">7</a></td>
+            <td><a href="#">下一页</a></td>
+            <td><a href="#">尾页</a></td>
+            <td>共10页</td>
+
+        </tr>
+    </table>
+    <div id="list-sure" class="list-sure" style="display: none">
+        <div class="list-sure-title"></div>
+        <div class="list-sure-content">
+            确认删除信息？
+        </div>
+        <div class="list-sure-btn">
+            <a class="list-sure-btn1" href="#">确认</a>
+            <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

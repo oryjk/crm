@@ -152,6 +152,12 @@ a {
         float: right;
         color: white;
         font-size: 14px; }
+    .header .header-content .header-logout {
+      float: right;
+      height: 60px;
+      line-height: 60px; }
+      .header .header-content .header-logout a {
+        color: white; }
 
 /*style
 **************************************************/

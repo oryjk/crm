@@ -152,6 +152,12 @@ a {
         float: right;
         color: white;
         font-size: 14px; }
+    .header .header-content .header-logout {
+      float: right;
+      height: 60px;
+      line-height: 60px; }
+      .header .header-content .header-logout a {
+        color: white; }
 
 /*style
 **************************************************/
@@ -160,19 +166,23 @@ a {
   height: 800px;
   margin: 0 auto; }
 
+.content-head {
+  margin: 40px auto;
+  overflow: hidden; }
+
 .home-btn-box {
+  float: left; }
+
+.home-btn {
   display: inline-block;
   margin-bottom: 20px;
-  width: 100px;
-  height: 40px;
-  padding-left: 50px;
-  line-height: 40px;
+  padding: 10px 40px;
   color: white;
-  background: #45a5e3 url("../core/image/add.png") no-repeat 22px 11px; }
+  background: #45a5e3; }
 
 .content-searchBox {
-  width: 660px;
-  margin: 40px auto; }
+  float: right;
+  width: 660px; }
 
 .content-search {
   float: left;
