@@ -21,6 +21,17 @@
   margin: 0 auto;
 }
 
+.home-btn-box {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 40px;
+  padding-left: 50px;
+  line-height: 40px;
+  color: white;
+  background: #45a5e3 url("../core/image/add.png") no-repeat 22px 11px;
+}
+
 .content-searchBox{
   width: 660px;
   margin: 40px auto;
@@ -151,7 +162,21 @@
 
     a{
       color: #333;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.current-page {
+        color: #45a5e3;
+
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
+      }
     }
+
   }
 }
 

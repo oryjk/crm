@@ -160,6 +160,16 @@ a {
   height: 800px;
   margin: 0 auto; }
 
+.home-btn-box {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100px;
+  height: 40px;
+  padding-left: 50px;
+  line-height: 40px;
+  color: white;
+  background: #45a5e3 url("../core/image/add.png") no-repeat 22px 11px; }
+
 .content-searchBox {
   width: 660px;
   margin: 40px auto; }
@@ -249,6 +259,13 @@ a {
     padding: 0 10px; }
     .list-page td a {
       color: #333; }
+      .list-page td a:hover {
+        text-decoration: underline; }
+      .list-page td a.current-page {
+        color: #45a5e3; }
+        .list-page td a.current-page:hover {
+          text-decoration: none;
+          cursor: default; }
 
 .list-none {
   margin-top: 100px;
