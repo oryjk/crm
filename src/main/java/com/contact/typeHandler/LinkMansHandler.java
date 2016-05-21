@@ -1,4 +1,4 @@
-package com.user.typeHandler;
+package com.contact.typeHandler;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.collections.CollectionUtils;

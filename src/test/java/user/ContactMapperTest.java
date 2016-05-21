@@ -1,9 +1,8 @@
 package user;
 
-import com.user.bean.Contact;
-import com.user.mapper.ContactMapper;
+import com.contact.bean.Contact;
+import com.contact.mapper.ContactMapper;
 import com.utils.bean.Pagination;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

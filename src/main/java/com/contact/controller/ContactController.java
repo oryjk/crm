@@ -1,7 +1,7 @@
-package com.user.controller;
+package com.contact.controller;
 
-import com.user.bean.Contact;
-import com.user.service.ContactService;
+import com.contact.bean.Contact;
+import com.contact.service.ContactService;
 import com.utils.bean.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

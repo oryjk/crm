@@ -1,4 +1,4 @@
-package com.user.bean;
+package com.contact.bean;
 
 /**
  * Created by carlwang on 5/15/16.

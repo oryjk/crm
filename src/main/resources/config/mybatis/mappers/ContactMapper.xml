@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.user.mapper.ContactMapper">
-	<resultMap id="resultContact" type="com.user.bean.Contact">
+<mapper namespace="com.contact.mapper.ContactMapper">
+	<resultMap id="resultContact" type="com.contact.bean.Contact">
 		<id column="id" property="id"/>
 		<result column="name" property="name"/>
 		<result column="number" property="number"/>
-		<result column="linkMans" property="phone" typeHandler="com.user.typeHandler.LinkMansHandler"></result>
-		<result column="linkMans" property="mobile" typeHandler="com.user.typeHandler.LinkMansHandler"></result>
+		<result column="linkMans" property="phone" typeHandler="com.contact.typeHandler.LinkMansHandler"></result>
+		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.LinkMansHandler"></result>
 	</resultMap>
 
 

@@ -1,7 +1,7 @@
-package com.user.service;
+package com.contact.service;
 
-import com.user.bean.Contact;
-import com.user.mapper.ContactMapper;
+import com.contact.bean.Contact;
+import com.contact.mapper.ContactMapper;
 import com.utils.bean.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

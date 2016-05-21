@@ -1,7 +1,7 @@
-package com.user.mapper;
+package com.contact.mapper;
 
 import com.mybatis.mapper.SqlMapper;
-import com.user.bean.Contact;
+import com.contact.bean.Contact;
 import com.utils.bean.Pagination;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
