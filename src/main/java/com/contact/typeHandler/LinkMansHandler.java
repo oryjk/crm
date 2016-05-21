@@ -1,4 +1,4 @@
-package com.user.typeHandler;
+package com.contact.typeHandler;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.collections.CollectionUtils;
@@ -29,7 +29,7 @@ public class LinkMansHandler extends BaseTypeHandler {
             return null;
         }
         Map<String, Object> value = linkManList.get(0);
-        String phoneNumber = (String) value.get("linkMobile");
+        String phoneNumber = (String) value.get("linkPhone");
         return phoneNumber;
     }
 

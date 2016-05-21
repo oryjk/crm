@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -45,8 +46,16 @@ public class SmsInfoService {
         }
         LOGGER.debug("The smsInfo id is {}.", smsInfo.getId());
         LOGGER.debug("Begin updateSmsInfo.");
-        smsInfoMapper.createSmsInfo(smsInfo);
+        smsInfoMapper.updateSmsInfo(smsInfo);
 
+    }
+
+    @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
+    public void deleteSmsInfo(Integer id){
+        SmsInfo smsInfo = new SmsInfo();
+        smsInfo.setId(id);
+        LOGGER.debug("Delete sms info : " + id);
+        smsInfoMapper.deleteSmsInfo(smsInfo);
     }
 
     @LogAnnotation(description = "querySmsInfo")
@@ -71,5 +80,12 @@ public class SmsInfoService {
         LOGGER.debug("The count is {}.", count);
         LOGGER.debug("End querySmsInfoCount.");
         return count;
+    }
+
+    public List<SmsInfo> queryUnsendInfo(Date now){
+        LOGGER.debug("Start to query sms info to send");
+        List<SmsInfo> infos = smsInfoMapper.queryUnsendInfo(now);
+        LOGGER.debug("End to query sms info to send");
+        return infos;
     }
 }

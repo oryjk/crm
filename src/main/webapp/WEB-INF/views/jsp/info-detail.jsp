@@ -29,7 +29,6 @@
   </div>
 </div>
 <!-- header-end -->
-<form action="">
   <h2>用户信息</h2>
   <table class="content-table">
     <tr>
@@ -62,30 +61,18 @@
 
     <tr>
       <th>发送短信时间:</th>
-      <td><fmt:formatDate  value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+      <td><fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
     </tr>
     <tr>
       <th>发送短信内容:</th>
       <td class="mes-content" style="display: block">${smsInfo.smsContent}</td>
     </tr>
-
-
-
-  <%--<!--有短信内容时显示-->--%>
-  <%--<tr class="mes-time" style="display: none">--%>
-  <%--<th>发送短信时间:</th>--%>
-  <%--<td>2015-1-1 22:20:20</td>--%>
-  <%--</tr>--%>
-    <!--无短信内容时显示-->
-    <%--<tr class="mes-none" >--%>
-      <%--<th></th>--%>
-      <%--<td><span>暂未添加短信内容</span><a href="#">点击添加</a></td>--%>
-    <%--</tr>--%>
-
     <tr class="invest-new">
       <th></th>
-      <td><input class="invest-submit" type="submit" value="修改"/>
-        <a href="javascript:void(0)" id="invest-delete" class="invest-submit" >删除</a></td>
+      <td>
+        <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
+        <a href="/smsInfo/delete?id=${smsInfo.id}" id="invest-delete" class="invest-submit">删除</a>
+      </td>
     </tr>
   </table>
   <div id="list-sure" class="list-sure" style="display: none">
@@ -98,7 +85,6 @@
       <a class="list-sure-btn2" href="javascript:void(0)">取消</a>
     </div>
   </div>
-</form>
 <script src="/resources/core/jq/jquery-1.11.1.js" ></script>
 <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
 <script src="/resources/customer-revise/customer-revise.js" ></script>

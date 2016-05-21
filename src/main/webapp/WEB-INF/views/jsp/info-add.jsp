@@ -1,6 +1,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -29,33 +30,37 @@
     </div>
   </div>
   <!-- header-end -->
-
-  <form action="/smsInfo/add" method="post">
+  <c:choose>
+    <c:when test="${smsInfo.id == null}">
+      <form action="/smsInfo/add" method="post"/>
+    </c:when>
+    <c:otherwise>
+      <form action="/smsInfo/update" method="post"/>
+    </c:otherwise>
+  </c:choose>
+    <input name="id" type="hidden" value="${smsInfo.id}"/>
     <h2>用户信息</h2>
     <table class="content-table">
       <tr>
         <th>用户ID:</th>
         <td>
           <input name="contactId" type="text" value="${smsInfo.contactId}"/>
-          <form:errors path="smsInfo.contactId" cssStyle="color: red"/>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.contactId"/></td>
       </tr>
       <tr>
         <th>用户名称:</th>
         <td>
           <input name="contactName" type="text" value="${smsInfo.contactName}"/>
-          <form:errors path="smsInfo.contactName" cssStyle="color: red"/>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.contactName"/></td>
       </tr>
       <tr>
         <th>手机号码:</th>
         <td>
           <input name="phone" class="invest-text" type="text" value="${smsInfo.phone}"/>
-          <form:errors path="smsInfo.phone" cssStyle="color: red"/>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
       </tr>
     </table>
     <h2>产品信息</h2>
@@ -64,17 +69,15 @@
         <th>产品ID:</th>
         <td>
           <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}"/>
-          <form:errors path="smsInfo.goodsId" cssStyle="color: red"/>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.goodsId"/></td>
       </tr>
       <tr>
         <th>产品名称:</th>
         <td>
           <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}"/>
-          <form:errors path="smsInfo.goodsName" cssStyle="color: red"/>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
       </tr>
       <tr>
         <th>产品型号:</th>
@@ -86,19 +89,19 @@
       <tr>
         <th>发送短信时间:</th>
         <td>
-          <input name="sendDate" value="${smsInfo.sendDate}" id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
-          <form:errors path="smsInfo.sendDate" cssStyle="color: red"/>
+          <input name="sendDate" value='<fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/>' id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
         </td>
-        <td class="wrong-text">supersoup:每一行这个位置都有一个错误信息,你可以直接在这里插入</td>
+        <td class="wrong-text"><form:errors path="smsInfo.sendDate"/></td>
       </tr>
       <tr>
         <th>发送短信模板:</th>
         <td>
           <!--请在option的value里面写上模板的具体内容-->
-          <select class="choose-message" id="chooseMessage">
-            <option value="请在此处写上这个模板的详细内容1">模板1</option>
-            <option value="请在此处写上这个模板的详细内容2">模板2</option>
-            <option value="请在此处写上这个模板的详细内容3">模板3</option>
+          <select class="choose-message" id="chooseMessage" data-value="请选择">
+            <option value="">请选择</option>
+            <c:forEach items="${temps}" var="temp">
+              <option value="${temp.content}">${temp.title}</option>
+            </c:forEach>
           </select>
         </td>
         <td class="wrong-text"></td>
@@ -106,10 +109,9 @@
       <tr>
         <th>发送短信内容:</th>
         <td>
-          <textarea name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
-          <form:errors path="smsInfo.smsContent" cssStyle="color: red"/>
+          <textarea id="smsContent" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
         </td>
-        <td class="wrong-text"></td>
+        <td class="wrong-text"><form:errors path="smsInfo.smsContent"/></td>
       </tr>
       <tr>
         <th></th>
