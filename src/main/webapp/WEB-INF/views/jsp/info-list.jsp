@@ -42,7 +42,6 @@
             <td>用户姓名</td>
             <td>手机号码</td>
             <td>产品名称</td>
-            <!--super:购买日期和短信发送日期的.sort-up及.sort-down当中,4个中被选中的一个需要添加类sort-choose-->
             <td>
                 购买日期
                 <a id="pup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=1"></a>

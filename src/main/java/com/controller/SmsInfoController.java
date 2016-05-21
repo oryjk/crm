@@ -57,6 +57,8 @@ public class SmsInfoController {
             modelAndView.addObject("temps", smsTempService.queryAllTemp());
             modelAndView.setViewName("info-add");
         } else {
+            //还未发送
+            smsInfo.setDone(0);
             smsInfoService.createSmsInfo(smsInfo);
             modelAndView.addObject("smsInfo", smsInfo);
             modelAndView.setViewName("info-add-success");

@@ -67,20 +67,6 @@
       <th>发送短信内容:</th>
       <td class="mes-content" style="display: block">${smsInfo.smsContent}</td>
     </tr>
-
-
-
-  <%--<!--有短信内容时显示-->--%>
-  <%--<tr class="mes-time" style="display: none">--%>
-  <%--<th>发送短信时间:</th>--%>
-  <%--<td>2015-1-1 22:20:20</td>--%>
-  <%--</tr>--%>
-    <!--无短信内容时显示-->
-    <%--<tr class="mes-none" >--%>
-      <%--<th></th>--%>
-      <%--<td><span>暂未添加短信内容</span><a href="#">点击添加</a></td>--%>
-    <%--</tr>--%>
-
     <tr class="invest-new">
       <th></th>
       <td>
