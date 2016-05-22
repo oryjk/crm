@@ -87,8 +87,8 @@ class CI_DB_mysql_driver extends CI_DB
             $this->hostname .= ':' . $this->port;
         }
 //        phpinfo();
-        log_message('debug', 'hostname=' . $this->hostname . ',username=' . $this->username . ',password=' . $this->password . ',port=' . $this->port . ',database name=' . $this->database);
-        return @mysql_connect($this->hostname, $this->username, $this->password) or die("MYSQL数据库连接失败：" . mysql_error());
+        log_message('debug', 'hostname=' . $this->hostname . ',username=' . $this->username . ',password=' . $this->password . ',port=' . $this->port . ',database name=' . $this->database . ',error=' . mysql_error());
+        return @mysql_connect($this->hostname, $this->username, $this->password);
     }
 
     // --------------------------------------------------------------------
