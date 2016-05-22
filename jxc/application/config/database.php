@@ -73,7 +73,7 @@ define('OPTIONS','ci_options');
 define('PRINTTEMPLATES','ci_printtemplates');
 $active_group = 'default';
 $active_record = TRUE;
-$db['default']['hostname'] = 'localhost';   //���ݿ��ַ
+$db['default']['hostname'] = '127.0.0.1';   //���ݿ��ַ
 $db['default']['username'] = 'root';        //���ݿ��û���
 $db['default']['password'] = 'root';            //���ݿ�����
 $db['default']['database'] = 'jxc';   //���ݿ�����
