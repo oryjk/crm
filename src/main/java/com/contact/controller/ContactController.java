@@ -32,6 +32,7 @@ public class ContactController {
         pagination.setTotalAmount(totalPage);
         modelAndView.addObject("contactList", contactList);
         modelAndView.addObject("pagination", pagination);
+        modelAndView.setViewName("user-list");
         return modelAndView;
     }
 }

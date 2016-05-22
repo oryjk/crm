@@ -39,6 +39,10 @@ public class TaskJob {
                 int msgStart = codeStr.indexOf("<msg>");
                 int msgEnd = codeStr.indexOf("</msg>");
                 String code = codeStr.substring(codeStart + 6, codeEnd);
+                //发送成功
+                if("2".equalsIgnoreCase(code)){
+                    info.setDone(1);
+                }
                 String msg = codeStr.substring(msgStart + 5, msgEnd);
                 LOGGER.error(msg);
             } catch (IOException e) {

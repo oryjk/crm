@@ -51,7 +51,7 @@ public class SmsInfoService {
     }
 
     @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
-    public void deleteSmsInfo(Integer id){
+    public void deleteSmsInfo(Integer id) {
         SmsInfo smsInfo = new SmsInfo();
         smsInfo.setId(id);
         LOGGER.debug("Delete sms info : " + id);
@@ -74,6 +74,13 @@ public class SmsInfoService {
         return smsInfo;
     }
 
+    public SmsInfo querySmsInfoByInvoiceId(Integer invoiceId) {
+        LOGGER.debug("Start to query sms info by invoice id:" + invoiceId);
+        SmsInfo info = smsInfoMapper.querySmsInfoByInvoiceId(invoiceId);
+        LOGGER.debug("End query sms info by invoice id.");
+        return info;
+    }
+
     public Integer querySmsInfoCount(SmsInfo smsInfo) {
         LOGGER.debug("Begin querySmsInfoCount.");
         Integer count = smsInfoMapper.querySmsInfoCount(smsInfo);
@@ -82,7 +89,7 @@ public class SmsInfoService {
         return count;
     }
 
-    public List<SmsInfo> queryUnsendInfo(Date now){
+    public List<SmsInfo> queryUnsendInfo(Date now) {
         LOGGER.debug("Start to query sms info to send");
         List<SmsInfo> infos = smsInfoMapper.queryUnsendInfo(now);
         LOGGER.debug("End to query sms info to send");

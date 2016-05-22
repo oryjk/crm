@@ -13,6 +13,9 @@ public class SmsInfo {
 
     private Integer id;
 
+    //关联的交易/发票ID
+    private Integer invoiceId;
+
     //客户的id
     @NotNull(message = "{contactId.required}")
     private Integer contactId;
@@ -159,5 +162,13 @@ public class SmsInfo {
 
     public void setBillDate(Date billDate) {
         this.billDate = billDate;
+    }
+
+    public Integer getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
     }
 }

@@ -9,6 +9,7 @@ import com.utils.bean.Pagination;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +40,13 @@ public class SmsInfoController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id) {
+    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "invoiceId", required = false) Integer invoiceId) {
         if (id == null) {
-            modelAndView.addObject("smsInfo", new SmsInfo());
+            SmsInfo smsInfo = new SmsInfo();
+            if (!ObjectUtils.isEmpty(invoiceId)) {
+                smsInfo.setInvoiceId(invoiceId);
+            }
+            modelAndView.addObject("smsInfo", smsInfo);
         } else {
             modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
         }
@@ -95,6 +100,13 @@ public class SmsInfoController {
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView viewSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
         modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        modelAndView.setViewName("info-detail");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "viewByIid", method = RequestMethod.GET)
+    public ModelAndView viewSmsInfoByInvoiceId(ModelAndView modelAndView, @RequestParam Integer invoiceId) {
+        modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoByInvoiceId(invoiceId));
         modelAndView.setViewName("info-detail");
         return modelAndView;
     }

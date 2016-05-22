@@ -35,6 +35,9 @@
 		<include refid="conditionalQuery"/>
 		<include refid="pagination"/>
 	</select>
+	<select id="querySmsInfoByInvoiceId" parameterType="int" resultMap="smsInfoResult">
+		SELECT * FROM CI_SMS_INFO WHERE invoice_id=#{invoiceId}
+	</select>
 	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultType="int">
 		SELECT COUNT(ID) FROM CI_SMS_INFO WHERE 1=1
 		<include refid="conditionalQuery"/>

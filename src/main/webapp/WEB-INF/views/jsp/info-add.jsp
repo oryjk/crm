@@ -39,6 +39,7 @@
     </c:otherwise>
   </c:choose>
     <input name="id" type="hidden" value="${smsInfo.id}"/>
+    <input name="invoiceId" type="hidden" value="${smsInfo.invoiceId}"/>
     <h2>用户信息</h2>
     <table class="content-table">
       <tr>
