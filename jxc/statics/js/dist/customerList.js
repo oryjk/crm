@@ -220,7 +220,7 @@ function statusFmatter(a, b, c) {
 }
 function orderList(a, b, c) {
     var contactId = c.id;
-    var href = "localhost:8080/userOrderList?contactId=" + contactId;
+    var href = "localhost:8080//order/list?contactId=" + contactId;
     var a_link = '<a target="_blank" class="order-list-link" href="' + href + '" >购买记录</a>';
     return a_link;
 }
