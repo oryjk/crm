@@ -19,7 +19,7 @@ $config['base_url']	= '';
 
 /*
 |--------------------------------------------------------------------------
-| ºóÌ¨Â·¾¶
+| ï¿½ï¿½Ì¨Â·ï¿½ï¿½
 |--------------------------------------------------------------------------
 |
 | The best, you will change it to other names.
@@ -30,7 +30,7 @@ $config['admin_folder'] = 'admin';
 
 /*
 |--------------------------------------------------------------------------
-| Ä£°åÂ·¾¶
+| Ä£ï¿½ï¿½Â·ï¿½ï¿½
 |--------------------------------------------------------------------------
 |
 | The best, you will change it to other names.
@@ -41,7 +41,7 @@ $config['theme_url'] = 'data/themes/';
 
 /*
 |--------------------------------------------------------------------------
-| Êý¾Ý¿â±¸·ÝÂ·¾¶
+| ï¿½ï¿½ï¿½Ý¿â±¸ï¿½ï¿½Â·ï¿½ï¿½
 |--------------------------------------------------------------------------
 |
 | The best, you will change it to other names.
@@ -51,7 +51,7 @@ $config['backup_path'] = 'data/backup/';
 
 /*
 |--------------------------------------------------------------------------
-| ³õÊ¼»¯Êý¾Ý¿âÂ·¾¶
+| ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Â·ï¿½ï¿½
 |--------------------------------------------------------------------------
 |
 | The best, you will change it to other names.
@@ -223,7 +223,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -283,7 +283,7 @@ $config['encryption_key'] = 'met';
 | 'sess_use_database'		= Whether to save the session data to a database
 | 'sess_table_name'			= The name of the session database table
 | 'sess_match_ip'			= Whether to match the user's IP address when reading the session data
-| 'sess_match_useragent'	= Whether to match the User Agent when reading the session data  //IEÏÂ»áÊ§Ð§  ¸ÄÎªFALSEÕý³£
+| 'sess_match_useragent'	= Whether to match the User Agent when reading the session data  //IEï¿½Â»ï¿½Ê§Ð§  ï¿½ï¿½ÎªFALSEï¿½ï¿½ï¿½ï¿½
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
