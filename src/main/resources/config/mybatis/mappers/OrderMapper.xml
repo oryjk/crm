@@ -6,7 +6,7 @@
 		<id column="id" property="id"/>
 		<result column="buId" property="contactId"/>
 		<result column="contact_name" property="contactName"/>
-		<result column="linkMans" property="phone" typeHandler="com.user.typeHandler.LinkMansHandler"/>
+		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.LinkMansHandler"/>
 		<result column="invId" property="goodsId"/>
 		<result column="goods_name" property="goodsName"/>
 		<result column="billDate" property="billDate"/>

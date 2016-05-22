@@ -10,25 +10,9 @@ public class Pagination {
     private int pageSize = 4;
     //当前的页面，从1开始,默认为1
     private int currentPage = 1;
+    //总页数
     private long totalPage = 0;
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public int getCurrentPage() {
-        return currentPage;
-    }
-
-    //总的页数
+    //总的记录数
     private long totalAmount;
     //按照哪个属性进行排序
     private String sortFiledName;
@@ -69,10 +53,31 @@ public class Pagination {
     }
 
     public long getTotalPage() {
-        if (this.pageSize != 0) {
-            return this.totalAmount / this.pageSize + 1;
+        if (this.pageSize > 0) {
+            if (totalAmount % pageSize == 0) {
+                totalPage = totalAmount / pageSize;
+            } else {
+                totalPage = totalAmount / pageSize + 1;
+            }
         }
         return totalPage;
+    }
+
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
     }
 
 }

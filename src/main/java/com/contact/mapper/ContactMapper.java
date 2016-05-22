@@ -21,4 +21,6 @@ public interface ContactMapper extends SqlMapper {
     List<Contact> queryContact(@Param("contact") Contact contact, @Param("pagination") Pagination pagination);
 
     Integer queryContactCount(@Param("contact") Contact contact);
+
+    void deleteById(@Param("id") Integer id);
 }

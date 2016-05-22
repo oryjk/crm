@@ -71,7 +71,7 @@
                 <c:forEach items="${infoList}" var="info">
                     <tr class="list-top">
                         <td>${info.contactName}</td>
-                        <td>${info.phone}</td>
+                        <td>${info.mobile}</td>
                         <td>${info.goodsName}</td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
                         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>

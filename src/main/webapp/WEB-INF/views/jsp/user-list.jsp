@@ -10,6 +10,8 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="/resources/user-list/user-list.scss"/>
+    <link rel="stylesheet" href="/resources/customer-list/customer-list.css"/>
 </head>
 <body>
 <!-- header-begin -->
@@ -27,11 +29,13 @@
 <div class="content">
   <div class="content-head">
     <div class="home-btn-box">
-      <a class="home-btn" href="#">首页</a>
+      <a class="home-btn" href="/contact/list">首页</a>
     </div>
     <div class="content-searchBox">
-      <input class="content-search" type="search" placeholder="请输入搜索信息">
-      <button class="content-search-btn"></button>
+      <form action="/contact/list" method="get">
+        <input class="content-search" type="search" placeholder="${term}">
+        <button class="content-search-btn" type="submit"></button>
+      </form>
     </div>
   </div>
   <table class="content-list">
@@ -41,6 +45,7 @@
       <td>手机</td>
       <td>座机</td>
       <td>查看购买记录</td>
+      <td>操作</td>
     </tr>
     <c:forEach items="${contactList}" var="contact">
     <tr class="list-top">
@@ -51,24 +56,29 @@
       <td>
         <a class="look-buy-list" href="/order/list?contactId=${contact.id}">查看</a>
       </td>
+      <td>
+        <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${contact.id}">删除</a>
+      </td>
     </tr>
     </c:forEach>
   </table>
   <table class="list-page">
     <tr>
-      <td><a href="#">首页</a></td>
-      <td><a href="#">上一页</a></td>
-      <td><a class="current-page" href="#">1</a></td>
-      <td><a href="#">2</a></td>
-      <td><a href="#">3</a></td>
-      <td><a href="#">4</a></td>
-      <td><a href="#">5</a></td>
-      <td><a href="#">6</a></td>
-      <td><a href="#">7</a></td>
-      <td><a href="#">下一页</a></td>
-      <td><a href="#">尾页</a></td>
-      <td>共10页</td>
+      <c:if test="${pagination.currentPage>1}">
+        <td><a href="/contact/list?term=${term}&currentPage=1">首页</a></td>
+        <td><a href="/contact/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
+      </c:if>
 
+      <c:forEach begin="1" end="${pagination.totalPage}" var="i">
+        <td><a href="/contact/list?term=${term}&currentPage=${i}">${i}</a></td>
+      </c:forEach>
+      <c:if test="${pagination.currentPage<pagination.totalPage}">
+        <td><a href="/contact/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
+        <td><a href=/contact/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
+      </c:if>
+      <c:if test="${pagination.totalPage>0}">
+        <td>共${pagination.totalPage}页</td>
+      </c:if>
     </tr>
   </table>
   <div id="list-sure" class="list-sure" style="display: none">
@@ -77,10 +87,11 @@
       确认删除信息？
     </div>
     <div class="list-sure-btn">
-      <a class="list-sure-btn1" href="#">确认</a>
+      <a class="list-sure-btn1" href="javascript:void(0);">确认</a>
       <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
     </div>
   </div>
 </div>
 </body>
+<script src="/resources/customer-list/customer-list.js"/>
 </html>
