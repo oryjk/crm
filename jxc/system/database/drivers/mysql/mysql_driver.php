@@ -83,6 +83,7 @@ class CI_DB_mysql_driver extends CI_DB
      */
     function db_pconnect()
     {
+        $this->port='3306';
         if ($this->port != '') {
             $this->hostname .= ':' . $this->port;
         }
