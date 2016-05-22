@@ -12,7 +12,9 @@ class Login extends CI_Controller
     {
 
         $data = str_enhtml($this->input->post(NULL, TRUE));
+
         log_message('debug', 'begin to index method.');
+        log_message('debug', 'count data is ' . count($data) . ',the data type is error?' . is_array($data));
         if (is_array($data) && count($data) > 0) {
             !token(1) && die('token验证失败');
             !isset($data['username']) || strlen($data['username']) < 1 && die('用户名不能为空');
