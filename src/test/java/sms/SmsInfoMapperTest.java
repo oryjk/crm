@@ -4,6 +4,7 @@ import com.sms.bean.SMS_TYPE;
 import com.sms.bean.SmsInfo;
 import com.sms.mapper.SmsInfoMapper;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,7 +22,7 @@ import java.util.List;
  * 提交代码后，需要加上 @Ignore 这个注释，因为如果不加，在启动服务器的时候，这个test的class也会被启动，由于test里面的数据都是不稳定的，很可能报错，所以如果不加上这个注解的话，
  * 服务器启动起来后会报错，导致无法启动
  */
-//@Ignore
+@Ignore
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-core-config.xml") // 加载配置
 public class SmsInfoMapperTest {
