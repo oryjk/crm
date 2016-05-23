@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -10,17 +11,17 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="/resources/customer-purchase/customer-purchase.css"/>
+    <link rel="stylesheet" href="/resources/customer-list/customer-list.css"/>
 </head>
 <body>
 <div class="header">
   <div class="header-content">
-    <h1>客户管理</h1>
-
     <div class="header-name">
-      <img src="/resources/core/image/touxiang.png" alt=""/>
-      <span>${contact.name}</span>
+      <span><a onclick="javascript:window.close();" href="#">关闭</a></span>
     </div>
   </div>
+  <a href="/contact/list">首页</a>
 </div>
 <!-- header-end -->
 <div class="content-name">
@@ -45,11 +46,11 @@
     <td class="list-first">
       <span>${order.goodsName}</span>
     </td>
-    <td class="list-time">${order.billDate}</td>
+    <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
     <td class="list-red"><span>${order.price}</span></td>
     <td>${order.quantity}</td>
     <td>${order.deduction}</td>
-    <td>${order.amount}</td>
+    <td>${order.totalAmount}</td>
     <td>
       <c:choose>
         <c:when test="${order.smsCount<=0}">

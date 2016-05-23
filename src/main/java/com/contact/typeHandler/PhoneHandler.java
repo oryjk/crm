@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by carlwang on 5/15/16.
+ * Created by sarahzhou on 5/15/16.
  */
-public class LinkMansHandler extends BaseTypeHandler {
+public class PhoneHandler extends BaseTypeHandler {
     @Override
     public void setNonNullParameter(PreparedStatement ps, int i, Object parameter, JdbcType jdbcType) throws SQLException {
 
@@ -28,9 +28,8 @@ public class LinkMansHandler extends BaseTypeHandler {
         if (CollectionUtils.isEmpty(linkManList)) {
             return null;
         }
-        Map<String, Object> value = linkManList.get(0);
-        String phoneNumber = (String) value.get("linkPhone");
-        return phoneNumber;
+        Map<String, Object> firstContact = getFirstContact(linkManList);
+        return firstContact.get("linkPhone");
     }
 
     @Override
@@ -40,13 +39,26 @@ public class LinkMansHandler extends BaseTypeHandler {
         if (CollectionUtils.isEmpty(linkManList)) {
             return null;
         }
-        Map<String, Object> value = linkManList.get(0);
-        String phoneNumber = (String) value.get("linkMobile");
-        return phoneNumber;
+        Map<String, Object> firstContact = getFirstContact(linkManList);
+        return firstContact.get("linkPhone");
     }
 
     @Override
     public Object getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
         return null;
+    }
+
+    private Map<String, Object> getFirstContact(List<Map<String, Object>> linkManList) {
+        Map<String, Object> firstContact = null;
+        for (Map<String, Object> contact : linkManList) {
+            if (Integer.parseInt(contact.get("linkFirst").toString()) == 1) {
+                firstContact = contact;
+                break;
+            }
+        }
+        if (firstContact == null) {
+            firstContact = linkManList.get(0);
+        }
+        return firstContact;
     }
 }

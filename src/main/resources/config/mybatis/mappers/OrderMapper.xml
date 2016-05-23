@@ -6,7 +6,7 @@
 		<id column="id" property="id"/>
 		<result column="buId" property="contactId"/>
 		<result column="contact_name" property="contactName"/>
-		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.LinkMansHandler"/>
+		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.MobileHandler"/>
 		<result column="invId" property="goodsId"/>
 		<result column="goods_name" property="goodsName"/>
 		<result column="billDate" property="billDate"/>
@@ -20,7 +20,7 @@
 		  FROM ci_invoice_info cii
 			LEFT JOIN ci_contact cc ON cii.buId=cc.id
 			LEFT JOIN ci_goods cg ON cii.invId=cg.id
-		  WHERE cii.transType=150501 AND cii.isDelete=0 AND cii.billType='SALE' AND cii.buId=#{contactId}
+		  WHERE cii.isDelete=0 AND cii.billType='SALE' AND cii.buId=#{contactId}
 	</select>
 	<select id="querySmsCount" resultType="int" parameterType="int">
 		SELECT count(*) FROM ci_sms_info WHERE invoice_id=#{iid}

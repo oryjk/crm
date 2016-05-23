@@ -12,7 +12,7 @@ public class Order {
     //用户姓名
     private String contactName;
     //用户手机号
-    private String phone;
+    private String mobile;
     //商品ID
     private Integer goodsId;
     //商品名称
@@ -54,12 +54,12 @@ public class Order {
         this.contactName = contactName;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     public Integer getGoodsId() {
@@ -87,7 +87,7 @@ public class Order {
     }
 
     public Integer getQuantity() {
-        return quantity;
+        return Math.abs(this.quantity);
     }
 
     public void setQuantity(Integer quantity) {

@@ -45,7 +45,6 @@
       <td>手机</td>
       <td>座机</td>
       <td>查看购买记录</td>
-      <td>操作</td>
     </tr>
     <c:forEach items="${contactList}" var="contact">
     <tr class="list-top">
@@ -55,9 +54,6 @@
       <td>${contact.phone}</td>
       <td>
         <a class="look-buy-list" href="/order/list?contactId=${contact.id}">查看</a>
-      </td>
-      <td>
-        <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${contact.id}">删除</a>
       </td>
     </tr>
     </c:forEach>
@@ -69,28 +65,20 @@
         <td><a href="/contact/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
       </c:if>
 
-      <c:forEach begin="1" end="${pagination.totalPage}" var="i">
-        <td><a href="/contact/list?term=${term}&currentPage=${i}">${i}</a></td>
-      </c:forEach>
+      <c:if test="${pagination.totalPage>1}">
+        <c:forEach begin="1" end="${pagination.totalPage}" var="i">
+          <td><a href="/contact/list?term=${term}&currentPage=${i}">${i}</a></td>
+        </c:forEach>
+      </c:if>
       <c:if test="${pagination.currentPage<pagination.totalPage}">
         <td><a href="/contact/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
         <td><a href=/contact/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
       </c:if>
-      <c:if test="${pagination.totalPage>0}">
+      <c:if test="${pagination.totalPage>1}">
         <td>共${pagination.totalPage}页</td>
       </c:if>
     </tr>
   </table>
-  <div id="list-sure" class="list-sure" style="display: none">
-    <div class="list-sure-title"></div>
-    <div class="list-sure-content">
-      确认删除信息？
-    </div>
-    <div class="list-sure-btn">
-      <a class="list-sure-btn1" href="javascript:void(0);">确认</a>
-      <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
-    </div>
-  </div>
 </div>
 </body>
 <script src="/resources/customer-list/customer-list.js"/>

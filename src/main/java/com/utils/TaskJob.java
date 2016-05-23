@@ -27,7 +27,7 @@ public class TaskJob {
     public static final Logger LOGGER = LoggerFactory.getLogger(TaskJob.class);
 
     //扫描所有的sms info,查找尚未发送
-    @Scheduled(cron = "0 */2 * * *")
+    @Scheduled(cron = "0 0 */3 * * ?")
     public void execute() {
         List<SmsInfo> infos = smsInfoService.queryUnsendInfo(new Date());
         for (SmsInfo info : infos) {

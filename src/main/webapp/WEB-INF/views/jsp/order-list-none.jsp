@@ -9,6 +9,8 @@
 <html>
 <head>
     <title></title>
+    <link rel="stylesheet" href="/resources/customer-purchase/customer-purchase.css"/>
+    <link rel="stylesheet" href="/resources/customer-list/customer-list.css"/>
 </head>
 <body>
 <!-- header-begin -->
@@ -17,8 +19,7 @@
     <h1>客户管理</h1>
 
     <div class="header-name">
-      <img src="/resources/core/image/touxiang.png" alt=""/>
-      <span>zhouzhou</span>
+      <span><a onclick="javascript:window.close();" href="#">关闭</a></span>
     </div>
   </div>
 </div>
