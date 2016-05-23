@@ -140,31 +140,25 @@ a {
   .header .header-content {
     width: 1200px;
     height: 60px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    line-height: 60px; }
     .header .header-content h1 {
       float: left;
+      padding-left: 35px;
       height: 60px;
-      line-height: 60px;
-      font-size: 23px;
-      color: white; }
-    .header .header-content .header-name {
+      font-size: 19px;
+      color: white;
+      background: url("../core/image/gear.png") no-repeat 10px 19px; }
+    .header .header-content .header-handle {
       float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-name img {
-        float: left;
-        margin-top: 11px;
-        margin-right: 20px; }
-      .header .header-content .header-name span {
-        float: right;
+      height: 60px; }
+      .header .header-content .header-handle a {
         color: white;
         font-size: 14px; }
-    .header .header-content .header-logout {
-      float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-logout a {
-        color: white; }
+        .header .header-content .header-handle a:hover {
+          text-decoration: underline; }
+    .header .header-content .home {
+      margin-right: 10px; }
 
 /*style
 **************************************************/
