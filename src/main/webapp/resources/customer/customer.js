@@ -10,8 +10,8 @@ $(document).ready(function () {
     var chooseMessage = $('#chooseMessage');
 
     function resetPopTips() {
-        popWrong = '';
-        popRight = '';
+        popWrong.html('');
+        popRight.html('');
     }
 
     //选择模板
@@ -28,8 +28,8 @@ $(document).ready(function () {
 
     $('.list-sure-btn1').click(function () {
 
-        if (addTitle === '') {
-            popWrong.val('模板标题不能为空!');
+        if (addTitle.val() === '') {
+            popWrong.html('模板标题不能为空!');
         } else {
             resetPopTips();
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 data: {
                 }
             }).done(function () {
-                popRight.val('添加成功');
+                popRight.html('添加成功');
                 window.setTimeout(function () {
                     listSure.hide(100);
                     var str = $('<option value="' + addContent.val() + '">' + addTitle.val() + '</option>');

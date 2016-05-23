@@ -200,7 +200,7 @@ a {
   background: #45a5e3; }
 
 .content-searchBox {
-  float: right;
+  margin-left: 300px;
   width: 660px; }
 
 .content-search {
@@ -209,18 +209,24 @@ a {
   width: 600px;
   height: 40px;
   padding: 5px 10px; }
+  .content-search:focus {
+    border-color: #81bbe1; }
 
 .content-search-btn {
   border: none;
   width: 60px;
   height: 40px;
-  background: #d0e4f2 url("../core/image/search.png") no-repeat center center; }
+  background: #81bbe1 url("../core/image/search.png") no-repeat center center; }
+  .content-search-btn:hover {
+    background-color: #45a5e3;
+    cursor: pointer; }
 
 .content-list {
   width: 1200px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  table-layout: fixed;
+  font-size: 14px; }
   .content-list td {
-    width: 200px;
     text-align: center; }
   .content-list .list-title td {
     line-height: 60px;
@@ -229,8 +235,8 @@ a {
     background: #45a5e3; }
   .content-list .list-bottom td,
   .content-list .list-top td {
-    height: 50px;
-    line-height: 50px;
+    padding: 12px 0;
+    line-height: 25px;
     color: #333;
     background: #f3f3f3; }
   .content-list .list-bottom .list-delete,
@@ -245,6 +251,30 @@ a {
       color: red; }
   .content-list .list-bottom td {
     background: #e2ecf3; }
+  .content-list .list-none {
+    margin-top: 100px;
+    width: 1200px;
+    height: 200px;
+    text-align: center;
+    line-height: 250px;
+    color: #666;
+    background: url("../core/image/list-none.png") no-repeat 300px center; }
+  .content-list .sort-up {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/up.png"); }
+    .content-list .sort-up.sort-choose {
+      background: url("../core/image/up-now.png"); }
+  .content-list .sort-down {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/down.png"); }
+    .content-list .sort-down.sort-choose {
+      background: url("../core/image/down-now.png"); }
 
 .list-sure {
   position: fixed;
@@ -252,7 +282,7 @@ a {
   left: 50%;
   width: 300px;
   height: 180px;
-  margin-top: -100px;
+  margin-top: -90px;
   margin-left: -150px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -270,16 +300,17 @@ a {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     color: #333; }
-  .list-sure .list-sure-btn a {
-    margin-top: 30px;
-    margin-left: 80px;
-    padding-right: 40px;
-    float: left;
-    color: #333; }
-  .list-sure .list-sure-btn .list-sure-btn1 {
-    border-right: 1px solid #e5e5e5; }
-  .list-sure .list-sure-btn .list-sure-btn2 {
-    margin-left: 40px; }
+  .list-sure .list-sure-btn {
+    text-align: right; }
+    .list-sure .list-sure-btn a {
+      margin-top: 30px;
+      margin-left: 80px;
+      padding-right: 40px;
+      display: inline-block; }
+    .list-sure .list-sure-btn .list-sure-btn1 {
+      border-right: 1px solid #e5e5e5; }
+    .list-sure .list-sure-btn .list-sure-btn2 {
+      margin-left: 40px; }
 
 .list-page {
   margin-top: 50px;
@@ -295,30 +326,3 @@ a {
         .list-page td a.current-page:hover {
           text-decoration: none;
           cursor: default; }
-
-.list-none {
-  margin-top: 100px;
-  width: 1200px;
-  height: 200px;
-  text-align: center;
-  line-height: 250px;
-  color: #666;
-  background: url("../core/image/list-none.png") no-repeat 300px center; }
-
-.sort-up {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/up.png"); }
-  .sort-up.sort-choose {
-    background: url("../core/image/up-now.png"); }
-
-.sort-down {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/down.png"); }
-  .sort-down.sort-choose {
-    background: url("../core/image/down-now.png"); }

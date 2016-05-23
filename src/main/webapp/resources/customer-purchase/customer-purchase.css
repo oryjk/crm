@@ -229,31 +229,58 @@ a {
 
 .content-list {
   width: 1200px;
-  margin: 0 auto 50px auto;
-  border: 1px solid #e5e5e5; }
-  .content-list tr {
-    height: 40px; }
+  margin: 0 auto;
+  table-layout: fixed;
+  font-size: 14px; }
   .content-list td {
-    width: 10%;
-    line-height: 75px;
-    padding: 0;
     text-align: center; }
-  .content-list .list-all td {
-    border-bottom: 1px solid #ccc; }
-    .content-list .list-all td a {
-      color: #81bbe1; }
-  .content-list .list-all .list-first {
-    width: 40%;
-    line-height: 20px; }
-    .content-list .list-all .list-first img {
-      float: left;
-      margin-top: -10px;
-      margin-left: 10px;
-      width: 50px;
-      height: 50px; }
-    .content-list .list-all .list-first span {
-      padding-left: 20px;
-      width: 400px; }
+  .content-list .list-title td {
+    line-height: 60px;
+    height: 60px;
+    color: white;
+    background: #45a5e3; }
+  .content-list .list-bottom td,
+  .content-list .list-top td {
+    padding: 12px 0;
+    line-height: 25px;
+    color: #333;
+    background: #f3f3f3; }
+  .content-list .list-bottom .list-delete,
+  .content-list .list-top .list-delete {
+    padding: 3px;
+    height: 20px;
+    width: 10px;
+    color: #81bbe1;
+    font-size: 14px; }
+    .content-list .list-bottom .list-delete:hover,
+    .content-list .list-top .list-delete:hover {
+      color: red; }
+  .content-list .list-bottom td {
+    background: #e2ecf3; }
+  .content-list .list-none {
+    margin-top: 100px;
+    width: 1200px;
+    height: 200px;
+    text-align: center;
+    line-height: 250px;
+    color: #666;
+    background: url("../core/image/list-none.png") no-repeat 300px center; }
+  .content-list .sort-up {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/up.png"); }
+    .content-list .sort-up.sort-choose {
+      background: url("../core/image/up-now.png"); }
+  .content-list .sort-down {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/down.png"); }
+    .content-list .sort-down.sort-choose {
+      background: url("../core/image/down-now.png"); }
   .content-list .list-red span {
     color: red; }
 

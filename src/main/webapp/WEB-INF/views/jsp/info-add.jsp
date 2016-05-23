@@ -148,8 +148,8 @@
     </div>
     <div class="list-sure-btn">
       <div class="pop-tips">
-        <span id="popWrong" class="pop-wrong">错误信息提示!</span>
-        <span id="popRight" class="pop-right">正确信息提示!</span>
+        <span id="popWrong" class="pop-wrong"></span>
+        <span id="popRight" class="pop-right"></span>
       </div>
 
       <a class="list-sure-btn1 link-btn" href="javascript:void(0);">确认</a>
