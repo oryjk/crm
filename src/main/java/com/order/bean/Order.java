@@ -9,9 +9,9 @@ public class Order {
     private Integer id;
     //用户ID
     private Integer contactId;
-    //用户姓名
+    //客户姓名
     private String contactName;
-    //用户手机号
+    //客户手机号
     private String mobile;
     //商品ID
     private Integer goodsId;
@@ -29,6 +29,8 @@ public class Order {
     private Long totalAmount;
     //为当前order设置的短信个数
     private int smsCount;
+    //销售人员
+    private String salesMan;
 
     public Integer getId() {
         return id;
@@ -124,5 +126,13 @@ public class Order {
 
     public void setSmsCount(int smsCount) {
         this.smsCount = smsCount;
+    }
+
+    public String getSalesMan() {
+        return salesMan;
+    }
+
+    public void setSalesMan(String salesMan) {
+        this.salesMan = salesMan;
     }
 }

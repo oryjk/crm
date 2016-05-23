@@ -33,7 +33,7 @@
     </div>
     <div class="content-searchBox">
       <form action="/contact/list" method="get">
-        <input class="content-search" type="search" placeholder="${term}">
+        <input name="term" class="content-search" type="search" placeholder="${term}">
         <button class="content-search-btn" type="submit"></button>
       </form>
     </div>
@@ -44,6 +44,9 @@
       <td>客户编号</td>
       <td>手机</td>
       <td>座机</td>
+      <td>客户类别</td>
+      <td>客户等级</td>
+      <td>地址</td>
       <td>查看购买记录</td>
     </tr>
     <c:forEach items="${contactList}" var="contact">
@@ -52,6 +55,9 @@
       <td>${contact.number}</td>
       <td>${contact.mobile}</td>
       <td>${contact.phone}</td>
+      <td>${contact.category}</td>
+      <td>${contact.level}</td>
+      <td>${contact.address}</td>
       <td>
         <a class="look-buy-list" href="/order/list?contactId=${contact.id}">查看</a>
       </td>
@@ -62,7 +68,7 @@
     <tr>
       <c:if test="${pagination.currentPage>1}">
         <td><a href="/contact/list?term=${term}&currentPage=1">首页</a></td>
-        <td><a href="/contact/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
+        <td><a href="/contact/list?term=${term}&currentPage=${pagination.currentPage-1}">上一页</a></td>
       </c:if>
 
       <c:if test="${pagination.totalPage>1}">
@@ -71,8 +77,8 @@
         </c:forEach>
       </c:if>
       <c:if test="${pagination.currentPage<pagination.totalPage}">
-        <td><a href="/contact/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
-        <td><a href=/contact/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
+        <td><a href="/contact/list?term=${term}&currentPage=${pagination.currentPage+1}">下一页</a></td>
+        <td><a href=/contact/list?term=${term}&currentPage=${pagination.totalPage}>尾页</a></td>
       </c:if>
       <c:if test="${pagination.totalPage>1}">
         <td>共${pagination.totalPage}页</td>

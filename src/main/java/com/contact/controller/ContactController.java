@@ -30,7 +30,7 @@ public class ContactController {
         if(!ObjectUtils.isEmpty(currentPage)){
             pagination.setCurrentPage(currentPage);
         }
-        pagination.setPageSize(20);
+        pagination.setPageSize(2);
 
         //根据term查询
         Contact contact = null;
@@ -40,6 +40,10 @@ public class ContactController {
             contact.setNumber(term);
             contact.setMobile(term);
             contact.setPhone(term);
+            contact.setAddress(term);
+            contact.setCategory(term);
+            contact.setLevel(term);
+            contact.setFirstContact(term);
         }
 
         List<Contact> contactList = contactService.queryContact(contact, pagination);

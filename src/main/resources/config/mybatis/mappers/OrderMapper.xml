@@ -14,14 +14,24 @@
 		<result column="price" property="price"/>
 		<result column="deduction" property="deduction"/>
 		<result column="amount" property="totalAmount"/>
+		<result column="salesMan" property="salesMan"/>
 	</resultMap>
-	<select id="queryOrderByContactId" parameterType="int" resultMap="orderMap">
-		SELECT cii.id,cii.buId,cc.name AS contact_name,cc.linkMans AS linkMans,cii.invId,cg.name AS goods_name,cii.billDate,cii.qty,cii.price,cii.deduction,cii.amount
+	<select id="queryOrderByContactId" resultMap="orderMap">
+		<include refid="orderQuery"/>
+		AND cii.buId=#{contactId}
+		limit #{pagination.from},#{pagination.pageSize}
+	</select>
+	<select id="queryCountByContactId" parameterType="int" resultType="int">
+		SELECT count(id) FROM ci_invoice_info WHERE isDelete=0 AND billType='SALE' AND buId=#{contactId}
+	</select>
+	<sql id="orderQuery">
+		SELECT cii.id,cii.buId,cc.name AS contact_name,cc.linkMans AS linkMans,cii.invId,cg.name AS goods_name,cii.billDate,cii.qty,cii.price,cii.deduction,cii.amount,cs.name AS salesMan
 		  FROM ci_invoice_info cii
 			LEFT JOIN ci_contact cc ON cii.buId=cc.id
 			LEFT JOIN ci_goods cg ON cii.invId=cg.id
-		  WHERE cii.isDelete=0 AND cii.billType='SALE' AND cii.buId=#{contactId}
-	</select>
+			LEFT JOIN ci_staff cs ON cii.salesId=cs.id
+		  WHERE cii.isDelete=0 AND cii.billType='SALE'
+	</sql>
 	<select id="querySmsCount" resultType="int" parameterType="int">
 		SELECT count(*) FROM ci_sms_info WHERE invoice_id=#{iid}
 	</select>

@@ -63,10 +63,23 @@ public class AddressHandler extends BaseTypeHandler {
     }
 
     private String buildAddress(Map<String, Object> link) {
-        String province = link.get("province").toString();
-        String city = link.get("city").toString();
-        String county = link.get("county").toString();
-        String address = link.get("address").toString();
-        return province + ',' + city + ',' + county + ',' + address;
+        StringBuilder sb = new StringBuilder();
+        Object province = link.get("province");
+        if (province != null) {
+            sb.append(province.toString());
+        }
+        Object city = link.get("city");
+        if (city != null) {
+            sb.append("," + city.toString());
+        }
+        Object county = link.get("county");
+        if (county != null) {
+            sb.append("," + county.toString());
+        }
+        Object address = link.get("address");
+        if (address != null) {
+            sb.append("," + address.toString());
+        }
+        return sb.toString();
     }
 }

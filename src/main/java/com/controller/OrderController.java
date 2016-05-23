@@ -3,6 +3,7 @@ package com.controller;
 import com.contact.service.ContactService;
 import com.order.bean.Order;
 import com.order.service.OrderService;
+import com.utils.bean.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,14 @@ public class OrderController {
     private ContactService contactService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId) {
-        List<Order> orders = orderService.queryOrderByContactId(contactId);
+    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId, @RequestParam(value = "currentPage", required = false) Integer currentPage) {
+        Pagination pagination = new Pagination();
+        if (!ObjectUtils.isEmpty(currentPage)) {
+            pagination.setCurrentPage(currentPage);
+        }
+        pagination.setTotalAmount(orderService.queryCountByContactId(contactId));
+        pagination.setPageSize(5);
+        List<Order> orders = orderService.queryOrderByContactId(contactId, pagination);
         if (ObjectUtils.isEmpty(orders)) {
             modelAndView.setViewName("order-list-none");
         } else {
@@ -34,6 +41,7 @@ public class OrderController {
         }
         modelAndView.addObject("orderList", orders);
         modelAndView.addObject("contact", contactService.queryContactById(contactId));
+        modelAndView.addObject("pagination", pagination);
         return modelAndView;
     }
 

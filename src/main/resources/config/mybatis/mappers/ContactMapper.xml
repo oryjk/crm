@@ -36,7 +36,7 @@
 
     <sql id="conditionalQuery">
         <if test="contact!=null">
-            <if test="contact.name!=null or contact.number!=null or contact.mobile!=null or contact.phone!=null">
+            <if test="contact.name!=null or contact.number!=null or contact.mobile!=null or contact.phone!=null or contact.address!=null or contact.category!=null or contact.level!=null or contact.firstContact!=null">
                 AND (1=0<include refid="contactQuery"/>)
             </if>
         </if>
@@ -61,7 +61,7 @@
             OR linkMans LIKE CONCAT('%',#{contact.address},'%')
         </if>
         <if test="contact.category">
-            OR cCategoryName LIKE CONCAT('%',#{contact.category},'%'))
+            OR cCategoryName LIKE CONCAT('%',#{contact.category},'%')
         </if>
         <if test="contact.level">
             OR cLevelName LIKE CONCAT('%',#{contact.level},'%')

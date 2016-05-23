@@ -3,6 +3,10 @@ package com.contact.bean;
 /**
  * Created by carlwang on 5/15/16.
  */
+
+/**
+ * 客户
+ */
 public class Contact {
     private Integer id;
     private String name;

@@ -31,8 +31,9 @@
 </div>
 <table class="content-list-menu">
   <tr class="list-title">
-    <td class="list-first">商品名称</td>
-    <td class="list-time">成交日期</td>
+    <td>商品名称</td>
+    <td>销售人员</td>
+    <td class="list-time">交易日期</td>
     <td>单价</td>
     <td>数量</td>
     <td>折扣额</td>
@@ -43,9 +44,10 @@
 <table class="content-list">
   <c:forEach var="order" items="${orderList}">
   <tr class="list-all">
-    <td class="list-first">
+    <td>
       <span>${order.goodsName}</span>
     </td>
+    <td>${order.salesMan}</td>
     <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
     <td class="list-red"><span>${order.price}</span></td>
     <td>${order.quantity}</td>
@@ -63,10 +65,26 @@
     </td>
   </tr>
   </c:forEach>
-</table>
+<table class="list-page">
+  <tr>
+    <c:if test="${pagination.currentPage>1}">
+      <td><a href="/order/list?contactId=${contact.id}&currentPage=1">首页</a></td>
+      <td><a href="/order/list?contactId=${contact.id}&currentPage=${pagination.currentPage-1}">上一页</a></td>
+    </c:if>
 
-<div class="last-btn">
-  <a href="/user/list">返回用户列表</a>
-</div>
-</body>>
+    <c:if test="${pagination.totalPage>1}">
+      <c:forEach begin="1" end="${pagination.totalPage}" var="i">
+        <td><a href="/order/list?contactId=${contact.id}&currentPage=${i}">${i}</a></td>
+      </c:forEach>
+    </c:if>
+    <c:if test="${pagination.currentPage<pagination.totalPage}">
+      <td><a href="/order/list?contactId=${contact.id}&currentPage=${pagination.currentPage+1}">下一页</a></td>
+      <td><a href=/order/list?contactId=${contact.id}&currentPage=${pagination.totalPage}>尾页</a></td>
+    </c:if>
+    <c:if test="${pagination.totalPage>1}">
+      <td>共${pagination.totalPage}页</td>
+    </c:if>
+  </tr>
+</table>
+</body>
 </html>
