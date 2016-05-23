@@ -113,7 +113,7 @@ a {
   text-decoration: none; }
 
 .link-btn {
-  color: #5a98e6; }
+  color: #45a5e3; }
   .link-btn:hover {
     text-decoration: underline; }
 
@@ -130,8 +130,12 @@ a {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
   background: #f59a99; }
+  .back:hover {
+    background: #fb6666; }
 
 .header {
   width: 100%;

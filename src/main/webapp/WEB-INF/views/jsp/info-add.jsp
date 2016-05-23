@@ -64,7 +64,7 @@
         <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
       </tr>
     </table>
-    <h2>产品信息</h2>
+    <h2  class="user-info-box">产品信息</h2>
     <table class="content-table">
       <tr>
         <th>产品ID:</th>
@@ -107,7 +107,7 @@
         </td>
         <td class="wrong-text"></td>
       </tr>
-      <tr>
+      <tr class="textarea-row">
         <th>发送短信内容:</th>
         <td>
           <textarea id="smsContent" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>

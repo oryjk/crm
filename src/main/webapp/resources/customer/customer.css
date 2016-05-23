@@ -113,7 +113,7 @@ a {
   text-decoration: none; }
 
 .link-btn {
-  color: #5a98e6; }
+  color: #45a5e3; }
   .link-btn:hover {
     text-decoration: underline; }
 
@@ -130,8 +130,12 @@ a {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
   background: #f59a99; }
+  .back:hover {
+    background: #fb6666; }
 
 .header {
   width: 100%;
@@ -167,68 +171,91 @@ form {
   margin: 45px auto;
   table-layout: fixed; }
 
-.content-table {
-  margin-top: 30px;
-  margin-left: 100px; }
-  .content-table tr {
-    height: 75px; }
-
-h2 {
-  margin-top: 80px;
+.content-table h2 {
+  margin-top: 50px;
   padding-left: 50px;
-  font-size: 20px;
+  font-size: 18px;
   color: #333;
   font-weight: normal; }
 
-th {
+.content-table tr {
+  height: 55px; }
+
+.content-table th {
   vertical-align: middle;
   padding-right: 25px;
   width: 123px;
   text-align: right;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   color: #666; }
 
-td {
+.content-table td {
   vertical-align: middle;
   width: 350px; }
+  .content-table td.wrong-text {
+    font-size: 14px;
+    width: 500px;
+    color: #fb6666; }
 
-.wrong-text {
-  width: 500px;
-  color: #fb6666; }
+.content-table .textarea-row th {
+  padding-top: 20px;
+  vertical-align: top; }
 
-input {
+.content-table .textarea-row td {
+  padding-top: 10px; }
+
+.content-table input {
   width: 300px;
-  height: 32px;
+  height: 23px;
   font-size: 14px;
   padding: 5px;
-  border: 1px solid #ccc; }
-  input:focus {
+  border: 1px solid #ccc;
+  border-radius: 4px; }
+  .content-table input:focus {
     border: 1px solid #81bbe1; }
 
-.choose-message {
+.content-table textarea {
+  width: 306px;
   border: 1px solid #ccc;
-  width: 310px;
-  height: 38px;
-  padding: 5px;
-  font-size: 14px;
-  background: white; }
-
-textarea {
-  width: 300px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
   resize: none; }
-  textarea[disabled] {
+  .content-table textarea[disabled] {
     background: #f6f6f6; }
 
-.invest-wrong {
+.content-table .invest-wrong {
   border: 1px solid #f59a99; }
 
-.invest-submit {
-  width: 158px;
+.content-table .invest-submit {
+  margin-top: -2px;
+  width: 196px;
   height: 36px;
-  font-size: 18px;
+  font-size: 17px;
   border: none;
   background: #81bbe1;
   color: white;
   cursor: pointer; }
+  .content-table .invest-submit:hover {
+    background: #45a5e3; }
+
+.user-info-box {
+  border-top: 1px dotted #ccc;
+  margin-top: 30px;
+  padding-top: 25px;
+  width: 800px; }
+
+.content-table {
+  margin-top: 30px;
+  margin-left: 100px; }
+
+.choose-message {
+  border: 1px solid #ccc;
+  width: 312px;
+  height: 36px;
+  padding: 5px;
+  font-size: 14px;
+  background: white; }
+
+.textarea-tips {
+  font-size: 14px;
+  color: #666; }

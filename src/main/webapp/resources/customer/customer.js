@@ -4,6 +4,6 @@
 $(document).ready(function () {
     $('#chooseMessage').change(function (){
         var $this = $(this);
-        $('#smsContent').val($this.val());
+        $('#messageTemple').prop('disabled', false).val($this.val());
     });
 });
