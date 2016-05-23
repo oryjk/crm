@@ -1,19 +1,33 @@
 /*import
 **************************************************************************************************************************************************/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
 /*
 html5doctor.com Reset Stylesheet
 v1.4.1

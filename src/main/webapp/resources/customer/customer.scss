@@ -64,4 +64,23 @@ form {
   color: #666;
 }
 
+.add-template {
+  @include pop(600px, 390px);
+  @include detail-general;
+
+  .pop-tips {
+    margin: 30px 0 0 50px;
+    float: left;
+    font-size: 14px;
+
+    .pop-wrong {
+      color: $vice-dark;
+    }
+
+    .pop-right {
+      color: $main-dark;
+    }
+  }
+}
+
 

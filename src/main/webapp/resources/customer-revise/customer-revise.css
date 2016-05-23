@@ -1,19 +1,33 @@
 /*import
 **************************************************************************************************************************************************/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
 /*
 html5doctor.com Reset Stylesheet
 v1.4.1
@@ -234,7 +248,7 @@ textarea {
   left: 50%;
   width: 300px;
   height: 180px;
-  margin-top: -100px;
+  margin-top: -90px;
   margin-left: -150px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -252,27 +266,14 @@ textarea {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     color: #333; }
-  .list-sure .list-sure-btn a {
-    margin-top: 30px;
-    margin-left: 80px;
-    padding-right: 40px;
-    float: left;
-    color: #333; }
-  .list-sure .list-sure-btn .list-sure-btn1 {
-    border-right: 1px solid #e5e5e5; }
-  .list-sure .list-sure-btn .list-sure-btn2 {
-    margin-left: 40px; }
-
-.mes-none a {
-  float: left;
-  margin-left: 30px;
-  width: 60px;
-  display: block;
-  padding: 10px;
-  background: green;
-  color: white; }
-
-.mes-none span {
-  margin-top: 10px;
-  float: left;
-  color: red; }
+  .list-sure .list-sure-btn {
+    text-align: right; }
+    .list-sure .list-sure-btn a {
+      margin-top: 30px;
+      margin-left: 80px;
+      padding-right: 40px;
+      display: inline-block; }
+    .list-sure .list-sure-btn .list-sure-btn1 {
+      border-right: 1px solid #e5e5e5; }
+    .list-sure .list-sure-btn .list-sure-btn2 {
+      margin-left: 40px; }

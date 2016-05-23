@@ -131,6 +131,32 @@
     </table>
   </form>
 
+  <div id="listSure" class="add-template" style="display: none">
+    <div class="list-sure-title"></div>
+    <div class="list-sure-content">
+      <table>
+        <tr>
+          <th>模板标题:</th>
+          <td><input id="addTitle" type="text"/></td>
+        </tr>
+        <tr class="textarea-row">
+          <th>模板内容:</th>
+          <td><textarea id="addContent" cols="30" rows="10"  maxlength="200"></textarea>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="list-sure-btn">
+      <div class="pop-tips">
+        <span id="popWrong" class="pop-wrong">错误信息提示!</span>
+        <span id="popRight" class="pop-right">正确信息提示!</span>
+      </div>
+
+      <a class="list-sure-btn1 link-btn" href="javascript:void(0);">确认</a>
+      <a class="list-sure-btn2 link-btn" href="javascript:void(0);">取消</a>
+    </div>
+  </div>
+
   <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
   <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
   <script src="/resources/customer/customer.js" ></script>
