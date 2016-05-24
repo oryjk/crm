@@ -41,6 +41,9 @@
 
   <div class="content-name-in">客户姓名：<span>${contact.name}</span></div>
   <div class="content-name-phone">联系方式：<span>${contact.mobile}</span></div>
+  <div class="content-name-category">分类：<span>帅哥dasd</span></div>
+  <div class="content-name-level">级别：<span>2</span></div>
+  <div class="content-name-number">编号：<span>22000002</span></div>
 </div>
 <c:if test="${flag!='single'}">
   <div class="content-searchBox">

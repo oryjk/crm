@@ -28,7 +28,7 @@
 }
 
 .content-name-in {
-  margin-left: 100px;
+  margin-left: 150px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
@@ -41,18 +41,41 @@
   }
 }
 
-.content-name-phone {
-  margin-left: 50px;
+.content-name-phone,
+.content-name-category,
+.content-name-level,
+.content-name-number {
+  margin-left: 40px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
   float: left;
   color: #999;
-  background: url("../core/image/phone.png") no-repeat 0 center;
+  background:  no-repeat 0 center;
 
   span {
     color: #666;
   }
+}
+
+.content-name-phone {
+  background-image: url("../core/image/phone.png");
+  //width: 180px;
+}
+
+.content-name-category {
+  background-image: url("../core/image/category.png");
+  //width: 150px;
+}
+
+.content-name-level {
+  background-image: url("../core/image/level.png");
+  //width: 120px;
+}
+
+.content-name-number {
+  background-image: url("../core/image/id.png");
+  //width: 150px;
 }
 
 .content-list-menu {

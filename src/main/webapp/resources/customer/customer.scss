@@ -28,6 +28,7 @@ form {
     @include wh(196px, 36px);
     font-size: 17px;
     border: none;
+    border-radius: 4px;
     background: $main;
     color: white;
     cursor: pointer;
@@ -65,11 +66,11 @@ form {
 }
 
 .add-template {
-  @include pop(600px, 390px);
+  @include pop(600px, 420px);
   @include detail-general;
 
   .pop-tips {
-    margin: 30px 0 0 50px;
+    margin: 35px 0 0 50px;
     float: left;
     font-size: 14px;
 

@@ -307,18 +307,21 @@ a {
       margin-left: 80px;
       padding-right: 40px;
       display: inline-block; }
-    .list-sure .list-sure-btn .list-sure-btn1 {
-      border-right: 1px solid #e5e5e5;
-      color: #45a5e3;
-      font-size: 14px; }
-      .list-sure .list-sure-btn .list-sure-btn1:hover {
-        text-decoration: underline; }
+    .list-sure .list-sure-btn .list-sure-btn1,
     .list-sure .list-sure-btn .list-sure-btn2 {
-      margin-left: 40px;
-      color: #45a5e3;
-      font-size: 14px; }
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: white; }
+    .list-sure .list-sure-btn .list-sure-btn1 {
+      background: #81bbe1; }
+      .list-sure .list-sure-btn .list-sure-btn1:hover {
+        background: #45a5e3; }
+    .list-sure .list-sure-btn .list-sure-btn2 {
+      margin: 0 30px 0 5px;
+      background: #f59a99; }
       .list-sure .list-sure-btn .list-sure-btn2:hover {
-        text-decoration: underline; }
+        background: #fb6666; }
 
 .list-page {
   margin-top: 50px;

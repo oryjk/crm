@@ -193,7 +193,7 @@ a {
     border-radius: 50px; }
 
 .content-name-in {
-  margin-left: 100px;
+  margin-left: 150px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
@@ -203,16 +203,34 @@ a {
   .content-name-in span {
     color: #666; }
 
-.content-name-phone {
-  margin-left: 50px;
+.content-name-phone,
+.content-name-category,
+.content-name-level,
+.content-name-number {
+  margin-left: 40px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
   float: left;
   color: #999;
-  background: url("../core/image/phone.png") no-repeat 0 center; }
-  .content-name-phone span {
+  background: no-repeat 0 center; }
+  .content-name-phone span,
+  .content-name-category span,
+  .content-name-level span,
+  .content-name-number span {
     color: #666; }
+
+.content-name-phone {
+  background-image: url("../core/image/phone.png"); }
+
+.content-name-category {
+  background-image: url("../core/image/category.png"); }
+
+.content-name-level {
+  background-image: url("../core/image/level.png"); }
+
+.content-name-number {
+  background-image: url("../core/image/id.png"); }
 
 .content-list-menu {
   width: 1200px;

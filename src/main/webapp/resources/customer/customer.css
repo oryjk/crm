@@ -247,6 +247,7 @@ form {
   height: 36px;
   font-size: 17px;
   border: none;
+  border-radius: 4px;
   background: #81bbe1;
   color: white;
   cursor: pointer; }
@@ -280,8 +281,8 @@ form {
   top: 50%;
   left: 50%;
   width: 600px;
-  height: 390px;
-  margin-top: -195px;
+  height: 420px;
+  margin-top: -210px;
   margin-left: -300px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -306,18 +307,21 @@ form {
       margin-left: 80px;
       padding-right: 40px;
       display: inline-block; }
-    .add-template .list-sure-btn .list-sure-btn1 {
-      border-right: 1px solid #e5e5e5;
-      color: #45a5e3;
-      font-size: 14px; }
-      .add-template .list-sure-btn .list-sure-btn1:hover {
-        text-decoration: underline; }
+    .add-template .list-sure-btn .list-sure-btn1,
     .add-template .list-sure-btn .list-sure-btn2 {
-      margin-left: 40px;
-      color: #45a5e3;
-      font-size: 14px; }
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: white; }
+    .add-template .list-sure-btn .list-sure-btn1 {
+      background: #81bbe1; }
+      .add-template .list-sure-btn .list-sure-btn1:hover {
+        background: #45a5e3; }
+    .add-template .list-sure-btn .list-sure-btn2 {
+      margin: 0 30px 0 5px;
+      background: #f59a99; }
       .add-template .list-sure-btn .list-sure-btn2:hover {
-        text-decoration: underline; }
+        background: #fb6666; }
   .add-template h2 {
     margin-top: 50px;
     padding-left: 50px;
@@ -366,7 +370,7 @@ form {
   .add-template .invest-wrong {
     border: 1px solid #f59a99; }
   .add-template .pop-tips {
-    margin: 30px 0 0 50px;
+    margin: 35px 0 0 50px;
     float: left;
     font-size: 14px; }
     .add-template .pop-tips .pop-wrong {

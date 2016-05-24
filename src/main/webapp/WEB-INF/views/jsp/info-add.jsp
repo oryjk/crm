@@ -163,8 +163,8 @@
         <span id="popRight" class="pop-right"></span>
       </div>
 
-      <a class="list-sure-btn1 link-btn" href="javascript:void(0);">确认</a>
-      <a class="list-sure-btn2 link-btn" href="javascript:void(0);">取消</a>
+      <a class="list-sure-btn1" href="javascript:void(0);">确认</a>
+      <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
     </div>
   </div>
 
