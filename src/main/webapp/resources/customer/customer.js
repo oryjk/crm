@@ -36,7 +36,10 @@ $(document).ready(function () {
             $.ajax({
                 url: '/smsInfo/newTemp',
                 type: 'post',
-                data: {'title': $('#addTitle').val(), 'content': $('#addContent').val()}
+                data: {
+                    'title': addTitle.val(),
+                    'content': addContent.val()
+                }
             }).done(function (data) {
                 var jsonObj = eval("(" + data + ")");
                 if (jsonObj.code == 1) {
@@ -45,15 +48,15 @@ $(document).ready(function () {
                         listSure.hide(100);
                         var str = $('<option value="' + addContent.val() + '">' + addTitle.val() + '</option>');
                         chooseMessage.append(str);
-                    }, 3000);
+                    }, 1500);
                 } else {
                     popRight.html('添加失败');
-                    window.setTimeout(function () {
-                        listSure.hide(100);
-                    }, 3000);
+                    //window.setTimeout(function () {
+                    //    listSure.hide(100);
+                    //}, 1500);
                 }
             }).fail(function () {
-
+                popRight.html('添加失败,请联系管理员!');
             })
         }
 
