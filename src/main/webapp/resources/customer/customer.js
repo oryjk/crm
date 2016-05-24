@@ -15,7 +15,7 @@ $(document).ready(function () {
     }
 
     //选择模板
-    chooseMessage.change(function (){
+    chooseMessage.change(function () {
         var $this = $(this);
         $('#messageTemple').prop('disabled', false).val($this.val());
     });
@@ -34,17 +34,24 @@ $(document).ready(function () {
             resetPopTips();
 
             $.ajax({
-                url: '',
+                url: '/smsInfo/newTemp',
                 type: 'post',
-                data: {
+                data: {'title': $('#addTitle').val(), 'content': $('#addContent').val()}
+            }).done(function (data) {
+                var jsonObj = eval("(" + data + ")");
+                if (jsonObj.code == 1) {
+                    popRight.html('添加成功');
+                    window.setTimeout(function () {
+                        listSure.hide(100);
+                        var str = $('<option value="' + addContent.val() + '">' + addTitle.val() + '</option>');
+                        chooseMessage.append(str);
+                    }, 3000);
+                } else {
+                    popRight.html('添加失败');
+                    window.setTimeout(function () {
+                        listSure.hide(100);
+                    }, 3000);
                 }
-            }).done(function () {
-                popRight.html('添加成功');
-                window.setTimeout(function () {
-                    listSure.hide(100);
-                    var str = $('<option value="' + addContent.val() + '">' + addTitle.val() + '</option>');
-                    chooseMessage.append(str);
-                }, 3000);
             }).fail(function () {
 
             })

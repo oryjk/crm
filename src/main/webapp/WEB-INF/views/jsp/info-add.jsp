@@ -20,11 +20,18 @@
   </head>
   <body>
   <!-- header-begin -->
-  <div class="header">
-    <div class="header-content">
-      <h1>客户管理</h1>
-    </div>
-  </div>
+    <c:choose>
+      <c:when test="${smsInfo.id==null}">
+        <jsp:include page="header.jsp">
+          <jsp:param name="title" value="新增短信页面"/>
+        </jsp:include>
+      </c:when>
+      <c:otherwise>
+        <jsp:include page="header.jsp">
+          <jsp:param name="title" value="修改短信页面"/>
+        </jsp:include>
+      </c:otherwise>
+    </c:choose>
   <!-- header-end -->
   <c:choose>
     <c:when test="${smsInfo.id == null}">
@@ -39,13 +46,13 @@
     <input name="billDate" type="hidden" value="<fmt:formatDate value="${smsInfo.billDate}" pattern="yyyy-MM-dd HH:mm"/>"/>
     <h2>用户信息</h2>
     <table class="content-table">
-      <tr>
-        <th>用户ID:</th>
-        <td>
-          <input name="contactId" type="text" value="${smsInfo.contactId}"/>
-        </td>
-        <td class="wrong-text"><form:errors path="smsInfo.contactId"/></td>
-      </tr>
+      <%--<tr>--%>
+        <%--<th>用户ID:</th>--%>
+        <%--<td>--%>
+          <input name="contactId" type="hidden" value="${smsInfo.contactId}"/>
+        <%--</td>--%>
+        <%--<td class="wrong-text"><form:errors path="smsInfo.contactId"/></td>--%>
+      <%--</tr>--%>
       <tr>
         <th>用户名称:</th>
         <td>
@@ -63,13 +70,13 @@
     </table>
     <h2  class="user-info-box">产品信息</h2>
     <table class="content-table">
-      <tr>
-        <th>产品ID:</th>
-        <td>
-          <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}" readonly/>
-        </td>
-        <td class="wrong-text"><form:errors path="smsInfo.goodsId"/></td>
-      </tr>
+      <%--<tr>--%>
+        <%--<th>产品ID:</th>--%>
+        <%--<td>--%>
+          <input name="goodsId" class="invest-text" type="hidden" value="${smsInfo.goodsId}" readonly/>
+        <%--</td>--%>
+        <%--<td class="wrong-text"><form:errors path="smsInfo.goodsId"/></td>--%>
+      <%--</tr>--%>
       <tr>
         <th>产品名称:</th>
         <td>
@@ -87,7 +94,7 @@
       <tr>
         <th>发送短信时间:</th>
         <td>
-          <input name="sendDate" value='<fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/>' id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
+          <input name="sendDate" value='<fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/>' class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()" readonly/>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.sendDate"/></td>
       </tr>
@@ -100,21 +107,23 @@
             <c:forEach items="${temps}" var="temp">
               <option value="${temp.content}">${temp.title}</option>
             </c:forEach>
+            <td class="wrong-text">
+              <a id="addTemplate" class="link-btn" href="javascript:void(0);">点击添加</a>
+            </td>
           </select>
         </td>
-        <td class="wrong-text"></td>
       </tr>
       <tr class="textarea-row">
         <th>发送短信内容:</th>
         <td>
-          <textarea id="smsContent" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
+          <textarea id="messageTemple" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.smsContent"/></td>
       </tr>
       <tr>
         <th></th>
         <td>
-          请注意:只有 [ ] 里面的内容可以进行修改
+          <p class="textarea-tips">请注意:只有 [ ] 里面的内容可以进行修改</p>
         </td>
         <td class="wrong-text"></td>
       </tr>
@@ -154,7 +163,7 @@
     </div>
   </div>
 
-  <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+  <script src="/resources/core/jq/jquery-1.11.1.js"></script>
   <script src="/resources/core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
   <script src="/resources/customer/customer.js" ></script>
 

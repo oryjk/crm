@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.order.bean.Order;
 import com.order.service.OrderService;
 import com.sms.bean.SmsInfo;
@@ -14,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -133,6 +134,22 @@ public class SmsInfoController {
         }
         modelAndView.setViewName("temp-add");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/newTemp", method = RequestMethod.POST)
+    @ResponseBody
+    public String newTemplate(ModelAndView modelAndView, @Validated SmsTemplate smsTemplate, BindingResult bindingResult) {
+        Map<String, Object> result = new HashMap<>();
+        if (bindingResult.hasErrors()) {
+            result.put("code", 0);
+        }
+        try {
+            smsTempService.createSmsTemp(smsTemplate);
+            result.put("code", 1);
+        } catch (Exception e) {
+            result.put("code", 0);
+        }
+        return new JSONObject(result).toJSONString();
     }
 
     //  编辑完短信模板后,保存,可能添加或更新
