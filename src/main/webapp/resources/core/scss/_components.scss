@@ -352,9 +352,20 @@
 
     .list-sure-btn1{
       border-right:1px solid #e5e5e5 ;
+      color: $main-dark;
+      font-size: 14px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     .list-sure-btn2{
       margin-left: 40px;
+      color: $main-dark;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -307,9 +307,17 @@ form {
       padding-right: 40px;
       display: inline-block; }
     .add-template .list-sure-btn .list-sure-btn1 {
-      border-right: 1px solid #e5e5e5; }
+      border-right: 1px solid #e5e5e5;
+      color: #45a5e3;
+      font-size: 14px; }
+      .add-template .list-sure-btn .list-sure-btn1:hover {
+        text-decoration: underline; }
     .add-template .list-sure-btn .list-sure-btn2 {
-      margin-left: 40px; }
+      margin-left: 40px;
+      color: #45a5e3;
+      font-size: 14px; }
+      .add-template .list-sure-btn .list-sure-btn2:hover {
+        text-decoration: underline; }
   .add-template h2 {
     margin-top: 50px;
     padding-left: 50px;

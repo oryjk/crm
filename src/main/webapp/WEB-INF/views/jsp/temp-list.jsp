@@ -32,7 +32,7 @@
   <table class="content-list">
     <tr class="list-title">
       <td>模板名字</td>
-      <td>模板内容</td>
+      <td style="width: 600px;">模板内容</td>
       <td>操作</td>
     </tr>
     <c:forEach items="${smsTemps}" var="smsTemp">
