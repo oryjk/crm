@@ -13,26 +13,40 @@
 *****************************/
 
 .content-name {
+  position: relative;
   width: 1200px;
   height: 125px;
   margin: 20px auto 40px auto;
   background: #edf5fa;
 
-  img {
-    margin: 25px 0 0 80px;
-    float: left;
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
-  }
+  //img {
+  //  margin: 25px 0 0 80px;
+  //  float: left;
+  //  width: 80px;
+  //  height: 80px;
+  //  border-radius: 50px;
+  //}
 }
 
+//.content-name-list {
+//  position: absolute;
+//  top: 0;
+//  left: 50%;
+//  height: 125px;
+//  overflow: hidden;
+//  transform: translateX(-50%);
+//  word-break: keep-all;
+//  word-wrap: normal;
+//}
+
 .content-name-in {
-  margin-left: 150px;
+  display: inline-block;
+  margin-left: 110px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
-  float: left;
+  //float: left;
+
   color: #999;
   background: url("../core/image/name.png") no-repeat 0 center;
 
@@ -45,11 +59,12 @@
 .content-name-category,
 .content-name-level,
 .content-name-number {
+  display: inline-block;
   margin-left: 40px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
-  float: left;
+  //float: left;
   color: #999;
   background:  no-repeat 0 center;
 
