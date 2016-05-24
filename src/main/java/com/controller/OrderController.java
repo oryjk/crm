@@ -28,10 +28,9 @@ public class OrderController {
     private ContactService contactService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId, @RequestParam(value = "currentPage", required = false) Integer currentPage, @RequestParam(value = "term", required = false) String term, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "asc", required = false) boolean asc) {
+    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId, @RequestParam(value = "currentPage", required = false) Integer currentPage, @RequestParam(value = "term", required = false) String term, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "asc", required = false) Boolean asc) {
         Order order = new Order();
         if (!ObjectUtils.isEmpty(term)) {
-            order.setContactName(term);
             order.setGoodsName(term);
             order.setSalesMan(term);
             order.setSpec(term);
@@ -52,11 +51,11 @@ public class OrderController {
         if (StringUtils.isNotBlank(sortFieldName)) {
             pagination.setSortFiledName(sortFieldName);
         }
-        if (!asc) {
+        if (ObjectUtils.isEmpty(asc) || !asc) {
             pagination.setAsc(false);
         }
-        pagination.setTotalAmount(orderService.queryCountByContactId(contactId));
-        pagination.setPageSize(5);
+        pagination.setTotalAmount(orderService.queryCountByContactId(contactId, order));
+        pagination.setPageSize(8);
         List<Order> orders = orderService.queryOrderByContactId(contactId, pagination, order);
         if (ObjectUtils.isEmpty(orders)) {
             modelAndView.setViewName("order-list-none");
@@ -66,6 +65,8 @@ public class OrderController {
         modelAndView.addObject("orderList", orders);
         modelAndView.addObject("contact", contactService.queryContactById(contactId));
         modelAndView.addObject("pagination", pagination);
+        modelAndView.addObject("asc", asc);
+        modelAndView.addObject("term", term);
         return modelAndView;
     }
 

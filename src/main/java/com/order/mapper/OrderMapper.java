@@ -15,7 +15,7 @@ import java.util.List;
 public interface OrderMapper extends SqlMapper {
     List<Order> queryOrderByContactId(@Param(value = "contactId") Integer contactId, @Param(value = "pagination") Pagination pagination, @Param(value = "order") Order order);
 
-    int queryCountByContactId(@Param(value = "contactId") Integer contactId);
+    int queryCountByContactId(@Param(value = "contactId") Integer contactId, @Param(value = "order") Order order);
 
     int querySmsCount(@Param(value = "iid") Integer iid);
 

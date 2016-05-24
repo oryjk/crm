@@ -21,12 +21,23 @@
 		<include refid="orderQuery"/>
 			AND cii.buId=#{contactId}
 			<if test="order!=null">
-				<include refid="searchCondition"/>
+				<if test="order.mobile!=null or order.salesMan!=null or order.goodsName!=null or order.deduction!=null or order.price!=null or order.totalAmount!=null or order.spec!=null or order.quantity!=null">
+					AND (1=0 <include refid="searchCondition"/>)
+				</if>
 			</if>
 			<include refid="pagination"/>
 	</select>
-	<select id="queryCountByContactId" parameterType="int" resultType="int">
-		SELECT count(id) FROM ci_invoice_info WHERE isDelete=0 AND billType='SALE' AND buId=#{contactId}
+	<select id="queryCountByContactId" resultType="int">
+		SELECT count(cii.id) FROM ci_invoice_info cii
+			LEFT JOIN ci_contact cc ON cii.buId=cc.id
+			LEFT JOIN ci_goods cg ON cii.invId=cg.id
+			LEFT JOIN ci_staff cs ON cii.salesId=cs.id
+			WHERE cii.isDelete=0 AND cii.billType='SALE' AND cii.buId=#{contactId}
+			<if test="order!=null">
+				<if test="order.mobile!=null or order.salesMan!=null or order.goodsName!=null or order.deduction!=null or order.price!=null or order.totalAmount!=null or order.spec!=null or order.quantity!=null">
+					AND (1=0 <include refid="searchCondition"/>)
+				</if>
+			</if>
 	</select>
 	<select id="querySmsCount" resultType="int" parameterType="int">
 		SELECT count(*) FROM ci_sms_info WHERE invoice_id=#{iid}
@@ -46,9 +57,6 @@
 	</sql>
 
 	<sql id="searchCondition">
-		<if test="order.contactName!=null">
-			OR cc.name LIKE CONCAT('%',#{order.contactName},'%')
-		</if>
 		<if test="order.mobile!=null">
 			OR cc.linkMans LIKE CONCAT('%',#{order.mobile},'%')
 		</if>

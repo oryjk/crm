@@ -14,18 +14,12 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>客户管理</h1>
-
-    <div class="header-name">
-      <span><a onclick="javascript:window.close();" href="#">关闭</a></span>
-    </div>
-  </div>
-</div>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="客户购买列表"/>
+</jsp:include>
 <!-- header-end -->
 
-<div class="content">
+<div class="content-list">
   <div class="list-none">很遗憾，您还没有交易记录哦</div>
 </div>
 </body>

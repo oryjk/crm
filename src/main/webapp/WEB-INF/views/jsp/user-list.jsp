@@ -15,22 +15,13 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>客户管理</h1>
-
-    <div class="header-logout">
-      <a href="#">退出 >></a>
-    </div>
-  </div>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="客户列表"/>
+</jsp:include>
 <!-- header-end -->
 
 <div class="content">
   <div class="content-head">
-    <div class="home-btn-box">
-      <a class="home-btn" href="/contact/list">首页</a>
-    </div>
     <div class="content-searchBox">
       <form action="/contact/list" method="get">
         <input name="term" class="content-search" type="search" placeholder="${term}">
@@ -40,17 +31,24 @@
   </div>
   <table class="content-list">
     <tr class="list-title">
-      <td>客户名称</td>
-      <td>客户编号</td>
-      <td>手机</td>
-      <td>座机</td>
-      <td>客户类别</td>
-      <td>客户等级</td>
-      <td>地址</td>
-      <td>查看购买记录</td>
+      <td style="width: 100px;" class="list-first">客户名称</td>
+      <td style="width: 50px;">客户编号</td>
+      <td style="width: 100px;">手机</td>
+      <td style="width: 100px;">座机</td>
+      <td style="width: 100px;">客户类别</td>
+      <td style="width: 100px;">客户等级</td>
+      <td style="width: 250px;">地址</td>
+      <td style="width: 100px;">查看购买记录</td>
     </tr>
-    <c:forEach items="${contactList}" var="contact">
-    <tr class="list-top">
+    <c:forEach items="${contactList}" var="contact" varStatus="index">
+      <c:choose>
+        <c:when test="${index.count%2!=0}">
+          <tr class="list-top">
+        </c:when>
+        <c:otherwise>
+          <tr class="list-bottom">
+        </c:otherwise>
+      </c:choose>
       <td>${contact.name}</td>
       <td>${contact.number}</td>
       <td>${contact.mobile}</td>
@@ -73,7 +71,7 @@
 
       <c:if test="${pagination.totalPage>1}">
         <c:forEach begin="1" end="${pagination.totalPage}" var="i">
-          <td><a href="/contact/list?term=${term}&currentPage=${i}">${i}</a></td>
+          <td><a <c:if test="${i==pagination.currentPage}">class="current-page"</c:if> href="/contact/list?term=${term}&currentPage=${i}">${i}</a></td>
         </c:forEach>
       </c:if>
       <c:if test="${pagination.currentPage<pagination.totalPage}">

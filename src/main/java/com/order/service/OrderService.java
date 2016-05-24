@@ -32,9 +32,9 @@ public class OrderService {
         return orders;
     }
 
-    public int queryCountByContactId(Integer contactId) {
+    public int queryCountByContactId(Integer contactId, Order order) {
         LOGGER.debug("Start to query count of contact:" + contactId);
-        int count = orderMapper.queryCountByContactId(contactId);
+        int count = orderMapper.queryCountByContactId(contactId, order);
         LOGGER.debug("End to query count of contact:" + contactId);
         return count;
     }
