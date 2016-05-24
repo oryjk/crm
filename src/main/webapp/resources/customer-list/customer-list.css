@@ -178,13 +178,6 @@ a {
     .header .header-content .header-handle-item {
       margin-right: 10px; }
 
-/*style
-**************************************************/
-.content {
-  width: 1200px;
-  height: 800px;
-  margin: 0 auto; }
-
 .content-head {
   margin: 40px auto;
   overflow: hidden; }
@@ -220,6 +213,13 @@ a {
   .content-search-btn:hover {
     background-color: #45a5e3;
     cursor: pointer; }
+
+/*style
+**************************************************/
+.content {
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto; }
 
 .content-list {
   width: 1200px;

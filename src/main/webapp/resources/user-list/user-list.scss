@@ -21,43 +21,8 @@
   margin: 0 auto;
 }
 
-.content-head {
-  margin: 40px auto;
-  overflow: hidden;
-}
+@include content-head;
 
-.home-btn-box {
-  float: left;
-}
-
-.home-btn {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 40px;
-  color: white;
-  background: #45a5e3;
-}
-
-.content-searchBox{
-  float: right;
-  width: 660px;
-}
-
-.content-search{
-  float: left;
-  border: 1px solid #d0e4f2;
-  width: 600px;
-  height: 40px;
-  padding: 5px 10px;
-
-}
-
-.content-search-btn{
-  border: none;
-  width: 60px;
-  height: 40px;
-  background:#d0e4f2 url("../core/image/search.png") no-repeat center center;
-}
 
 .content-list{
   width: 1200px;
