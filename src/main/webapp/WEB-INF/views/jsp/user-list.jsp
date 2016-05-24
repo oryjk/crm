@@ -77,7 +77,7 @@
       </c:if>
       <c:if test="${pagination.currentPage<pagination.totalPage}">
         <td><a href="/contact/list?term=${term}&currentPage=${pagination.currentPage+1}">下一页</a></td>
-        <td><a href=/contact/list?term=${term}&currentPage=${pagination.totalPage}>尾页</a></td>
+        <td><a href="/contact/list?term=${term}&currentPage=${pagination.totalPage}">尾页</a></td>
       </c:if>
       <c:if test="${pagination.totalPage>1}">
         <td>共${pagination.totalPage}页</td>

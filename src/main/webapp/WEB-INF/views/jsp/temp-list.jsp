@@ -47,6 +47,27 @@
     </tr>
     </c:forEach>
   </table>
+  <table class="list-page">
+    <tr>
+      <c:if test="${currentPage>1}">
+        <td><a href="/smsInfo//listTemp?currentPage=1">首页</a></td>
+        <td><a href="/smsInfo//listTemp?currentPage=${currentPage-1}">上一页</a></td>
+      </c:if>
+
+      <c:if test="${totalPage>1}">
+        <c:forEach begin="1" end="${totalPage}" var="i">
+          <td><a <c:if test="${i==currentPage}">class="current-page"</c:if> href="/smsInfo//listTemp?currentPage=${i}">${i}</a></td>
+        </c:forEach>
+      </c:if>
+      <c:if test="${currentPage<totalPage}">
+        <td><a href="/smsInfo//listTemp?currentPage=${currentPage+1}">下一页</a></td>
+        <td><a href="/smsInfo//listTemp?currentPage=${totalPage}">尾页</a></td>
+      </c:if>
+      <c:if test="${totalPage>1}">
+        <td>共${totalPage}页</td>
+      </c:if>
+    </tr>
+  </table>
   <div id="listSure" class="list-sure" style="display: none">
     <div class="list-sure-title"></div>
     <div class="list-sure-content">
