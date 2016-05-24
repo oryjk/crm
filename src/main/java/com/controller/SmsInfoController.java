@@ -83,6 +83,13 @@ public class SmsInfoController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/deleteInfo", method = RequestMethod.GET)
+    public ModelAndView deleteInfo(ModelAndView modelAndView, @RequestParam Integer id, @RequestParam(value = "contactId", required = true) String contactId) {
+        smsInfoService.deleteSmsInfo(id);
+        modelAndView.setViewName("redirect:/order/list?contactId=" + contactId);
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ModelAndView delete(ModelAndView modelAndView, @RequestParam Integer id) {
         smsInfoService.deleteSmsInfo(id);

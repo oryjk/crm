@@ -19,12 +19,9 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>客户管理</h1>
-  </div>
-  <a href="/contact/list">首页</a>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="短信详情"/>
+</jsp:include>
 <!-- header-end -->
   <h2>用户信息</h2>
   <table class="content-table">
@@ -58,7 +55,7 @@
 
     <tr>
       <th>发送短信时间:</th>
-      <td><fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+      <td><fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd"/></td>
     </tr>
     <tr>
       <th>发送短信内容:</th>
