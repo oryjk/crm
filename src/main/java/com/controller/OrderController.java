@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,6 +68,17 @@ public class OrderController {
         modelAndView.addObject("pagination", pagination);
         modelAndView.addObject("asc", asc);
         modelAndView.addObject("term", term);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/listById", method = RequestMethod.GET)
+    public ModelAndView getOrderById(ModelAndView modelAndView, @RequestParam(value = "id", required = true) Integer id) {
+        List<Order> orders = new ArrayList<>();
+        orders.add(orderService.queryOrderById(id));
+        modelAndView.addObject("orderList", orders);
+        modelAndView.addObject("contact", contactService.queryContactById(orders.get(0).getContactId()));
+        modelAndView.addObject("flag", "single");
+        modelAndView.setViewName("order-list");
         return modelAndView;
     }
 

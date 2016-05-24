@@ -42,13 +42,15 @@
   <div class="content-name-in">客户姓名：<span>${contact.name}</span></div>
   <div class="content-name-phone">联系方式：<span>${contact.mobile}</span></div>
 </div>
-<div class="content-searchBox">
-  <form action="/order/list" method="get">
-    <input type="hidden" name="contactId" value="${contact.id}"/>
-    <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
-    <button class="content-search-btn" type="submit"></button>
-  </form>
-</div>
+<c:if test="${flag!='single'}">
+  <div class="content-searchBox">
+    <form action="/order/list" method="get">
+      <input type="hidden" name="contactId" value="${contact.id}"/>
+      <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
+      <button class="content-search-btn" type="submit"></button>
+    </form>
+  </div>
+</c:if>
 <table class="content-list">
   <tbody>
     <tr class="list-title">
