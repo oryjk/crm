@@ -1,5 +1,7 @@
 package com.controller;
 
+import com.order.bean.Order;
+import com.order.service.OrderService;
 import com.sms.bean.SmsInfo;
 import com.sms.bean.SmsTemplate;
 import com.sms.service.SmsInfoService;
@@ -28,9 +30,10 @@ public class SmsInfoController {
 
     @Autowired
     private SmsInfoService smsInfoService;
-
     @Autowired
     private SmsTempService smsTempService;
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView querySmsInfo(@RequestParam(value = "term", required = false) String term, @RequestParam(value = "currentPage", required = false) Integer currentPage, ModelAndView modelAndView) {
@@ -45,6 +48,14 @@ public class SmsInfoController {
             SmsInfo smsInfo = new SmsInfo();
             if (!ObjectUtils.isEmpty(invoiceId)) {
                 smsInfo.setInvoiceId(invoiceId);
+                Order order = orderService.queryOrderById(invoiceId);
+                smsInfo.setGoodsName(order.getGoodsName());
+                smsInfo.setGoodsModel(order.getSpec());
+                smsInfo.setContactId(order.getContactId());
+                smsInfo.setContactName(order.getContactName());
+                smsInfo.setGoodsId(order.getGoodsId());
+                smsInfo.setPhone(order.getMobile());
+                smsInfo.setBillDate(order.getBillDate());
             }
             modelAndView.addObject("smsInfo", smsInfo);
         } else {
@@ -93,7 +104,8 @@ public class SmsInfoController {
             return modelAndView;
         }
         smsInfoService.updateSmsInfo(smsInfo);
-        buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
+        modelAndView.addObject("smsInfo", smsInfo);
+        modelAndView.setViewName("info-add-success");
         return modelAndView;
     }
 

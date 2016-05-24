@@ -1,6 +1,7 @@
 package com.sms.bean;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -54,6 +55,7 @@ public class SmsInfo {
     //标示定时的类型
     private Integer smsType = null;
     //购买日期
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date billDate;
 
     public SmsInfo() {

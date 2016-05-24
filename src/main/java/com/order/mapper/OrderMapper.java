@@ -13,9 +13,11 @@ import java.util.List;
  */
 @Repository
 public interface OrderMapper extends SqlMapper {
-    List<Order> queryOrderByContactId(@Param(value = "contactId") Integer contactId, @Param(value = "pagination") Pagination pagination);
+    List<Order> queryOrderByContactId(@Param(value = "contactId") Integer contactId, @Param(value = "pagination") Pagination pagination, @Param(value = "order") Order order);
 
     int queryCountByContactId(@Param(value = "contactId") Integer contactId);
 
     int querySmsCount(@Param(value = "iid") Integer iid);
+
+    Order queryOrderById(@Param(value = "id") Integer id);
 }

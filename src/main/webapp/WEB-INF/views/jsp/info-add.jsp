@@ -23,10 +23,6 @@
   <div class="header">
     <div class="header-content">
       <h1>客户管理</h1>
-      <div class="header-name">
-        <img src="/resources/core/image/touxiang.png" alt=""/>
-        <span>zhouzhou</span>
-      </div>
     </div>
   </div>
   <!-- header-end -->
@@ -40,6 +36,7 @@
   </c:choose>
     <input name="id" type="hidden" value="${smsInfo.id}"/>
     <input name="invoiceId" type="hidden" value="${smsInfo.invoiceId}"/>
+    <input name="billDate" type="hidden" value="<fmt:formatDate value="${smsInfo.billDate}" pattern="yyyy-MM-dd HH:mm"/>"/>
     <h2>用户信息</h2>
     <table class="content-table">
       <tr>
@@ -69,19 +66,19 @@
       <tr>
         <th>产品ID:</th>
         <td>
-          <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}"/>
+          <input name="goodsId" class="invest-text" type="text" value="${smsInfo.goodsId}" readonly/>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.goodsId"/></td>
       </tr>
       <tr>
         <th>产品名称:</th>
         <td>
-          <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}"/>
+          <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}" readonly/>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
       </tr>
       <tr>
-        <th>产品型号:</th>
+        <th>产品规格:</th>
         <td>
           <input name="goodsModel" class="invest-text" type="text" value="${smsInfo.goodsModel}"/>
         </td>
@@ -125,7 +122,7 @@
         <th></th>
         <td>
           <input class="invest-submit" type="submit" value="保存"/>
-          <a class="back" href="#">返回</a>
+          <a class="back" href="javascript:history.go(-1);">返回</a>
         </td>
       </tr>
     </table>

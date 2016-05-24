@@ -22,11 +22,11 @@ public class OrderService {
     public static final Logger LOGGER = LoggerFactory.getLogger(OrderService.class);
 
     //根据contact id查询相关的订单记录
-    public List<Order> queryOrderByContactId(Integer contactId, Pagination pagination) {
+    public List<Order> queryOrderByContactId(Integer contactId, Pagination pagination, Order order) {
         LOGGER.debug("Start to query order list by contact id : " + contactId);
-        List<Order> orders = orderMapper.queryOrderByContactId(contactId, pagination);
-        for (Order order : orders) {
-            order.setSmsCount(orderMapper.querySmsCount(order.getId()));
+        List<Order> orders = orderMapper.queryOrderByContactId(contactId, pagination, order);
+        for (Order o : orders) {
+            o.setSmsCount(orderMapper.querySmsCount(o.getId()));
         }
         LOGGER.debug("End to query order list.");
         return orders;
@@ -37,5 +37,12 @@ public class OrderService {
         int count = orderMapper.queryCountByContactId(contactId);
         LOGGER.debug("End to query count of contact:" + contactId);
         return count;
+    }
+
+    public Order queryOrderById(Integer id) {
+        LOGGER.debug("Start to query order by id:" + id);
+        Order order = orderMapper.queryOrderById(id);
+        LOGGER.debug("End to query order by id:" + id);
+        return order;
     }
 }

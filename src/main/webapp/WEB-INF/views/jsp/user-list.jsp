@@ -10,7 +10,7 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="/resources/user-list/user-list.scss"/>
+    <link rel="stylesheet" href="/resources/user-list/user-list.css"/>
     <link rel="stylesheet" href="/resources/customer-list/customer-list.css"/>
 </head>
 <body>

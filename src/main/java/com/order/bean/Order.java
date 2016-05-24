@@ -17,6 +17,8 @@ public class Order {
     private Integer goodsId;
     //商品名称
     private String goodsName;
+    //商品规格
+    private String spec;
     //交易时间
     private Date billDate;
     //总数量
@@ -89,6 +91,9 @@ public class Order {
     }
 
     public Integer getQuantity() {
+        if (this.quantity == null) {
+            return null;
+        }
         return Math.abs(this.quantity);
     }
 
@@ -134,5 +139,13 @@ public class Order {
 
     public void setSalesMan(String salesMan) {
         this.salesMan = salesMan;
+    }
+
+    public String getSpec() {
+        return spec;
+    }
+
+    public void setSpec(String spec) {
+        this.spec = spec;
     }
 }

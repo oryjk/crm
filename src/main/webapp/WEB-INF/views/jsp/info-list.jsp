@@ -21,11 +21,6 @@
 <div class="header">
     <div class="header-content">
         <h1>客户管理</h1>
-
-        <div class="header-name">
-            <img src="/resources/core/image/touxiang.png" alt=""/>
-            <span>zhouzhou</span>
-        </div>
     </div>
 </div>
 <!-- header-end -->
@@ -35,7 +30,7 @@
 <div class="content">
     <div class="content-head">
         <div class="home-btn-box">
-            <a class="home-btn" href="#">首页</a>
+            <a class="home-btn" href="/contact/list">首页</a>
         </div>
         <div class="content-searchBox">
             <form action="/smsInfo/list" method="get">
@@ -71,10 +66,10 @@
                 <c:forEach items="${infoList}" var="info">
                     <tr class="list-top">
                         <td>${info.contactName}</td>
-                        <td>${info.mobile}</td>
+                        <td>${info.phone}</td>
                         <td>${info.goodsName}</td>
-                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
-                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${info.billDate}"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${info.sendDate}"/></td>
                         <td>
                             <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
                             <a class="list-delete" href="#">购买信息</a>
@@ -92,15 +87,18 @@
                 <td><a href="/smsInfo/list?term=${term}&currentPage=1">首页</a></td>
                 <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
             </c:if>
-
-            <c:forEach begin="1" end="${totalPage}" var="i">
-                <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
-            </c:forEach>
+            <c:if test="${totalPage>1}">
+                <c:forEach begin="1" end="${totalPage}" var="i">
+                    <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
+                </c:forEach>
+            </c:if>
             <c:if test="${currentPage<totalPage}">
                 <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
                 <td><a href=/smsInfo/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
             </c:if>
+            <c:if test="${totalPage>1}">
                 <td>共${totalPage}页</td>
+            </c:if>
 
         </tr>
     </table>

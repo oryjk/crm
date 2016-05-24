@@ -4,6 +4,8 @@ import com.contact.service.ContactService;
 import com.order.bean.Order;
 import com.order.service.OrderService;
 import com.utils.bean.Pagination;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,14 +28,36 @@ public class OrderController {
     private ContactService contactService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId, @RequestParam(value = "currentPage", required = false) Integer currentPage) {
+    ModelAndView listByContactId(ModelAndView modelAndView, @RequestParam Integer contactId, @RequestParam(value = "currentPage", required = false) Integer currentPage, @RequestParam(value = "term", required = false) String term, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "asc", required = false) boolean asc) {
+        Order order = new Order();
+        if (!ObjectUtils.isEmpty(term)) {
+            order.setContactName(term);
+            order.setGoodsName(term);
+            order.setSalesMan(term);
+            order.setSpec(term);
+            order.setMobile(term);
+            if (NumberUtils.isNumber(term)) {
+                long num = Long.parseLong(term);
+                order.setDeduction(num);
+                order.setPrice(num);
+                order.setTotalAmount(num);
+                order.setQuantity(Integer.parseInt(term));
+            }
+
+        }
         Pagination pagination = new Pagination();
         if (!ObjectUtils.isEmpty(currentPage)) {
             pagination.setCurrentPage(currentPage);
         }
+        if (StringUtils.isNotBlank(sortFieldName)) {
+            pagination.setSortFiledName(sortFieldName);
+        }
+        if (!asc) {
+            pagination.setAsc(false);
+        }
         pagination.setTotalAmount(orderService.queryCountByContactId(contactId));
         pagination.setPageSize(5);
-        List<Order> orders = orderService.queryOrderByContactId(contactId, pagination);
+        List<Order> orders = orderService.queryOrderByContactId(contactId, pagination, order);
         if (ObjectUtils.isEmpty(orders)) {
             modelAndView.setViewName("order-list-none");
         } else {
