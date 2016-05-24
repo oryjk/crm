@@ -45,5 +45,170 @@ $border-gray: #cccccc;
       }
     }
   }
-
 }
+
+@mixin detail-general() {
+  //作为titile用
+  h2{
+    margin-top: 50px;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #333;
+    font-weight: normal;
+  }
+
+  tr {
+    height: 55px;
+  }
+
+  th {
+    vertical-align: middle;
+    padding-right: 25px;
+    width: 123px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+
+    span {
+    }
+  }
+
+  td {
+    vertical-align: middle;
+    width: 350px;
+
+    &.wrong-text {
+      font-size: 14px;
+      width: 500px;
+      color: $vice-dark;
+    }
+  }
+
+  .textarea-row {
+    th {
+      padding-top: 20px;
+      vertical-align: top;
+    }
+
+    td {
+      padding-top: 10px;
+    }
+  }
+
+  input{
+    width: 300px;
+    height: 23px;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    &:focus{
+      border: 1px solid #81bbe1;
+    }
+  }
+
+  textarea{
+    width: 306px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize : none;
+
+    &[disabled] {
+      background: #f6f6f6;
+    }
+  }
+
+  .invest-wrong{
+    border: 1px solid $vice;
+  }
+}
+
+@mixin list-general() {
+  width: 1200px;
+  margin:  0 auto;
+  table-layout: fixed;
+  font-size: 14px;
+
+
+  td{
+    //width: 200px;
+    text-align: center;
+  }
+
+  .list-title{
+
+    td{
+      line-height: 60px;
+      height: 60px;
+      color: white;
+      background: #45a5e3;
+    }
+  }
+
+
+  .list-bottom,
+  .list-top{
+
+    td{
+      padding: 12px 0;
+      //height: 50px;
+      line-height: 25px;
+      color: #333;
+      background: #f3f3f3;
+    }
+
+    .list-delete{
+      padding: 3px;
+      height: 20px;
+      width: 10px;
+      color:#81bbe1 ;
+      font-size: 14px;
+
+      &:hover{
+        color: red;
+      }
+    }
+
+  }
+
+  .list-bottom{
+    td{
+      background:#e2ecf3 ;
+    }
+  }
+
+  .list-none{
+    margin-top: 100px;
+    width: 1200px;
+    height: 200px;
+    text-align: center;
+    line-height: 250px;
+    color: #666;
+    background: url("../core/image/list-none.png") no-repeat 300px center;
+  }
+
+  .sort-up {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/up.png");
+    &.sort-choose {
+      background: url("../core/image/up-now.png");
+    }
+  }
+
+  .sort-down {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/down.png");
+    &.sort-choose {
+      background: url("../core/image/down-now.png");
+    }
+  }
+}
+

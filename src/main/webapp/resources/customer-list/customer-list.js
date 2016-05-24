@@ -37,5 +37,5 @@ $(document).ready(function(){
         default:
             $("#pup").addClass("sort-choose");
     };
-})
+});
 

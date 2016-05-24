@@ -29,42 +29,46 @@
   <div class="content-name-in">用户姓名：<span>${contact.name}</span></div>
   <div class="content-name-phone">手机号：<span>${contact.mobile}</span></div>
 </div>
-<table class="content-list-menu">
-  <tr class="list-title">
-    <td>商品名称</td>
-    <td>销售人员</td>
-    <td class="list-time">交易日期</td>
-    <td>单价</td>
-    <td>数量</td>
-    <td>折扣额</td>
-    <td>总金额</td>
-    <td>短信操作</td>
-  </tr>
-</table>
+
 <table class="content-list">
-  <c:forEach var="order" items="${orderList}">
-  <tr class="list-all">
-    <td>
-      <span>${order.goodsName}</span>
-    </td>
-    <td>${order.salesMan}</td>
-    <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
-    <td class="list-red"><span>${order.price}</span></td>
-    <td>${order.quantity}</td>
-    <td>${order.deduction}</td>
-    <td>${order.totalAmount}</td>
-    <td>
-      <c:choose>
-        <c:when test="${order.smsCount<=0}">
-          <a href="/smsInfo/add?invoiceId=${order.id}">添加</a>
-        </c:when>
-        <c:otherwise>
-          <a href="/smsInfo/viewByIid?invoiceId=${order.id}">查看</a>
-        </c:otherwise>
-      </c:choose>
-    </td>
-  </tr>
-  </c:forEach>
+  <tbody>
+    <tr class="list-title">
+      <td>商品名称</td>
+      <td>销售人员</td>
+      <td class="list-time">交易日期</td>
+      <td>单价</td>
+      <td>数量</td>
+      <td>折扣额</td>
+      <td>总金额</td>
+      <td>短信操作</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <c:forEach var="order" items="${orderList}">
+      <tr class="list-all">
+        <td>
+          <span>${order.goodsName}</span>
+        </td>
+        <td>${order.salesMan}</td>
+        <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
+        <td class="list-red"><span>${order.price}</span></td>
+        <td>${order.quantity}</td>
+        <td>${order.deduction}</td>
+        <td>${order.totalAmount}</td>
+        <td>
+          <c:choose>
+            <c:when test="${order.smsCount<=0}">
+              <a href="/smsInfo/add?invoiceId=${order.id}" class="link-btn">添加</a>
+            </c:when>
+            <c:otherwise>
+              <a href="/smsInfo/viewByIid?invoiceId=${order.id}" class="link-btn">查看</a>
+            </c:otherwise>
+          </c:choose>
+        </td>
+      </tr>
+    </c:forEach>
+  </tbody>
+</table>
 <table class="list-page">
   <tr>
     <c:if test="${pagination.currentPage>1}">
