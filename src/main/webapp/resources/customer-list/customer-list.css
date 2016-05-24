@@ -175,7 +175,7 @@ a {
         font-size: 14px; }
         .header .header-content .header-handle a:hover {
           text-decoration: underline; }
-    .header .header-content .home {
+    .header .header-content .header-handle-item {
       margin-right: 10px; }
 
 /*style
@@ -200,7 +200,7 @@ a {
   background: #45a5e3; }
 
 .content-searchBox {
-  margin-left: 300px;
+  margin: 0 auto 30px;
   width: 660px; }
 
 .content-search {
