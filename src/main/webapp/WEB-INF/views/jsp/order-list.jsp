@@ -98,26 +98,28 @@
     </c:forEach>
   </tbody>
 </table>
-<table class="list-page">
-  <tr>
-    <c:if test="${pagination.currentPage>1}">
-      <td><a href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=${pagination.sortFiledName}&asc=${asc}">首页</a></td>
-      <td><a href="/order/list?contactId=${contact.id}&term=${term}&currentPage=${pagination.currentPage-1}&sortFieldName=${pagination.sortFiledName}&asc=${asc}">上一页</a></td>
-    </c:if>
+<div class="pager-box">
+  <table class="list-page">
+    <tr>
+      <c:if test="${pagination.currentPage>1}">
+        <td><a href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=${pagination.sortFiledName}&asc=${asc}">首页</a></td>
+        <td><a href="/order/list?contactId=${contact.id}&term=${term}&currentPage=${pagination.currentPage-1}&sortFieldName=${pagination.sortFiledName}&asc=${asc}">上一页</a></td>
+      </c:if>
 
-    <c:if test="${pagination.totalPage>1}">
-      <c:forEach begin="1" end="${pagination.totalPage}" var="i">
-        <td><a href="/order/list?contactId=${contact.id}&currentPage=${i}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}" <c:if test="${i==pagination.currentPage}">class="current-page"</c:if>>${i}</a></td>
-      </c:forEach>
-    </c:if>
-    <c:if test="${pagination.currentPage<pagination.totalPage}">
-      <td><a href="/order/list?contactId=${contact.id}&currentPage=${pagination.currentPage+1}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}">下一页</a></td>
-      <td><a href=/order/list?contactId=${contact.id}&currentPage=${pagination.totalPage}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}>尾页</a></td>
-    </c:if>
-    <c:if test="${pagination.totalPage>1}">
-      <td>共${pagination.totalPage}页</td>
-    </c:if>
-  </tr>
-</table>
+      <c:if test="${pagination.totalPage>1}">
+        <c:forEach begin="1" end="${pagination.totalPage}" var="i">
+          <td><a href="/order/list?contactId=${contact.id}&currentPage=${i}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}" <c:if test="${i==pagination.currentPage}">class="current-page"</c:if>>${i}</a></td>
+        </c:forEach>
+      </c:if>
+      <c:if test="${pagination.currentPage<pagination.totalPage}">
+        <td><a href="/order/list?contactId=${contact.id}&currentPage=${pagination.currentPage+1}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}">下一页</a></td>
+        <td><a href=/order/list?contactId=${contact.id}&currentPage=${pagination.totalPage}&term=${term}&sortFieldName=${pagination.sortFiledName}&asc=${asc}>尾页</a></td>
+      </c:if>
+      <c:if test="${pagination.totalPage>1}">
+        <td>共${pagination.totalPage}页</td>
+      </c:if>
+    </tr>
+  </table>
+</div>
 </body>
 </html>
