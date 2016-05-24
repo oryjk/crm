@@ -233,7 +233,8 @@ form {
   width: 306px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  resize: none; }
+  resize: none;
+  font-size: 14px; }
   .content-table textarea[disabled] {
     background: #f6f6f6; }
 
@@ -350,7 +351,8 @@ form {
     width: 306px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: none; }
+    resize: none;
+    font-size: 14px; }
     .add-template textarea[disabled] {
       background: #f6f6f6; }
   .add-template .invest-wrong {

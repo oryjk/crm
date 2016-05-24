@@ -224,11 +224,16 @@ form {
     width: 306px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: none; }
+    resize: none;
+    font-size: 14px; }
     form textarea[disabled] {
       background: #f6f6f6; }
   form .invest-wrong {
     border: 1px solid #f59a99; }
+
+td {
+  font-size: 14px;
+  color: #666; }
 
 .user-info {
   float: left; }
