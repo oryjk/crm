@@ -43,7 +43,7 @@
         <tr class="list-title">
             <td>用户姓名</td>
             <td>手机号码</td>
-            <td>产品名称</td>
+            <td style="width: 300px;">产品名称</td>
             <td>
                 购买日期
                 <a id="pup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=1"></a>
@@ -54,7 +54,7 @@
                 <a id="sup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=3"></a>
                 <a id="sdown" class="sort-down" href="/smsInfo/sortby?term=${term}&sort=4"></a>
             </td>
-            <td>操作</td>
+            <td style="width: 200px;">操作</td>
         </tr>
         <c:choose>
             <c:when test="${totalCount == 0}">
@@ -114,6 +114,6 @@
     </div>
 </div>
 </body>
-<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+<%--<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>--%>
 <script src="/resources/customer-list/customer-list.js"></script>
 </html>
