@@ -16,15 +16,9 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>客户管理</h1>
-    <div class="header-name">
-      <img src="/resources/core/image/touxiang.png" alt=""/>
-      <span>zhouzhou</span>
-    </div>
-  </div>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="模板编辑"/>
+</jsp:include>
 <!-- header-end -->
 <form action="/smsInfo/saveTemp" method="post">
   <c:choose>
@@ -58,7 +52,7 @@
       <th></th>
       <td>
         <input class="invest-submit" type="submit" value="保存"/>
-        <a class="back" href="#">返回</a>
+        <a class="back" href="javascript:history.go(-1)">返回</a>
       </td>
     </tr>
   </table>

@@ -16,16 +16,9 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>模板管理</h1>
-
-    <div class="header-name">
-      <img src="/resources/core/image/touxiang.png" alt=""/>
-      <span>zhouzhou</span>
-    </div>
-  </div>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="短信模板管理"/>
+</jsp:include>
 <!-- header-end -->
 
 <div class="content">
@@ -35,8 +28,15 @@
       <td>模板内容</td>
       <td>操作</td>
     </tr>
-    <c:forEach items="${smsTemps}" var="smsTemp">
-    <tr class="list-top">
+    <c:forEach items="${smsTemps}" var="smsTemp" varStatus="index">
+      <c:choose>
+        <c:when test="${index.count%2!=0}">
+          <tr class="list-top">
+        </c:when>
+        <c:otherwise>
+          <tr class="list-bottom">
+        </c:otherwise>
+      </c:choose>
       <td>${smsTemp.title}</td>
       <td class="list-template-content">${smsTemp.content}</td>
       <td>

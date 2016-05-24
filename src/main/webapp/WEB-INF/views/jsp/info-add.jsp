@@ -57,14 +57,14 @@
       <tr>
         <th>用户名称:</th>
         <td>
-          <input name="contactName" type="text" value="${smsInfo.contactName}"/>
+          ${smsInfo.contactName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.contactName"/></td>
       </tr>
       <tr>
         <th>手机号码:</th>
         <td>
-          <input name="phone" class="invest-text" type="text" value="${smsInfo.phone}"/>
+          ${smsInfo.phone}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
       </tr>
@@ -81,14 +81,14 @@
       <tr>
         <th>产品名称:</th>
         <td>
-          <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}" readonly/>
+          ${smsInfo.goodsName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
       </tr>
       <tr>
         <th>产品规格:</th>
         <td>
-          <input name="goodsModel" class="invest-text" type="text" value="${smsInfo.goodsModel}"/>
+          ${smsInfo.goodsModel}
         </td>
         <td class="wrong-text"></td>
       </tr>

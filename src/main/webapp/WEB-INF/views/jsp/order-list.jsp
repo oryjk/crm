@@ -62,10 +62,14 @@
       <td>总金额</td>
       <td>销售人员</td>
       <td class="list-time">交易日期
-        <a id="pup" class="sort-up" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=true"></a>
-        <a id="pdown" class="sort-down" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=false"></a>
+        <c:if test="${flag!='single'}">
+          <a id="pup" class="sort-up" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=true"></a>
+          <a id="pdown" class="sort-down" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=false"></a>
+        </c:if>
       </td>
+    <c:if test="${flag!='single'}">
       <td>短信操作</td>
+    </c:if>
     </tr>
     <c:forEach var="order" items="${orderList}" varStatus="index">
       <c:choose>
@@ -86,6 +90,7 @@
         <td>¥ ${order.totalAmount}</td>
         <td>${order.salesMan}</td>
         <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
+      <c:if test="${flag!='single'}">
         <td>
           <c:choose>
             <c:when test="${order.smsCount<=0}">
@@ -96,6 +101,7 @@
             </c:otherwise>
           </c:choose>
         </td>
+      </c:if>
       </tr>
     </c:forEach>
   </tbody>

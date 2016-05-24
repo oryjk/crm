@@ -20,7 +20,7 @@
 <body>
 <!-- header-begin -->
 <jsp:include page="header.jsp">
-    <jsp:param name="title" value="短信列表"/>
+    <jsp:param name="title" value="短信管理"/>
 </jsp:include>
 <!-- header-end -->
 
@@ -59,8 +59,15 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <c:forEach items="${infoList}" var="info">
-                    <tr class="list-top">
+                <c:forEach items="${infoList}" var="info" varStatus="index">
+                    <c:choose>
+                        <c:when test="${index.count%2!=0}">
+                            <tr class="list-top">
+                        </c:when>
+                        <c:otherwise>
+                            <tr class="list-bottom">
+                        </c:otherwise>
+                    </c:choose>
                         <td>${info.contactName}</td>
                         <td>${info.phone}</td>
                         <td>${info.goodsName}</td>
