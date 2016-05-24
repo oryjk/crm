@@ -26,8 +26,8 @@
 <!-- header-end -->
 <div class="content-name">
 
-  <div class="content-name-in">用户姓名：<span>${contact.name}</span></div>
-  <div class="content-name-phone">手机号：<span>${contact.mobile}</span></div>
+  <div class="content-name-in">客户姓名：<span>${contact.name}</span></div>
+  <div class="content-name-phone">联系方式：<span>${contact.mobile}</span></div>
 </div>
 
 <table class="content-list">
@@ -51,10 +51,10 @@
         </td>
         <td>${order.salesMan}</td>
         <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
-        <td class="list-red"><span>${order.price}</span></td>
+        <td class="list-red"><span>¥ ${order.price}</span></td>
         <td>${order.quantity}</td>
-        <td>${order.deduction}</td>
-        <td>${order.totalAmount}</td>
+        <td>¥ ${order.deduction}</td>
+        <td>¥ ${order.totalAmount}</td>
         <td>
           <c:choose>
             <c:when test="${order.smsCount<=0}">
@@ -78,7 +78,7 @@
 
     <c:if test="${pagination.totalPage>1}">
       <c:forEach begin="1" end="${pagination.totalPage}" var="i">
-        <td><a href="/order/list?contactId=${contact.id}&currentPage=${i}">${i}</a></td>
+        <td><a href="/order/list?contactId=${contact.id}&currentPage=${i}" <c:if test="${i==pagination.currentPage}">class="current-page"</c:if>>${i}</a></td>
       </c:forEach>
     </c:if>
     <c:if test="${pagination.currentPage<pagination.totalPage}">
