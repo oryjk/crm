@@ -13,7 +13,9 @@
     <h1><%=request.getParameter("title")%></h1>
 
     <div class="header-handle">
-      <a class="home" href="/contact/list">首页</a>
+      <a class="header-handle-item" href="/contact/list">短信模版列表</a>
+      <a class="header-handle-item" href="/contact/list">短信列表</a>
+      <a class="header-handle-item" href="/contact/list">首页</a>
       <a href="javascript:window.close();">关闭</a>
     </div>
   </div>
