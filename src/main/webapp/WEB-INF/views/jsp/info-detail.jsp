@@ -24,7 +24,7 @@
   <jsp:param name="title" value="短信详情"/>
 </jsp:include>
 <!-- header-end -->
-
+<input id="fromOrderPage" type="hidden" value="${fromOrderPage}"/>
 <form>
   <div class="user-info">
     <h2>用户信息</h2>

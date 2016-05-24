@@ -30,7 +30,7 @@ public class ContactController {
         if(!ObjectUtils.isEmpty(currentPage)){
             pagination.setCurrentPage(currentPage);
         }
-        pagination.setPageSize(2);
+        pagination.setPageSize(15);
 
         //根据term查询
         Contact contact = null;

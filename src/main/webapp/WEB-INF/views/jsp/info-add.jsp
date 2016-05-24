@@ -57,6 +57,7 @@
       <tr>
         <th>用户名称:</th>
         <td>
+          <input name="contactName" type="hidden" value="${smsInfo.contactName}"/>
           ${smsInfo.contactName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.contactName"/></td>
@@ -64,6 +65,7 @@
       <tr>
         <th>手机号码:</th>
         <td>
+          <input name="phone" type="hidden" value="${smsInfo.phone}"/>
           ${smsInfo.phone}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
@@ -81,6 +83,7 @@
       <tr>
         <th>产品名称:</th>
         <td>
+          <input name="goodsName" type="hidden" value="${smsInfo.goodsName}"/>
           ${smsInfo.goodsName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
@@ -88,6 +91,7 @@
       <tr>
         <th>产品规格:</th>
         <td>
+          <input name="goodsModel" type="hidden" value="${smsInfo.goodsModel}"/>
           ${smsInfo.goodsModel}
         </td>
         <td class="wrong-text"></td>

@@ -91,9 +91,14 @@ public class SmsInfoController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public ModelAndView delete(ModelAndView modelAndView, @RequestParam Integer id) {
+    public ModelAndView delete(ModelAndView modelAndView, @RequestParam Integer id, @RequestParam(value = "fromOrderPage", required = false) Boolean fromOrderPage) {
+        SmsInfo info = smsInfoService.querySmsInfoById(id);
         smsInfoService.deleteSmsInfo(id);
-        buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
+        if (fromOrderPage != null && fromOrderPage.booleanValue() == true) {
+            modelAndView.setViewName("redirect:/order/list?contactId=" + info.getContactId());
+        } else {
+            buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
+        }
         return modelAndView;
     }
 
@@ -127,6 +132,7 @@ public class SmsInfoController {
     @RequestMapping(value = "viewByIid", method = RequestMethod.GET)
     public ModelAndView viewSmsInfoByInvoiceId(ModelAndView modelAndView, @RequestParam Integer invoiceId) {
         modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoByInvoiceId(invoiceId));
+        modelAndView.addObject("fromOrderPage", true);
         modelAndView.setViewName("info-detail");
         return modelAndView;
     }
@@ -205,6 +211,7 @@ public class SmsInfoController {
             currentPage = 1;
         }
         pagination.setCurrentPage(1);
+        pagination.setPageSize(15);
 
         //总条数
         int totalCount = smsTempService.querySmsTempCount();
@@ -251,6 +258,7 @@ public class SmsInfoController {
             currentPage = 1;
         }
         pagination.setCurrentPage(currentPage);
+        pagination.setPageSize(15);
 
         //总条数
         int totalCount = smsInfoService.querySmsInfoCount(smsInfo);

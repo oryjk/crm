@@ -58,7 +58,7 @@
       <td>${contact.level}</td>
       <td>${contact.address}</td>
       <td>
-        <a class="look-buy-list" href="/order/list?contactId=${contact.id}">查看</a>
+        <a class="look-buy-list link-btn" href="/order/list?contactId=${contact.id}">查看</a>
       </td>
     </tr>
     </c:forEach>

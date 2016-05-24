@@ -61,7 +61,7 @@
     </div>
     <!--请在下面连接中写入跳转连接,并在js中添加地址-->
     <input type="hidden" id="contactId" value="${smsInfo.contactId}"/>
-    <div class="info-content"><span id="time">5</span>秒后跳转到<a href="/order/list?contactId=${smsInfo.contactId}">客户购买</a> 页面</div>
+    <div class="info-content"><span id="time">5</span>秒后跳转到 <a href="/order/list?contactId=${smsInfo.contactId}">客户购买列表</a> 页面</div>
   </div>
 
   <script>

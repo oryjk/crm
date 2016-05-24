@@ -2,13 +2,14 @@
  * Created by zhoujialiang on 16/5/9.
  */
 
-$(document).ready(function(){
+$(document).ready(function () {
     var sort = $("#sort").attr('value');
+    var fromOrderPage = $("#fromOrderPage").attr('value');
     var id;
 
     $('.list-sure-btn1').click(function () {
         //请在此处写上具体的url
-        window.location = '/smsInfo/delete?id=' + id;
+        window.location = '/smsInfo/delete?id=' + id + "&fromOrderPage=" + fromOrderPage;
     });
 
     $(".list-sure-btn2").click(function () {
@@ -21,7 +22,7 @@ $(document).ready(function(){
         $("#listSure").show(100);
     });
 
-    switch(sort) {
+    switch (sort) {
         case "1":
             $("#pup").addClass("sort-choose");
             break;
@@ -36,6 +37,7 @@ $(document).ready(function(){
             break;
         default:
             $("#pup").addClass("sort-choose");
-    };
+    }
+    ;
 });
 
