@@ -117,7 +117,7 @@
       <tr class="textarea-row">
         <th>发送短信内容:</th>
         <td>
-          <textarea id="messageTemple" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
+          <textarea id="messageTemple" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200" disabled>${smsInfo.smsContent}</textarea>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.smsContent"/></td>
       </tr>
