@@ -181,66 +181,83 @@ a {
 /* style
 *****************************/
 form {
-  width: 1200px;
-  margin: 45px auto;
-  table-layout: fixed; }
+  width: 996px;
+  margin: 0 auto 20px; }
+  form h2 {
+    margin-top: 50px;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #333;
+    font-weight: normal; }
+  form tr {
+    height: 55px; }
+  form th {
+    vertical-align: middle;
+    padding-right: 25px;
+    width: 123px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666; }
+  form td {
+    vertical-align: middle;
+    width: 350px; }
+    form td.wrong-text {
+      font-size: 14px;
+      width: 500px;
+      color: #fb6666; }
+  form .textarea-row th {
+    padding-top: 20px;
+    vertical-align: top; }
+  form .textarea-row td {
+    padding-top: 10px; }
+  form input[type=text] {
+    width: 300px;
+    height: 23px;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px; }
+    form input[type=text]:focus {
+      border: 1px solid #81bbe1; }
+  form textarea {
+    width: 306px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; }
+    form textarea[disabled] {
+      background: #f6f6f6; }
+  form .invest-wrong {
+    border: 1px solid #f59a99; }
 
-.content-table {
-  margin-top: 30px;
-  margin-left: 100px; }
-  .content-table tr {
-    height: 75px; }
+.user-info {
+  float: left; }
 
-h2 {
-  margin-top: 80px;
-  padding-left: 50px;
-  font-size: 20px;
-  color: #333;
-  font-weight: normal; }
+.product-info {
+  float: left; }
 
-th {
-  vertical-align: middle;
-  padding-right: 25px;
-  width: 123px;
-  text-align: right;
-  font-size: 16px;
-  font-weight: normal;
-  color: #666; }
+.handle-box {
+  padding-top: 20px;
+  clear: both; }
 
-td {
-  font-size: 15px;
-  color: #333;
-  vertical-align: middle;
-  width: 400px; }
+.handle-btn-box {
+  margin-right: 100px;
+  border-top: 1px dotted #ccc;
+  padding: 20px 100px 0 0;
+  text-align: right; }
 
-input {
-  width: 300px;
-  height: 38px;
-  border: 1px solid #ccc; }
-  input:focus {
-    border: 1px solid #81bbe1; }
-
-textarea {
-  width: 300px;
-  border: 1px solid #ccc;
-  resize: none; }
-
-.invest-wrong {
-  border: 1px solid #f59a99; }
-
+.delete-btn,
 .invest-submit {
-  float: left;
-  padding: 0;
-  margin-right: 30px;
-  width: 150px;
-  height: 32px;
-  font-size: 18px;
-  border: none;
-  background: #81bbe1;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
-  cursor: pointer;
-  text-align: center;
-  line-height: 30px; }
+  background: #81bbe1; }
+  .delete-btn:hover,
+  .invest-submit:hover {
+    background: #45a5e3; }
 
 .list-sure {
   position: fixed;

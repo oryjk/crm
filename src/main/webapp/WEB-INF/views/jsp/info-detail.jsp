@@ -24,6 +24,7 @@
   <jsp:param name="title" value="短信详情"/>
 </jsp:include>
 <!-- header-end -->
+<div class="user-info">
   <h2>用户信息</h2>
   <table class="content-table">
     <tr>
@@ -37,8 +38,10 @@
     <tr>
       <th>手机号码:</th>
       <td>${smsInfo.phone}</td>
-  </tr>
+    </tr>
   </table>
+</div>
+<div class="product-info">
   <h2>产品信息</h2>
   <table class="content-table">
     <tr>
@@ -58,24 +61,20 @@
       <th>发送短信时间:</th>
       <td><fmt:formatDate value="${smsInfo.sendDate}" pattern="yyyy-MM-dd"/></td>
     </tr>
-    <tr>
+    <tr class="textarea-row">
       <th>发送短信内容:</th>
       <td class="mes-content" style="display: block">${smsInfo.smsContent}</td>
     </tr>
-    <tr class="invest-new">
-      <th></th>
-      <td>
-        <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
-        <a href="javascript:void(0)" data-value="${smsInfo.id}" id="invest-delete" class="invest-submit delete-btn">删除</a>
-      </td>
-    </tr>
-    <tr>
-      <th></th>
-      <td>
-        <a class="back" href="javascript:history.go(-1);">返回</a>
-      </td>
-    </tr>
   </table>
+</div>
+<div class="handle-box">
+  <div class="handle-btn-box">
+    <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
+    <a href="javascript:void(0)" data-value="${smsInfo.id}" id="invest-delete" class="delete-btn">删除</a>
+    <a class="back" href="javascript:history.go(-1);">返回</a>
+  </div>
+
+</div>
   <div id="listSure" class="list-sure" style="display: none">
     <div class="list-sure-title"></div>
     <div class="list-sure-content">

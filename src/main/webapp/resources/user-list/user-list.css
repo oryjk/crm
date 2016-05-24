@@ -200,7 +200,7 @@ a {
   background: #45a5e3; }
 
 .content-searchBox {
-  float: right;
+  margin: 0 auto 30px;
   width: 660px; }
 
 .content-search {
@@ -209,12 +209,17 @@ a {
   width: 600px;
   height: 40px;
   padding: 5px 10px; }
+  .content-search:focus {
+    border-color: #81bbe1; }
 
 .content-search-btn {
   border: none;
   width: 60px;
   height: 40px;
-  background: #d0e4f2 url("../core/image/search.png") no-repeat center center; }
+  background: #81bbe1 url("../core/image/search.png") no-repeat center center; }
+  .content-search-btn:hover {
+    background-color: #45a5e3;
+    cursor: pointer; }
 
 .content-list {
   width: 1200px;
