@@ -131,19 +131,6 @@
   }
 }
 
-.list-page{
-  margin-top: 50px;
-  float: right;
-
-  td{
-    padding: 0 10px;
-
-    a{
-      color: #333;
-    }
-  }
-}
-
 .list-none{
   margin-top: 100px;
   width: 1200px;
@@ -161,5 +148,9 @@
   line-height: 1.2 !important;
 }
 
+
+.list-page{
+  @include pager;
+}
 
 

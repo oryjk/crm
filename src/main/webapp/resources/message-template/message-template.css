@@ -264,14 +264,6 @@ a {
   .list-sure .list-sure-btn .list-sure-btn2 {
     margin-left: 40px; }
 
-.list-page {
-  margin-top: 50px;
-  float: right; }
-  .list-page td {
-    padding: 0 10px; }
-    .list-page td a {
-      color: #333; }
-
 .list-none {
   margin-top: 100px;
   width: 1200px;
@@ -286,3 +278,18 @@ a {
   text-align: left !important;
   font-size: 14px;
   line-height: 1.2 !important; }
+
+.list-page {
+  margin-top: 50px;
+  float: right; }
+  .list-page td {
+    padding: 0 10px; }
+    .list-page td a {
+      color: #333; }
+      .list-page td a:hover {
+        text-decoration: underline; }
+      .list-page td a.current-page {
+        color: #45a5e3; }
+        .list-page td a.current-page:hover {
+          text-decoration: none;
+          cursor: default; }
