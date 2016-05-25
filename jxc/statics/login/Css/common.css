@@ -300,15 +300,15 @@ div.untreated .RelevanState{ color:#82d156}
 
 /*登录*/
 .LoginBox{ width:400px; margin-left:auto; margin-right:auto; margin-top:10px;}
-.LoginLog{ height:224px; background:url(../Images/loginlogo.png) no-repeat left top;}
+.LoginLog{ height:224px; background:url(../Images/loginlogo.gif) no-repeat 70px 130px;}
 .Loginc{  height:153px; background:url(../Images/loginbox.png) no-repeat left top; margin-top:20px;}
-.loginBtn{ width:400px; height:60px; background:url(../Images/loginbtn.png) no-repeat left top; border:none; background-color:transparent; cursor:pointer}
+.loginBtn{ width:400px; height:60px; background:url(../Images/loginbtn2.png) no-repeat left top; border:none; background-color:transparent; cursor:pointer}
 .checkboxfalse{ height:29px; display:block; background:url(../Images/checkbox.png) no-repeat left top; cursor:pointer; padding-left:40px; line-height:29px; font-size:16px; font-weight:bold}
 .checkboxtrue{ height:29px; display:block; background:url(../Images/checkboxtrue.png) no-repeat left top; cursor:pointer; padding-left:40px; line-height:29px; font-size:16px; font-weight:bold}
 .logininput{ height:60px; margin-top:10px; width:280px; background-color:transparent; font-size:20px;}
 .loginInputc{ margin-left:95px;}
-.checkMMBox{ clear:both; margin-top:40px;}
-.LoginBtn{ margin-top:35px;}
+.checkMMBox{ clear:both; margin:30px 0 0 270px;}
+.LoginBtn{ margin-top:25px;}
 .Cytr{ margin-top:20px; line-height:24px; color:#4989f1; font-size:18px;}
 /*来访*/
 /* .select222{height:50px; background:url(../Images/select222.png) no-repeat left top; line-height:50px;}
