@@ -41,17 +41,19 @@
 
   <div class="content-name-in">客户姓名：<span>${contact.name}</span></div>
   <div class="content-name-phone">联系方式：<span>${contact.mobile}</span></div>
-  <div class="content-name-category">分类：<span>帅哥dasd</span></div>
-  <div class="content-name-level">级别：<span>2</span></div>
-  <div class="content-name-number">编号：<span>22000002</span></div>
+  <div class="content-name-category">客户分类：<span>${contact.category}</span></div>
+  <div class="content-name-level">客户级别：<span>${contact.level}</span></div>
+  <div class="content-name-number">编号：<span>${contact.number}</span></div>
 </div>
-<div class="content-searchBox">
-  <form action="/order/list" method="get">
-    <input type="hidden" name="contactId" value="${contact.id}"/>
-    <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
-    <button class="content-search-btn" type="submit"></button>
-  </form>
-</div>
+<c:if test="${flag!='single'}">
+  <div class="content-searchBox">
+    <form action="/order/list" method="get">
+      <input type="hidden" name="contactId" value="${contact.id}"/>
+      <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
+      <button class="content-search-btn" type="submit"></button>
+    </form>
+  </div>
+</c:if>
 <table class="content-list">
   <tbody>
     <tr class="list-title">
@@ -63,10 +65,14 @@
       <td>总金额</td>
       <td>销售人员</td>
       <td class="list-time">交易日期
-        <a id="pup" class="sort-up" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=true"></a>
-        <a id="pdown" class="sort-down" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=false"></a>
+        <c:if test="${flag!='single'}">
+          <a id="pup" class="sort-up" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=true"></a>
+          <a id="pdown" class="sort-down" href="/order/list?contactId=${contact.id}&term=${term}&currentPage=1&sortFieldName=billDate&asc=false"></a>
+        </c:if>
       </td>
+    <c:if test="${flag!='single'}">
       <td>短信操作</td>
+    </c:if>
     </tr>
     <c:forEach var="order" items="${orderList}" varStatus="index">
       <c:choose>
@@ -87,16 +93,18 @@
         <td>¥ ${order.totalAmount}</td>
         <td>${order.salesMan}</td>
         <td class="list-time"><fmt:formatDate value="${order.billDate}" pattern="yyyy-MM-dd"/></td>
+      <c:if test="${flag!='single'}">
         <td>
           <c:choose>
             <c:when test="${order.smsCount<=0}">
-              <a href="/smsInfo/add?invoiceId=${order.id}" class="link-btn">添加</a>
+              <a href="/smsInfo/add?invoiceId=${order.id}&fromOrderPage=true" class="link-btn">添加</a>
             </c:when>
             <c:otherwise>
               <a href="/smsInfo/viewByIid?invoiceId=${order.id}" class="link-btn">查看</a>
             </c:otherwise>
           </c:choose>
         </td>
+      </c:if>
       </tr>
     </c:forEach>
   </tbody>

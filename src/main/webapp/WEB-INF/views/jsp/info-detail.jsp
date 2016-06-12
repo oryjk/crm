@@ -20,14 +20,11 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>客户管理</h1>
-  </div>
-  <a href="/contact/list">首页</a>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="短信详情"/>
+</jsp:include>
 <!-- header-end -->
-
+<input id="fromOrderPage" type="hidden" value="${fromOrderPage}"/>
 <form>
   <div class="user-info">
     <h2>用户信息</h2>
@@ -74,8 +71,8 @@
   </div>
   <div class="handle-box">
     <div class="handle-btn-box">
-      <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
-      <a href="javascript:void(0)" data-value="${smsInfo.id}" id="invest-delete" class="delete-btn">删除</a>
+      <a href="/smsInfo/add?id=${smsInfo.id}&fromOrderPage=${fromOrderPage}" class="invest-submit">修改</a>
+      <a href="javascript:void(0)" data-value="${smsInfo.id}&fromOrderPage=${fromOrderPage}" id="invest-delete" class="delete-btn">删除</a>
       <a class="back" href="javascript:history.go(-1);">返回</a>
     </div>
 

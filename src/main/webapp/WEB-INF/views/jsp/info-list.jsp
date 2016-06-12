@@ -19,20 +19,15 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-    <div class="header-content">
-        <h1>客户管理</h1>
-    </div>
-</div>
+<jsp:include page="header.jsp">
+    <jsp:param name="title" value="短信管理"/>
+</jsp:include>
 <!-- header-end -->
 
 
 <input id="sort" type="hidden" value="${sort}"/>
 <div class="content">
     <div class="content-head">
-        <div class="home-btn-box">
-            <a class="home-btn" href="/contact/list">首页</a>
-        </div>
         <div class="content-searchBox">
             <form action="/smsInfo/list" method="get">
                 <input class="content-search" name="term" value="${term}" type="search" placeholder="请输入搜索信息">
@@ -44,7 +39,7 @@
         <tr class="list-title">
             <td>用户姓名</td>
             <td>手机号码</td>
-            <td style="width: 300px;">产品名称</td>
+            <td style="width: 200px;">产品名称</td>
             <td>
                 购买日期
                 <a id="pup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=1"></a>
@@ -60,12 +55,19 @@
         <c:choose>
             <c:when test="${totalCount == 0}">
                 <div class="content">
-                    <div class="list-none">很遗憾，没有相关的购买记录</div>
+                    <div class="list-none">很遗憾，没有相关的短信记录</div>
                 </div>
             </c:when>
             <c:otherwise>
-                <c:forEach items="${infoList}" var="info">
-                    <tr class="list-top">
+                <c:forEach items="${infoList}" var="info" varStatus="index">
+                    <c:choose>
+                        <c:when test="${index.count%2!=0}">
+                            <tr class="list-top">
+                        </c:when>
+                        <c:otherwise>
+                            <tr class="list-bottom">
+                        </c:otherwise>
+                    </c:choose>
                         <td>${info.contactName}</td>
                         <td>${info.phone}</td>
                         <td>${info.goodsName}</td>
@@ -73,8 +75,8 @@
                         <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${info.sendDate}"/></td>
                         <td>
                             <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
-                            <a class="list-delete" href="#">购买信息</a>
-                            <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${info.id}">删除</a>
+                            <a class="list-delete" href="/order/listById?id=${info.invoiceId}">购买信息</a>
+                            <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${info.id}&fromOrderPage=false">删除</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -90,7 +92,7 @@
             </c:if>
             <c:if test="${totalPage>1}">
                 <c:forEach begin="1" end="${totalPage}" var="i">
-                    <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
+                    <td><a <c:if test="${i==currentPage}">class="current-page"</c:if> href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
                 </c:forEach>
             </c:if>
             <c:if test="${currentPage<totalPage}">
@@ -115,6 +117,6 @@
     </div>
 </div>
 </body>
-<%--<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>--%>
+<script src="/resources/core/jq/jquery-1.11.1.js"></script>
 <script src="/resources/customer-list/customer-list.js"></script>
 </html>

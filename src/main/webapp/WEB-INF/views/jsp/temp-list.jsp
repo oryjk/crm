@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -16,36 +17,64 @@
 </head>
 <body>
 <!-- header-begin -->
-<div class="header">
-  <div class="header-content">
-    <h1>模板管理</h1>
-
-    <div class="header-name">
-      <img src="/resources/core/image/touxiang.png" alt=""/>
-      <span>zhouzhou</span>
-    </div>
-  </div>
-</div>
+<jsp:include page="header.jsp">
+  <jsp:param name="title" value="短信模板管理"/>
+</jsp:include>
 <!-- header-end -->
 
 <div class="content">
+  <div><a class="add-template" href="/smsInfo/addOrUpdateTemp">新增模板</a></div>
+  <c:if test="${smsTemps==null || fn:length(smsTemps)==0}">
+    <div class="content-list">
+      <div class="list-none">很遗憾，您还没有短信模板哦</div>
+    </div>
+  </c:if>
+  <c:if test="${smsTemps!=null && fn:length(smsTemps)>0}">
   <table class="content-list">
     <tr class="list-title">
       <td>模板名字</td>
       <td style="width: 600px;">模板内容</td>
       <td>操作</td>
     </tr>
-    <c:forEach items="${smsTemps}" var="smsTemp">
-    <tr class="list-top">
+    <c:forEach items="${smsTemps}" var="smsTemp" varStatus="index">
+      <c:choose>
+        <c:when test="${index.count%2!=0}">
+          <tr class="list-top">
+        </c:when>
+        <c:otherwise>
+          <tr class="list-bottom">
+        </c:otherwise>
+      </c:choose>
       <td>${smsTemp.title}</td>
       <td class="list-template-content">${smsTemp.content}</td>
       <td>
-        <a class="list-modify" href="/smsInfo/addOrUpdateTemp?id=${smsTemp.id}">修改</a>
+        <a class="list-delete link-btn" href="/smsInfo/addOrUpdateTemp?id=${smsTemp.id}">修改</a>
         <!--supersoup: data-value为id号-->
-        <a class="list-delete" href="#" data-value="${smsTemp.id}">删除</a>
+        <a class="list-delete link-btn" href="#" data-value="${smsTemp.id}">删除</a>
       </td>
     </tr>
     </c:forEach>
+  </table>
+  <table class="list-page">
+    <tr>
+      <c:if test="${currentPage>1}">
+        <td><a href="/smsInfo//listTemp?currentPage=1">首页</a></td>
+        <td><a href="/smsInfo//listTemp?currentPage=${currentPage-1}">上一页</a></td>
+      </c:if>
+
+      <c:if test="${totalPage>1}">
+        <c:forEach begin="1" end="${totalPage}" var="i">
+          <td><a <c:if test="${i==currentPage}">class="current-page"</c:if> href="/smsInfo//listTemp?currentPage=${i}">${i}</a></td>
+        </c:forEach>
+      </c:if>
+      <c:if test="${currentPage<totalPage}">
+        <td><a href="/smsInfo//listTemp?currentPage=${currentPage+1}">下一页</a></td>
+        <td><a href="/smsInfo//listTemp?currentPage=${totalPage}">尾页</a></td>
+      </c:if>
+      <c:if test="${totalPage>1}">
+        <td>共${totalPage}页</td>
+      </c:if>
+    </tr>
   </table>
   <div id="listSure" class="list-sure" style="display: none">
     <div class="list-sure-title"></div>
@@ -58,6 +87,7 @@
     </div>
   </div>
 </div>
+</c:if>
 <script src="/resources/core/jq/jquery-1.11.1.js"></script>
 <script src="/resources/message-template/message-template.js"></script>
 </body>

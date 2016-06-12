@@ -2,7 +2,7 @@
  * Created by zhoujialiang on 16/5/9.
  */
 
-$(document).ready(function(){
+$(document).ready(function () {
     var sort = $("#sort").attr('value');
     var id;
 
@@ -21,7 +21,7 @@ $(document).ready(function(){
         $("#listSure").show(100);
     });
 
-    switch(sort) {
+    switch (sort) {
         case "1":
             $("#pup").addClass("sort-choose");
             break;
@@ -36,6 +36,7 @@ $(document).ready(function(){
             break;
         default:
             $("#pup").addClass("sort-choose");
-    };
+    }
+    ;
 });
 

@@ -39,6 +39,11 @@
 				</if>
 			</if>
 	</select>
+
+	<select id="queryById" parameterType="int" resultMap="orderMap">
+		<include refid="orderQuery"/> AND cii.id=#{id}
+	</select>
+
 	<select id="querySmsCount" resultType="int" parameterType="int">
 		SELECT count(*) FROM ci_sms_info WHERE invoice_id=#{iid}
 	</select>

@@ -24,12 +24,12 @@
     <c:choose>
       <c:when test="${smsInfo.id==null}">
         <jsp:include page="header.jsp">
-          <jsp:param name="title" value="新增短信页面"/>
+          <jsp:param name="title" value="新增短信"/>
         </jsp:include>
       </c:when>
       <c:otherwise>
         <jsp:include page="header.jsp">
-          <jsp:param name="title" value="修改短信页面"/>
+          <jsp:param name="title" value="修改短信"/>
         </jsp:include>
       </c:otherwise>
     </c:choose>
@@ -42,6 +42,7 @@
       <form action="/smsInfo/update" method="post"/>
     </c:otherwise>
   </c:choose>
+    <input name="fromOrderPage" type="hidden" value="${fromOrderPage}"/>
     <input name="id" type="hidden" value="${smsInfo.id}"/>
     <input name="invoiceId" type="hidden" value="${smsInfo.invoiceId}"/>
     <input name="billDate" type="hidden" value="<fmt:formatDate value="${smsInfo.billDate}" pattern="yyyy-MM-dd HH:mm"/>"/>
@@ -57,14 +58,16 @@
       <tr>
         <th>用户名称:</th>
         <td>
-          <input name="contactName" type="text" value="${smsInfo.contactName}"/>
+          <input name="contactName" type="hidden" value="${smsInfo.contactName}"/>
+          ${smsInfo.contactName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.contactName"/></td>
       </tr>
       <tr>
         <th>手机号码:</th>
         <td>
-          <input name="phone" class="invest-text" type="text" value="${smsInfo.phone}"/>
+          <input name="phone" type="hidden" value="${smsInfo.phone}"/>
+          ${smsInfo.phone}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.phone"/></td>
       </tr>
@@ -81,14 +84,16 @@
       <tr>
         <th>产品名称:</th>
         <td>
-          <input name="goodsName" class="invest-address-text" type="text" value="${smsInfo.goodsName}" readonly/>
+          <input name="goodsName" type="hidden" value="${smsInfo.goodsName}"/>
+          ${smsInfo.goodsName}
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.goodsName"/></td>
       </tr>
       <tr>
         <th>产品规格:</th>
         <td>
-          <input name="goodsModel" class="invest-text" type="text" value="${smsInfo.goodsModel}"/>
+          <input name="goodsModel" type="hidden" value="${smsInfo.goodsModel}"/>
+          ${smsInfo.goodsModel}
         </td>
         <td class="wrong-text"></td>
       </tr>
@@ -117,7 +122,7 @@
       <tr class="textarea-row">
         <th>发送短信内容:</th>
         <td>
-          <textarea id="messageTemple" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200" disabled>${smsInfo.smsContent}</textarea>
+          <textarea id="messageTemple" name="smsContent" cols="30" rows="10" placeholder="" maxlength="200">${smsInfo.smsContent}</textarea>
         </td>
         <td class="wrong-text"><form:errors path="smsInfo.smsContent"/></td>
       </tr>

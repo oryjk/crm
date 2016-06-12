@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -21,6 +22,13 @@
 </jsp:include>
 <!-- header-end -->
 
+<c:if test="${contactList==null || fn:length(contactList)==0}">
+  <div class="content-list">
+    <div class="list-none">很遗憾，您还没有客户信息哦</div>
+  </div>
+</c:if>
+
+<c:if test="${contactList!=null && fn:length(contactList)>0}">
 <div class="content">
   <div class="content-head">
     <div class="content-searchBox">
@@ -58,7 +66,7 @@
       <td>${contact.level}</td>
       <td>${contact.address}</td>
       <td>
-        <a class="look-buy-list" href="/order/list?contactId=${contact.id}">查看</a>
+        <a class="look-buy-list link-btn" href="/order/list?contactId=${contact.id}">查看</a>
       </td>
     </tr>
     </c:forEach>
@@ -77,7 +85,7 @@
       </c:if>
       <c:if test="${pagination.currentPage<pagination.totalPage}">
         <td><a href="/contact/list?term=${term}&currentPage=${pagination.currentPage+1}">下一页</a></td>
-        <td><a href=/contact/list?term=${term}&currentPage=${pagination.totalPage}>尾页</a></td>
+        <td><a href="/contact/list?term=${term}&currentPage=${pagination.totalPage}">尾页</a></td>
       </c:if>
       <c:if test="${pagination.totalPage>1}">
         <td>共${pagination.totalPage}页</td>
@@ -85,6 +93,7 @@
     </tr>
   </table>
 </div>
+</c:if>
 </body>
 <script src="/resources/customer-list/customer-list.js"/>
 </html>
