@@ -24,12 +24,12 @@
     <c:choose>
       <c:when test="${smsInfo.id==null}">
         <jsp:include page="header.jsp">
-          <jsp:param name="title" value="新增短信页面"/>
+          <jsp:param name="title" value="新增短信"/>
         </jsp:include>
       </c:when>
       <c:otherwise>
         <jsp:include page="header.jsp">
-          <jsp:param name="title" value="修改短信页面"/>
+          <jsp:param name="title" value="修改短信"/>
         </jsp:include>
       </c:otherwise>
     </c:choose>
@@ -42,6 +42,7 @@
       <form action="/smsInfo/update" method="post"/>
     </c:otherwise>
   </c:choose>
+    <input name="fromOrderPage" type="hidden" value="${fromOrderPage}"/>
     <input name="id" type="hidden" value="${smsInfo.id}"/>
     <input name="invoiceId" type="hidden" value="${smsInfo.invoiceId}"/>
     <input name="billDate" type="hidden" value="<fmt:formatDate value="${smsInfo.billDate}" pattern="yyyy-MM-dd HH:mm"/>"/>

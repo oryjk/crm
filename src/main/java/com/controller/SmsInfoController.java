@@ -44,7 +44,7 @@ public class SmsInfoController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "invoiceId", required = false) Integer invoiceId) {
+    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "invoiceId", required = false) Integer invoiceId, @RequestParam(value = "fromOrderPage", required = false) Boolean fromOrderPage) {
         if (id == null) {
             SmsInfo smsInfo = new SmsInfo();
             if (!ObjectUtils.isEmpty(invoiceId)) {
@@ -62,13 +62,14 @@ public class SmsInfoController {
         } else {
             modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
         }
+        modelAndView.addObject("fromOrderPage", fromOrderPage);
         modelAndView.addObject("temps", smsTempService.queryAllTemp());
         modelAndView.setViewName("info-add");
         return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+    public ModelAndView saveSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult, @RequestParam(value = "fromOrderPage", required = false) Boolean fromOrderPage) {
         if (bindingResult.hasErrors()) {
             modelAndView.addObject("smsInfo", smsInfo);
             modelAndView.addObject("temps", smsTempService.queryAllTemp());
@@ -80,6 +81,7 @@ public class SmsInfoController {
             modelAndView.addObject("smsInfo", smsInfo);
             modelAndView.setViewName("info-add-success");
         }
+        modelAndView.addObject("fromOrderPage", fromOrderPage);
         return modelAndView;
     }
 
@@ -103,21 +105,22 @@ public class SmsInfoController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public ModelAndView update(ModelAndView modelAndView, SmsInfo smsInfo) {
+    public ModelAndView update(ModelAndView modelAndView, SmsInfo smsInfo, @RequestParam(value = "fromOrderPage", required = false) Boolean fromOrderPage) {
         modelAndView.addObject("smsInfo", smsInfo);
+        modelAndView.addObject("fromOrderPage", fromOrderPage);
         modelAndView.setViewName("info-add");
         return modelAndView;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ModelAndView updateSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult) {
+    public ModelAndView updateSmsInfo(ModelAndView modelAndView, @Validated SmsInfo smsInfo, BindingResult bindingResult, @RequestParam(value = "fromOrderPage", required = false) Boolean fromOrderPage) {
+        modelAndView.addObject("fromOrderPage", fromOrderPage);
+        modelAndView.addObject("smsInfo", smsInfo);
         if (bindingResult.hasErrors()) {
-            modelAndView.addObject("smsInfo", smsInfo);
             modelAndView.setViewName("info-add");
             return modelAndView;
         }
         smsInfoService.updateSmsInfo(smsInfo);
-        modelAndView.addObject("smsInfo", smsInfo);
         modelAndView.setViewName("info-add-success");
         return modelAndView;
     }
@@ -125,6 +128,7 @@ public class SmsInfoController {
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView viewSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
         modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        modelAndView.addObject("fromOrderPage", false);
         modelAndView.setViewName("info-detail");
         return modelAndView;
     }

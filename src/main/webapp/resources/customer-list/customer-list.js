@@ -4,12 +4,11 @@
 
 $(document).ready(function () {
     var sort = $("#sort").attr('value');
-    var fromOrderPage = $("#fromOrderPage").attr('value');
     var id;
 
     $('.list-sure-btn1').click(function () {
         //请在此处写上具体的url
-        window.location = '/smsInfo/delete?id=' + id + "&fromOrderPage=" + fromOrderPage;
+        window.location = '/smsInfo/delete?id=' + id;
     });
 
     $(".list-sure-btn2").click(function () {

@@ -41,9 +41,9 @@
 
   <div class="content-name-in">客户姓名：<span>${contact.name}</span></div>
   <div class="content-name-phone">联系方式：<span>${contact.mobile}</span></div>
-  <div class="content-name-category">分类：<span>帅哥dasd</span></div>
-  <div class="content-name-level">级别：<span>2</span></div>
-  <div class="content-name-number">编号：<span>22000002</span></div>
+  <div class="content-name-category">客户分类：<span>${contact.category}</span></div>
+  <div class="content-name-level">客户级别：<span>${contact.level}</span></div>
+  <div class="content-name-number">编号：<span>${contact.number}</span></div>
 </div>
 <c:if test="${flag!='single'}">
   <div class="content-searchBox">
@@ -97,7 +97,7 @@
         <td>
           <c:choose>
             <c:when test="${order.smsCount<=0}">
-              <a href="/smsInfo/add?invoiceId=${order.id}" class="link-btn">添加</a>
+              <a href="/smsInfo/add?invoiceId=${order.id}&fromOrderPage=true" class="link-btn">添加</a>
             </c:when>
             <c:otherwise>
               <a href="/smsInfo/viewByIid?invoiceId=${order.id}" class="link-btn">查看</a>

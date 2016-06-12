@@ -76,7 +76,7 @@
                         <td>
                             <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
                             <a class="list-delete" href="/order/listById?id=${info.invoiceId}">购买信息</a>
-                            <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${info.id}">删除</a>
+                            <a class="list-delete delete-btn" href="javascript:void(0)" data-value="${info.id}&fromOrderPage=false">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

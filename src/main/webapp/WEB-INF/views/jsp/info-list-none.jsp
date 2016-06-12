@@ -16,19 +16,14 @@
   <body>
   <!-- header-begin -->
   <div class="header">
-    <div class="header-content">
-      <h1>客户管理</h1>
-
-      <div class="header-name">
-        <img src="/resources/core/image/touxiang.png" alt=""/>
-        <span>zhouzhou</span>
-      </div>
-    </div>
+    <jsp:include page="header.jsp">
+      <jsp:param name="title" value="短信列表"/>
+    </jsp:include>
   </div>
   <!-- header-end -->
 
-  <div class="content">
-    <div class="list-none">很遗憾，您还没有购买记录哦</div>
+  <div class="content-list">
+    <div class="list-none">很遗憾，您还没有短信记录哦</div>
   </div>
   </body>
   <script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js" ></script>

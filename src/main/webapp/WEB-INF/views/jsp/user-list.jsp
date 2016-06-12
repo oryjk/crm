@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -21,6 +22,13 @@
 </jsp:include>
 <!-- header-end -->
 
+<c:if test="${contactList==null || fn:length(contactList)==0}">
+  <div class="content-list">
+    <div class="list-none">很遗憾，您还没有客户信息哦</div>
+  </div>
+</c:if>
+
+<c:if test="${contactList!=null && fn:length(contactList)>0}">
 <div class="content">
   <div class="content-head">
     <div class="content-searchBox">
@@ -85,6 +93,7 @@
     </tr>
   </table>
 </div>
+</c:if>
 </body>
 <script src="/resources/customer-list/customer-list.js"/>
 </html>

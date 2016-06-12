@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -22,6 +23,13 @@
 <!-- header-end -->
 
 <div class="content">
+  <div><a class="add-template" href="/smsInfo/addOrUpdateTemp">新增模板</a></div>
+  <c:if test="${smsTemps==null || fn:length(smsTemps)==0}">
+    <div class="content-list">
+      <div class="list-none">很遗憾，您还没有短信模板哦</div>
+    </div>
+  </c:if>
+  <c:if test="${smsTemps!=null && fn:length(smsTemps)>0}">
   <table class="content-list">
     <tr class="list-title">
       <td>模板名字</td>
@@ -40,9 +48,9 @@
       <td>${smsTemp.title}</td>
       <td class="list-template-content">${smsTemp.content}</td>
       <td>
-        <a class="list-modify" href="/smsInfo/addOrUpdateTemp?id=${smsTemp.id}">修改</a>
+        <a class="list-delete link-btn" href="/smsInfo/addOrUpdateTemp?id=${smsTemp.id}">修改</a>
         <!--supersoup: data-value为id号-->
-        <a class="list-delete" href="#" data-value="${smsTemp.id}">删除</a>
+        <a class="list-delete link-btn" href="#" data-value="${smsTemp.id}">删除</a>
       </td>
     </tr>
     </c:forEach>
@@ -79,6 +87,7 @@
     </div>
   </div>
 </div>
+</c:if>
 <script src="/resources/core/jq/jquery-1.11.1.js"></script>
 <script src="/resources/message-template/message-template.js"></script>
 </body>

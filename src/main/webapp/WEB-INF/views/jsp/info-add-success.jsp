@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhoupengxiao
@@ -61,19 +62,33 @@
     </div>
     <!--请在下面连接中写入跳转连接,并在js中添加地址-->
     <input type="hidden" id="contactId" value="${smsInfo.contactId}"/>
-    <div class="info-content"><span id="time">5</span>秒后跳转到 <a href="/order/list?contactId=${smsInfo.contactId}">客户购买列表</a> 页面</div>
+    <input type="hidden" id="fromOrderPage" value="${fromOrderPage}"/>
+    <c:choose>
+      <c:when test="${fromOrderPage==true}">
+        <div class="info-content"><span id="time">5</span>秒后跳转到 <a href="/order/list?contactId=${smsInfo.contactId}">客户购买列表</a> 页面</div>
+      </c:when>
+      <c:otherwise>
+        <div class="info-content"><span id="time">5</span>秒后跳转到 <a href="/smsInfo/list">短信列表</a> 页面</div>
+      </c:otherwise>
+    </c:choose>
   </div>
 
   <script>
     var time = document.getElementById('time');
     var contactId = document.getElementById('contactId').value;
+    var fromOrderPage = document.getElementById('fromOrderPage').value;
     function timeDown() {
       if (time.innerHTML > 1) {
         time.innerHTML =  time.innerHTML - 1;
         setTimeout(timeDown, 1000);
       } else {
         //在此处填写跳转的地址
-        window.location = '/order/list?contactId=' + contactId;
+        debugger;
+        if(fromOrderPage=="true"){
+          window.location = '/order/list?contactId=' + contactId;
+        }else{
+          window.location = '/smsInfo/list';
+        }
       }
     }
     setTimeout(timeDown, 1000);

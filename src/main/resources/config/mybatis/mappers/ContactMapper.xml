@@ -17,13 +17,13 @@
     </parameterMap>
 
     <select id="queryContactById" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE ID=#{id} AND type=-10;
+		SELECT * FROM CI_CONTACT WHERE ID=#{id} AND type=-10 AND isDelete=0;
 	</select>
     <select id="queryAll" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE type=-10 limit #{pagination.from},#{pagination.pageSize}
+		SELECT * FROM CI_CONTACT WHERE type=-10 AND isDelete=0 limit #{pagination.from},#{pagination.pageSize}
 	</select>
     <select id="queryContact" resultMap="resultContact" parameterMap="contactParam">
-		SELECT * FROM CI_CONTACT WHERE type=-10
+		SELECT * FROM CI_CONTACT WHERE type=-10 AND isDelete=0
 		  <include refid="conditionalQuery"/>
 		  limit #{pagination.from},#{pagination.pageSize}
 	</select>

@@ -71,8 +71,8 @@
   </div>
   <div class="handle-box">
     <div class="handle-btn-box">
-      <a href="/smsInfo/add?id=${smsInfo.id}" class="invest-submit">修改</a>
-      <a href="javascript:void(0)" data-value="${smsInfo.id}" id="invest-delete" class="delete-btn">删除</a>
+      <a href="/smsInfo/add?id=${smsInfo.id}&fromOrderPage=${fromOrderPage}" class="invest-submit">修改</a>
+      <a href="javascript:void(0)" data-value="${smsInfo.id}&fromOrderPage=${fromOrderPage}" id="invest-delete" class="delete-btn">删除</a>
       <a class="back" href="javascript:history.go(-1);">返回</a>
     </div>
 
