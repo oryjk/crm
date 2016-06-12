@@ -13,26 +13,40 @@
 *****************************/
 
 .content-name {
+  position: relative;
   width: 1200px;
   height: 125px;
   margin: 20px auto 40px auto;
   background: #edf5fa;
 
-  img {
-    margin: 25px 0 0 80px;
-    float: left;
-    width: 80px;
-    height: 80px;
-    border-radius: 50px;
-  }
+  //img {
+  //  margin: 25px 0 0 80px;
+  //  float: left;
+  //  width: 80px;
+  //  height: 80px;
+  //  border-radius: 50px;
+  //}
 }
 
+//.content-name-list {
+//  position: absolute;
+//  top: 0;
+//  left: 50%;
+//  height: 125px;
+//  overflow: hidden;
+//  transform: translateX(-50%);
+//  word-break: keep-all;
+//  word-wrap: normal;
+//}
+
 .content-name-in {
-  margin-left: 100px;
+  display: inline-block;
+  margin-left: 110px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
-  float: left;
+  //float: left;
+
   color: #999;
   background: url("../core/image/name.png") no-repeat 0 center;
 
@@ -41,18 +55,42 @@
   }
 }
 
-.content-name-phone {
-  margin-left: 50px;
+.content-name-phone,
+.content-name-category,
+.content-name-level,
+.content-name-number {
+  display: inline-block;
+  margin-left: 40px;
   padding-left: 30px;
   line-height: 125px;
   height: 125px;
-  float: left;
+  //float: left;
   color: #999;
-  background: url("../core/image/phone.png") no-repeat 0 center;
+  background:  no-repeat 0 center;
 
   span {
     color: #666;
   }
+}
+
+.content-name-phone {
+  background-image: url("../core/image/phone.png");
+  //width: 180px;
+}
+
+.content-name-category {
+  background-image: url("../core/image/category.png");
+  //width: 150px;
+}
+
+.content-name-level {
+  background-image: url("../core/image/level.png");
+  //width: 120px;
+}
+
+.content-name-number {
+  background-image: url("../core/image/id.png");
+  //width: 150px;
 }
 
 .content-list-menu {
@@ -80,48 +118,7 @@
 }
 
 .content-list{
-  width: 1200px;
-  margin: 0 auto 50px auto;
-  border: 1px solid #e5e5e5;
-
-  tr {
-    height: 40px;
-  }
-
-  td {
-    width: 10%;
-    line-height: 75px;
-    padding: 0;
-    text-align: center;
-  }
-  .list-all {
-
-    td {
-      border-bottom: 1px solid #ccc;
-
-      a{
-        color: #81bbe1;
-      }
-    }
-
-    .list-first {
-      width: 40%;
-      line-height: 20px;
-
-      img {
-        float: left;
-        margin-top: -10px;
-        margin-left: 10px;
-        width: 50px;
-        height: 50px;
-      }
-
-      span {
-        padding-left: 20px;
-        width: 400px;
-      }
-    }
-  }
+  @include list-general;
 
   .list-red{
 
@@ -129,8 +126,6 @@
       color: red;
     }
   }
-
-
 }
 .list-time{
   width: 20%;
@@ -152,5 +147,10 @@
     line-height: 40px;
     background:#81bbe1 ;
   }
+}
+
+.pager-box {
+  margin: 0 auto;
+  width: 1200px;
 }
 

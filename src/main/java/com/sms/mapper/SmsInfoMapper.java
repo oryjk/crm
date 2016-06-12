@@ -20,6 +20,8 @@ public interface SmsInfoMapper extends SqlMapper {
 
     List<SmsInfo> querySmsInfo(@Param("smsInfo") SmsInfo smsInfo, @Param("pagination") Pagination pagination);
 
+    SmsInfo querySmsInfoByInvoiceId(@Param("invoiceId") Integer invoiceId);
+
     Integer querySmsInfoCount(@Param("smsInfo") SmsInfo smsInfo);
 
     void deleteSmsInfo(SmsInfo smsInfo);

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -59,18 +60,20 @@
       操作成功!
     </div>
     <!--请在下面连接中写入跳转连接,并在js中添加地址-->
-    <div class="info-content"><span id="time">5</span>秒后跳转到<a href="/smsInfo/list">列表</a> 页面</div>
+    <input type="hidden" id="contactId" value="${smsInfo.contactId}"/>
+    <div class="info-content"><span id="time">5</span>秒后跳转到<a href="/order/list?contactId=${smsInfo.contactId}">客户购买</a> 页面</div>
   </div>
 
   <script>
     var time = document.getElementById('time');
+    var contactId = document.getElementById('contactId').value;
     function timeDown() {
       if (time.innerHTML > 1) {
         time.innerHTML =  time.innerHTML - 1;
         setTimeout(timeDown, 1000);
       } else {
         //在此处填写跳转的地址
-        window.location = '/smsInfo/list';
+        window.location = '/order/list?contactId=' + contactId;
       }
     }
     setTimeout(timeDown, 1000);

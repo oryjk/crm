@@ -27,4 +27,8 @@ public class ContactService {
     public Integer queryContactCount(Contact contact) {
         return contactMapper.queryContactCount(contact);
     }
+
+    public void deleteById(Integer id) {
+        contactMapper.deleteById(id);
+    }
 }

@@ -1,26 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.contact.mapper.ContactMapper">
-	<resultMap id="resultContact" type="com.contact.bean.Contact">
-		<id column="id" property="id"/>
-		<result column="name" property="name"/>
-		<result column="number" property="number"/>
-		<result column="linkMans" property="phone" typeHandler="com.contact.typeHandler.LinkMansHandler"></result>
-		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.LinkMansHandler"></result>
-	</resultMap>
+    <resultMap id="resultContact" type="com.contact.bean.Contact">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="number" property="number"/>
+        <result column="linkMans" property="firstContact" typeHandler="com.contact.typeHandler.FirstContactHandler"/>
+        <result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.MobileHandler"></result>
+        <result column="linkMans" property="phone" typeHandler="com.contact.typeHandler.PhoneHandler"></result>
+        <result column="linkMans" property="address" typeHandler="com.contact.typeHandler.AddressHandler"/>
+        <result column="cCategoryName" property="category"/>
+        <result column="cLevelName" property="level"/>
+    </resultMap>
+    <parameterMap id="contactParam" type="com.contact.bean.Contact">
+    </parameterMap>
 
+    <select id="queryContactById" resultMap="resultContact">
+		SELECT * FROM CI_CONTACT WHERE ID=#{id} AND type=-10;
+	</select>
+    <select id="queryAll" resultMap="resultContact">
+		SELECT * FROM CI_CONTACT WHERE type=-10 limit #{pagination.from},#{pagination.pageSize}
+	</select>
+    <select id="queryContact" resultMap="resultContact" parameterMap="contactParam">
+		SELECT * FROM CI_CONTACT WHERE type=-10
+		  <include refid="conditionalQuery"/>
+		  limit #{pagination.from},#{pagination.pageSize}
+	</select>
+    <select id="queryContactCount" resultType="int">
+		SELECT count(*) FROM CI_CONTACT WHERE type=-10 <include refid="conditionalQuery"/>
+	</select>
+    <delete id="deleteById" parameterType="int">
+      DELETE FROM CI_CONTACT WHERE id=#{id}
+    </delete>
 
-	<select id="queryContactById" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE ID=#{id} AND TYPE=-10;
-	</select>
-	<select id="queryAll" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE TYPE=-10 limit #{pagination.from},#{pagination.pageSize}
-	</select>
-	<select id="queryContact" resultMap="resultContact">
-		SELECT * FROM CI_CONTACT WHERE TYPE=-10 limit #{pagination.from},#{pagination.pageSize}
-	</select>
-	<select id="queryContactCount" resultType="int">
-		SELECT count(*) FROM CI_CONTACT WHERE TYPE=-10
-	</select>
+    <sql id="conditionalQuery">
+        <if test="contact!=null">
+            <if test="contact.name!=null or contact.number!=null or contact.mobile!=null or contact.phone!=null or contact.address!=null or contact.category!=null or contact.level!=null or contact.firstContact!=null">
+                AND (1=0<include refid="contactQuery"/>)
+            </if>
+        </if>
+    </sql>
+    <sql id="contactQuery">
+        <if test="contact.name!=null">
+            OR name LIKE CONCAT('%',#{contact.name},'%')
+        </if>
+        <if test="contact.number!=null">
+            OR number LIKE CONCAT('%',#{contact.number},'%')
+        </if>
+        <if test="contact.mobile!=null">
+            OR linkMans LIKE CONCAT('%',#{contact.mobile},'%')
+        </if>
+        <if test="contact.phone!=null">
+            OR linkMans LIKE CONCAT('%',#{contact.phone},'%')
+        </if>
+        <if test="contact.firstContact">
+            OR linkMans LIKE CONCAT('%',#{contact.firstContact},'%')
+        </if>
+        <if test="contact.address">
+            OR linkMans LIKE CONCAT('%',#{contact.address},'%')
+        </if>
+        <if test="contact.category">
+            OR cCategoryName LIKE CONCAT('%',#{contact.category},'%')
+        </if>
+        <if test="contact.level">
+            OR cLevelName LIKE CONCAT('%',#{contact.level},'%')
+        </if>
+    </sql>
 </mapper>

@@ -27,7 +27,7 @@ public class TaskJob {
     public static final Logger LOGGER = LoggerFactory.getLogger(TaskJob.class);
 
     //扫描所有的sms info,查找尚未发送
-    @Scheduled(cron = "0/30 * * * * ?")
+    @Scheduled(cron = "0 0 */3 * * ?")
     public void execute() {
         List<SmsInfo> infos = smsInfoService.queryUnsendInfo(new Date());
         for (SmsInfo info : infos) {
@@ -39,6 +39,10 @@ public class TaskJob {
                 int msgStart = codeStr.indexOf("<msg>");
                 int msgEnd = codeStr.indexOf("</msg>");
                 String code = codeStr.substring(codeStart + 6, codeEnd);
+                //发送成功
+                if("2".equalsIgnoreCase(code)){
+                    info.setDone(1);
+                }
                 String msg = codeStr.substring(msgStart + 5, msgEnd);
                 LOGGER.error(msg);
             } catch (IOException e) {

@@ -10,153 +10,64 @@
 
 
 @include header;
+
 /* style
 *****************************/
 form {
-  width: 1200px;
-  margin: 45px auto;
-  table-layout: fixed;
+  width: 996px;
+  margin: 0 auto 20px;
 
+  @include detail-general;
 }
 
-.content-table{
-  margin-top: 30px;
-  margin-left: 100px;
-
-  tr {
-    height: 75px;
-  }
-}
-
-h2{
-  margin-top: 80px;
-  padding-left: 50px;
-  font-size: 20px;
-  color: #333;
-  font-weight: normal;
-}
-
-
-
-th {
-  vertical-align: middle;
-  padding-right: 25px;
-  width: 123px;
-  text-align: right;
-  font-size: 16px;
-  font-weight: normal;
-  color: #666;
-
-  span {
-  }
-}
 
 td {
-  font-size: 15px;
-  color: #333;
-  vertical-align: middle;
-  width: 400px;
+  font-size: 14px;
+  color: #666;
 }
 
-input{
-  width: 300px;
-  height: 38px;
-  border: 1px solid #ccc;
+.user-info {
+  float: left;
+}
 
-  &:focus{
-    border: 1px solid #81bbe1;
+.product-info {
+  float: left;
+}
+
+.handle-box {
+  padding-top: 20px;
+  clear: both;
+}
+
+.handle-btn-box {
+  margin-right: 100px;
+  border-top: 1px dotted #ccc;
+  padding: 20px 100px 0 0;
+  text-align: right;
+}
+
+.delete-btn,
+.invest-submit {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: white;
+  background: $main;
+
+  &:hover {
+    background: $main-dark;
   }
 }
 
-textarea{
-  width: 300px;
-
-  border: 1px solid #ccc;
-  resize : none;
-}
-
-.invest-wrong{
-  border: 1px solid #f59a99;
-}
-
-.invest-submit {
-  float: left;
-  padding: 0;
-  margin-right: 30px;
-  @include wh(150px, 32px);
-  font-size: 18px;
-  border: none;
-  background: #81bbe1;
-  color: white;
-  cursor: pointer;
-  text-align: center;
-  line-height: 30px;
-}
+//.invest-submit {
+//  height: 36px;
+//  margin-top: 8px;
+//  border: none;
+//  cursor: pointer;
+//}
 
 .list-sure{
-  position: fixed;
-  top:50%;
-  left: 50%;
-  width: 300px;
-  height: 180px;
-  margin-top: -100px;
-  margin-left: -150px;
-  border: 1px solid #ccc;
-  border-radius: 5px ;
-  background: white;
-
-
-  .list-sure-title{
-    border-radius: 5px ;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    height: 30px;
-    background:#81bbe1;
-  }
-
-  .list-sure-content{
-    margin:  0 auto;
-    width: 250px;
-    padding: 30px 0;
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5 ;
-    color: #333;
-  }
-
-  .list-sure-btn{
-
-    a{
-      margin-top: 30px;
-      margin-left: 80px;
-      padding-right: 40px;
-      float: left;
-      color: #333;
-    }
-
-    .list-sure-btn1{
-      border-right:1px solid #e5e5e5 ;
-    }
-    .list-sure-btn2{
-      margin-left: 40px;
-    }
-  }
-}
-
-.mes-none{
-
-  a{
-    float: left;
-    margin-left: 30px;
-    width: 60px;
-    display: block;
-    padding: 10px ;
-    background:green;
-    color:white;
-  }
-
-  span{
-    margin-top: 10px;
-    float: left;
-    color: red;
-  }
+  @include pop;
 }

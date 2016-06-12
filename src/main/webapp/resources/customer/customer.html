@@ -5,8 +5,7 @@
     <link rel="stylesheet" href="customer.css"/>
     <link rel="stylesheet" href="../core/jq/Jquery-date-and-time/jquery-calendar.css"/>
     <!--<script src="../core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>-->
-    <script src="../core/jq/jquery-1.11.1.js"></script>
-    <script src="../core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
+
     <title></title>
 </head>
 <body>
@@ -23,7 +22,7 @@
 <!-- header-end -->
 
 
-<form action="">
+<form  action="">
     <h2>用户信息</h2>
     <table class="content-table">
         <tr>
@@ -42,7 +41,7 @@
             <td class="wrong-text"></td>
         </tr>
     </table>
-    <h2>产品信息</h2>
+    <h2 class="user-info-box">产品信息</h2>
     <table class="content-table">
         <tr>
             <th>产品ID:</th>
@@ -61,7 +60,7 @@
         </tr>
         <tr>
             <th>发送短信时间:</th>
-            <td><input id="btn" class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()"   readonly/>
+            <td><input class="calender-time" type="text" id="calendar1" maxlength="16"  onfocus="$(this).calendar()"   readonly/>
             </td>
             <td class="wrong-text"></td>
         </tr>
@@ -76,9 +75,11 @@
                     <option value="请在此处写上这个模板的详细内容3">模板3</option>
                 </select>
             </td>
-            <td class="wrong-text"></td>
+            <td class="wrong-text">
+                <a id="addTemplate" class="link-btn" href="javascript:void(0);">点击添加</a>
+            </td>
         </tr>
-        <tr>
+        <tr class="textarea-row">
             <th>发送短信内容:</th>
             <td><textarea id="messageTemple"  cols="30" rows="10"  maxlength="200" disabled></textarea>
             </td>
@@ -87,7 +88,7 @@
         <tr>
             <th></th>
             <td>
-                请注意:只有 [ ] 里面的内容可以进行修改
+                <p class="textarea-tips">请注意:只有 [ ] 里面的内容可以进行修改</p>
             </td>
             <td class="wrong-text"></td>
         </tr>
@@ -100,6 +101,34 @@
         </tr>
     </table>
 </form>
+
+<div id="listSure" class="add-template" style="display: none">
+    <div class="list-sure-title"></div>
+    <div class="list-sure-content">
+        <table>
+            <tr>
+                <th>模板标题:</th>
+                <td><input id="addTitle" type="text"/></td>
+            </tr>
+            <tr class="textarea-row">
+                <th>模板内容:</th>
+                <td><textarea id="addContent" cols="30" rows="10"  maxlength="200"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="list-sure-btn">
+        <div class="pop-tips">
+            <span id="popWrong" class="pop-wrong">错误信息提示!</span>
+            <span id="popRight" class="pop-right">正确信息提示!</span>
+        </div>
+
+        <a class="list-sure-btn1" href="javascript:void(0);">确认</a>
+        <a class="list-sure-btn2" href="javascript:void(0);">取消</a>
+    </div>
+</div>
+<script src="../core/jq/jquery-1.11.1.js"></script>
+<script src="../core/jq/Jquery-date-and-time/jquery-calendar.js"></script>
 <script src="customer.js"></script>
 </body>
 </html>

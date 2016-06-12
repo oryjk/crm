@@ -1,6 +1,7 @@
 package com.sms.bean;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -12,6 +13,9 @@ import java.util.Date;
 public class SmsInfo {
 
     private Integer id;
+
+    //关联的交易/发票ID
+    private Integer invoiceId;
 
     //客户的id
     @NotNull(message = "{contactId.required}")
@@ -51,6 +55,7 @@ public class SmsInfo {
     //标示定时的类型
     private Integer smsType = null;
     //购买日期
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date billDate;
 
     public SmsInfo() {
@@ -159,5 +164,13 @@ public class SmsInfo {
 
     public void setBillDate(Date billDate) {
         this.billDate = billDate;
+    }
+
+    public Integer getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(Integer invoiceId) {
+        this.invoiceId = invoiceId;
     }
 }

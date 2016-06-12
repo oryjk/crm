@@ -10,6 +10,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +22,6 @@
 <div class="header">
     <div class="header-content">
         <h1>客户管理</h1>
-
-        <div class="header-name">
-            <img src="/resources/core/image/touxiang.png" alt=""/>
-            <span>zhouzhou</span>
-        </div>
     </div>
 </div>
 <!-- header-end -->
@@ -35,7 +31,7 @@
 <div class="content">
     <div class="content-head">
         <div class="home-btn-box">
-            <a class="home-btn" href="#">首页</a>
+            <a class="home-btn" href="/contact/list">首页</a>
         </div>
         <div class="content-searchBox">
             <form action="/smsInfo/list" method="get">
@@ -48,7 +44,7 @@
         <tr class="list-title">
             <td>用户姓名</td>
             <td>手机号码</td>
-            <td>产品名称</td>
+            <td style="width: 300px;">产品名称</td>
             <td>
                 购买日期
                 <a id="pup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=1"></a>
@@ -59,7 +55,7 @@
                 <a id="sup" class="sort-up" href="/smsInfo/sortby?term=${term}&sort=3"></a>
                 <a id="sdown" class="sort-down" href="/smsInfo/sortby?term=${term}&sort=4"></a>
             </td>
-            <td>操作</td>
+            <td style="width: 200px;">操作</td>
         </tr>
         <c:choose>
             <c:when test="${totalCount == 0}">
@@ -73,8 +69,8 @@
                         <td>${info.contactName}</td>
                         <td>${info.phone}</td>
                         <td>${info.goodsName}</td>
-                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.billDate}"/></td>
-                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${info.sendDate}"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${info.billDate}"/></td>
+                        <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${info.sendDate}"/></td>
                         <td>
                             <a class="list-delete" href="/smsInfo/view?id=${info.id}">查看详情</a>
                             <a class="list-delete" href="#">购买信息</a>
@@ -92,15 +88,18 @@
                 <td><a href="/smsInfo/list?term=${term}&currentPage=1">首页</a></td>
                 <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage-1}">上一页</a></td>
             </c:if>
-
-            <c:forEach begin="1" end="${totalPage}" var="i">
-                <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
-            </c:forEach>
+            <c:if test="${totalPage>1}">
+                <c:forEach begin="1" end="${totalPage}" var="i">
+                    <td><a href="/smsInfo/list?term=${term}&currentPage=${i}">${i}</a></td>
+                </c:forEach>
+            </c:if>
             <c:if test="${currentPage<totalPage}">
                 <td><a href="/smsInfo/list?term=${term}&currentPage=${currentPage+1}">下一页</a></td>
                 <td><a href=/smsInfo/list?term=${term}&currentPage=${totalPage}>尾页</a></td>
             </c:if>
+            <c:if test="${totalPage>1}">
                 <td>共${totalPage}页</td>
+            </c:if>
 
         </tr>
     </table>
@@ -116,6 +115,6 @@
     </div>
 </div>
 </body>
-<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>
+<%--<script src="/resources/core/jq/Jquery-date-and-time/jquery-1.3.2.js"></script>--%>
 <script src="/resources/customer-list/customer-list.js"></script>
 </html>

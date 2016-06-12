@@ -1,19 +1,33 @@
 /*import
 **************************************************************************************************************************************************/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
 /*
 html5doctor.com Reset Stylesheet
 v1.4.1
@@ -113,7 +127,7 @@ a {
   text-decoration: none; }
 
 .link-btn {
-  color: #5a98e6; }
+  color: #45a5e3; }
   .link-btn:hover {
     text-decoration: underline; }
 
@@ -130,8 +144,12 @@ a {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
   background: #f59a99; }
+  .back:hover {
+    background: #fb6666; }
 
 .header {
   width: 100%;
@@ -140,31 +158,25 @@ a {
   .header .header-content {
     width: 1200px;
     height: 60px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    line-height: 60px; }
     .header .header-content h1 {
       float: left;
+      padding-left: 35px;
       height: 60px;
-      line-height: 60px;
-      font-size: 23px;
-      color: white; }
-    .header .header-content .header-name {
+      font-size: 19px;
+      color: white;
+      background: url("../core/image/gear.png") no-repeat 10px 19px; }
+    .header .header-content .header-handle {
       float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-name img {
-        float: left;
-        margin-top: 11px;
-        margin-right: 20px; }
-      .header .header-content .header-name span {
-        float: right;
+      height: 60px; }
+      .header .header-content .header-handle a {
         color: white;
         font-size: 14px; }
-    .header .header-content .header-logout {
-      float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-logout a {
-        color: white; }
+        .header .header-content .header-handle a:hover {
+          text-decoration: underline; }
+    .header .header-content .header-handle-item {
+      margin-right: 10px; }
 
 /*style
 **************************************************/
@@ -185,9 +197,10 @@ a {
 
 .content-list {
   width: 1200px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  table-layout: fixed;
+  font-size: 14px; }
   .content-list td {
-    width: 200px;
     text-align: center; }
   .content-list .list-title td {
     line-height: 60px;
@@ -196,26 +209,46 @@ a {
     background: #45a5e3; }
   .content-list .list-bottom td,
   .content-list .list-top td {
-    height: 50px;
-    line-height: 50px;
+    padding: 12px 0;
+    line-height: 25px;
     color: #333;
     background: #f3f3f3; }
-  .content-list .list-bottom .list-modify,
   .content-list .list-bottom .list-delete,
-  .content-list .list-top .list-modify,
   .content-list .list-top .list-delete {
     padding: 3px;
     height: 20px;
     width: 10px;
     color: #81bbe1;
     font-size: 14px; }
-    .content-list .list-bottom .list-modify:hover,
     .content-list .list-bottom .list-delete:hover,
-    .content-list .list-top .list-modify:hover,
     .content-list .list-top .list-delete:hover {
       color: red; }
   .content-list .list-bottom td {
     background: #e2ecf3; }
+  .content-list .list-none {
+    margin-top: 100px;
+    width: 1200px;
+    height: 200px;
+    text-align: center;
+    line-height: 250px;
+    color: #666;
+    background: url("../core/image/list-none.png") no-repeat 300px center; }
+  .content-list .sort-up {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/up.png"); }
+    .content-list .sort-up.sort-choose {
+      background: url("../core/image/up-now.png"); }
+  .content-list .sort-down {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    background: url("../core/image/down.png"); }
+    .content-list .sort-down.sort-choose {
+      background: url("../core/image/down-now.png"); }
 
 .list-sure {
   position: fixed;
@@ -223,7 +256,7 @@ a {
   left: 50%;
   width: 300px;
   height: 180px;
-  margin-top: -100px;
+  margin-top: -90px;
   margin-left: -150px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -241,24 +274,28 @@ a {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     color: #333; }
-  .list-sure .list-sure-btn a {
-    margin-top: 30px;
-    margin-left: 80px;
-    padding-right: 40px;
-    float: left;
-    color: #333; }
-  .list-sure .list-sure-btn .list-sure-btn1 {
-    border-right: 1px solid #e5e5e5; }
-  .list-sure .list-sure-btn .list-sure-btn2 {
-    margin-left: 40px; }
-
-.list-page {
-  margin-top: 50px;
-  float: right; }
-  .list-page td {
-    padding: 0 10px; }
-    .list-page td a {
-      color: #333; }
+  .list-sure .list-sure-btn {
+    text-align: right; }
+    .list-sure .list-sure-btn a {
+      margin-top: 30px;
+      margin-left: 80px;
+      padding-right: 40px;
+      display: inline-block; }
+    .list-sure .list-sure-btn .list-sure-btn1,
+    .list-sure .list-sure-btn .list-sure-btn2 {
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: white; }
+    .list-sure .list-sure-btn .list-sure-btn1 {
+      background: #81bbe1; }
+      .list-sure .list-sure-btn .list-sure-btn1:hover {
+        background: #45a5e3; }
+    .list-sure .list-sure-btn .list-sure-btn2 {
+      margin: 0 30px 0 5px;
+      background: #f59a99; }
+      .list-sure .list-sure-btn .list-sure-btn2:hover {
+        background: #fb6666; }
 
 .list-none {
   margin-top: 100px;
@@ -274,3 +311,18 @@ a {
   text-align: left !important;
   font-size: 14px;
   line-height: 1.2 !important; }
+
+.list-page {
+  margin-top: 50px;
+  float: right; }
+  .list-page td {
+    padding: 0 10px; }
+    .list-page td a {
+      color: #333; }
+      .list-page td a:hover {
+        text-decoration: underline; }
+      .list-page td a.current-page {
+        color: #45a5e3; }
+        .list-page td a.current-page:hover {
+          text-decoration: none;
+          cursor: default; }

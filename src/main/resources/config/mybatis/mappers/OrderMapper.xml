@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.order.mapper.OrderMapper">
+	<resultMap id="orderMap" type="com.order.bean.Order" >
+		<id column="id" property="id"/>
+		<result column="buId" property="contactId"/>
+		<result column="contact_name" property="contactName"/>
+		<result column="linkMans" property="mobile" typeHandler="com.contact.typeHandler.MobileHandler"/>
+		<result column="invId" property="goodsId"/>
+		<result column="goods_name" property="goodsName"/>
+		<result column="spec" property="spec"/>
+		<result column="billDate" property="billDate"/>
+		<result column="qty" property="quantity"/>
+		<result column="price" property="price"/>
+		<result column="deduction" property="deduction"/>
+		<result column="amount" property="totalAmount"/>
+		<result column="salesMan" property="salesMan"/>
+	</resultMap>
+	<select id="queryOrderByContactId" resultMap="orderMap">
+		<include refid="orderQuery"/>
+			AND cii.buId=#{contactId}
+			<if test="order!=null">
+				<if test="order.mobile!=null or order.salesMan!=null or order.goodsName!=null or order.deduction!=null or order.price!=null or order.totalAmount!=null or order.spec!=null or order.quantity!=null">
+					AND (1=0 <include refid="searchCondition"/>)
+				</if>
+			</if>
+			<include refid="pagination"/>
+	</select>
+	<select id="queryCountByContactId" resultType="int">
+		SELECT count(cii.id) FROM ci_invoice_info cii
+			LEFT JOIN ci_contact cc ON cii.buId=cc.id
+			LEFT JOIN ci_goods cg ON cii.invId=cg.id
+			LEFT JOIN ci_staff cs ON cii.salesId=cs.id
+			WHERE cii.isDelete=0 AND cii.billType='SALE' AND cii.buId=#{contactId}
+			<if test="order!=null">
+				<if test="order.mobile!=null or order.salesMan!=null or order.goodsName!=null or order.deduction!=null or order.price!=null or order.totalAmount!=null or order.spec!=null or order.quantity!=null">
+					AND (1=0 <include refid="searchCondition"/>)
+				</if>
+			</if>
+	</select>
+	<select id="querySmsCount" resultType="int" parameterType="int">
+		SELECT count(*) FROM ci_sms_info WHERE invoice_id=#{iid}
+	</select>
+
+	<select id="queryOrderById" parameterType="int" resultMap="orderMap">
+		<include refid="orderQuery"/> AND cii.id=#{id}
+	</select>
+
+	<sql id="orderQuery">
+		SELECT cii.id,cii.buId,cc.name AS contact_name,cc.linkMans AS linkMans,cii.invId,cg.name AS goods_name,cg.spec AS spec,cii.billDate,cii.qty,cii.price,cii.deduction,cii.amount,cs.name AS salesMan
+		  FROM ci_invoice_info cii
+			LEFT JOIN ci_contact cc ON cii.buId=cc.id
+			LEFT JOIN ci_goods cg ON cii.invId=cg.id
+			LEFT JOIN ci_staff cs ON cii.salesId=cs.id
+		  WHERE cii.isDelete=0 AND cii.billType='SALE'
+	</sql>
+
+	<sql id="searchCondition">
+		<if test="order.mobile!=null">
+			OR cc.linkMans LIKE CONCAT('%',#{order.mobile},'%')
+		</if>
+		<if test="order.goodsName!=null">
+			OR cg.name LIKE CONCAT('%',#{order.goodsName},'%')
+		</if>
+		<if test="order.spec!=null">
+			OR cg.spec LIKE CONCAT('%',#{order.spec},'%')
+		</if>
+		<if test="order.quantity!=null">
+			OR cii.qty LIKE CONCAT('%',#{order.quantity},'%')
+		</if>
+		<if test="order.price!=null">
+			OR cii.price LIKE CONCAT('%',#{order.price},'%')
+		</if>
+		<if test="order.deduction!=null">
+			OR cii.deduction LIKE CONCAT('%',#{order.deduction},'%')
+		</if>
+		<if test="order.totalAmount!=null">
+			OR cii.amount LIKE CONCAT('%',#{order.totalAmount},'%')
+		</if>
+		<if test="order.salesMan!=null">
+			OR cs.name LIKE CONCAT('%',#{order.salesMan},'%')
+		</if>
+	</sql>
+	<sql id="pagination">
+		<choose>
+			<when test="pagination.sortFiledName != null">
+				ORDER BY cii.${pagination.sortFiledName}
+			</when>
+			<otherwise>
+				ORDER BY cii.billDate
+			</otherwise>
+		</choose>
+		<choose>
+			<when test="pagination.asc">
+				ASC
+			</when>
+			<otherwise>
+				DESC
+			</otherwise>
+		</choose>
+		limit #{pagination.from},#{pagination.pageSize}
+	</sql>
+</mapper>

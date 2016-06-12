@@ -3,14 +3,26 @@ package com.contact.bean;
 /**
  * Created by carlwang on 5/15/16.
  */
+
+/**
+ * 客户
+ */
 public class Contact {
     private Integer id;
     private String name;
     private String number;
-    //座机
-    private String phone;
-    //手机
+    //第一联系人
+    private String firstContact;
+    //第一联系人手机
     private String mobile;
+    //第一联系人座机
+    private String phone;
+    //客户类别 cCategoryName
+    private String category;
+    //客户等级
+    private String level;
+    //客户地址
+    private String address;
 
     public Integer getId() {
         return id;
@@ -50,5 +62,37 @@ public class Contact {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public String getFirstContact() {
+        return firstContact;
+    }
+
+    public void setFirstContact(String firstContact) {
+        this.firstContact = firstContact;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

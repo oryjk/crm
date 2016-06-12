@@ -1,309 +1,113 @@
-@import "variable","commonMixin","commomExtend";
-//反色按钮
-@mixin btn($color, $radius:3px) {
-  border: $color;
-  border-radius: $radius;
-  background: transparent;
-  color: $color;
-
-  &:hover {
-    background: $color;
-    color: white;
-  }
-}
-
-//包图链接
-@mixin img-box($w:100%) {
-  width: $w;
-  display: block;
-  @if $w != 100% {
-    margin: 0 auto;
-  }
-
-  img {
-    display: block;
-    width: 100%;
-  }
-}
-
-/*select*/
-@mixin like-select($width:100px, $height:25px, $borderRidius: 0,$fontSize: 14px, $viewBorderColor: black, $listBorderColor: black, $viewFontColor: black, $fontColor: black, $color: white, $colorHover: $gray-light,$color-font-Hover:white) {
-  position: relative;
-  display: inline-block;
-  @include wh($width, $height);
-
-
-  i,
-  a {
-    font-size: $fontSize;
-  }
-
-  i {
-    position: absolute;
-    top: 0;
-    right: 0;
-    @include wh($height, $height);
-    line-height: 25px;
-    text-align: center;
-    font-size: 12px;
-
-    color: white;
-
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  .select-view {
-    border: 1px solid $viewBorderColor;
-    display: block;
-    @include wh(100%, 100%);
-    overflow: hidden;
-    background: $color url("../core/images/invest/sanjiao.png") no-repeat 82px center;
-    border-radius: $borderRidius;
-    line-height: $height;
-
-    &:hover {
-      background-color: $colorHover ;
-    }
-
-    span {
-      color: $viewFontColor;
-    }
-  }
-
-  ul {
-    position: absolute;
-    z-index: 1;
-    display: none;
-    overflow: scroll;
-    max-height: 295px;
-    top: 106%;
-    left: 0;
-    border: 1px solid $listBorderColor;
-    width: $width;
-    background: white;
-    list-style: none;
-  }
-
-  li {
-    padding: 3px 0;
-
-    a {
-      color: $fontColor;
-    }
-
-    &:hover {
-      background: $colorHover;
-
-      a {
-        color: $color-font-Hover;
-      }
-    }
-  }
-}
-
-/*color-btn*/
-@mixin color-btn($w, $h, $border-radius, $font-size, $color, $hover-color) {
-  position: relative;
-  display: inline-block;
-  padding: 0;
-  border: none;
-  @include wh($w, $h);
-  font-size: $font-size;
-  background: $color;
-  border-radius: $border-radius;
-  line-height: $h;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-
-  .color-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    @include wh($w, $h);
-    border-radius: $border-radius;
-    background: rgba(255,255,255,.2);
-    transform: scaleX(0);
-    transition: transform .3s;
-  }
-
-  &:hover {
-    background: $hover-color;
-
-    .color-hover {
-      transform: scaleX(1);
-      transition: transform .3s;
-    }
-  }
-}
-
-/*cost*/
-@mixin cost($font-size: 22px) {
-  color: $main-dark;
-  font-size: $font-size;
-  font-weight: 900;
-}
-
-/*progress-bar*/
-@mixin progress-bar($w:170px, $h:10px) {
-  position: relative;
-  display: inline-block;
-  @include wh($w, $h);
-  background: $gray-light;
-  border-radius: 5px;
-
-  .inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: $em-light;
-    border-radius: 5px;
-    height: $h;
-  }
-}
-
-/*page-box*/
-@mixin page-box() {
-  @extend %clear;
-
-  ol {
-    float: right;
-    padding-right: 20px;
-  }
-
-  li {
-    float: left;
-    height: 30px;
-    line-height: 30px;
-    margin-right: 10px;
-    text-align: center;
-  }
-
-  a {
-    display: block;
-    border: 1px solid $gray-light;
-    border-radius: 3px;
-    padding: 0 10px;
-    height: 30px;
-    color: $gray;
-
-    &:hover {
-      border-color: $main;
-      color: white;
-      background: $main;
-    }
-
-  }
-
-  .current-page,
-  .current-page:hover {
-    border-color: white;
-    background: white;
-    color: $main;
-    font-size: 18px;
-    font-weight: 900;
-    cursor: default;
-  }
-}
-
-/*pop-up*/
-@mixin pop($width:600px) {
-  display: none;
+@mixin pop($w:300px,  $h:180px) {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 11;
-  @include wh(100%, 100%);
-  background: rgba(0, 0, 0, .4);
+  top:50%;
+  left: 50%;
+  width: $w;
+  height: $h;
+  margin-top: - $h / 2;
+  margin-left: - $w / 2;
+  border: 1px solid #ccc;
+  border-radius: 5px ;
+  background: white;
 
-  .wrap {
-    margin: 150px auto;
-    width: $width;
-    @extend %clear;
-    border-radius: 8px;
-    box-shadow: black 0 0 20px;
-    background: white;
-    font-size: 14px;
+
+  .list-sure-title{
+    border-radius: 5px ;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 30px;
+    background:#81bbe1;
   }
 
-  .inner {
-    border-radius: 8px;
-    overflow: hidden;
-    //border: 1px solid $gray-light;
-
+  .list-sure-content{
+    margin:  0 auto;
+    width: $w - 50px;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5 ;
+    color: #333;
   }
 
-  h3 {
-    padding: 10px 20px;
-    background: $main;
-    color: white;
+  .list-sure-btn{
+    text-align: right;
 
-    .pop-title {
-      color: white;
-      font-size: 18px;
+    a{
+      margin-top: 30px;
+      margin-left: 80px;
+      padding-right: 40px;
+      display: inline-block;
+      //float: right;
+      //color: #333;
     }
 
-    .close {
-      float: right;
+    .list-sure-btn1,
+    .list-sure-btn2 {
+      border-radius: 3px;
+      padding: 5px 10px;
+      font-size: 14px;
       color: white;
-      cursor: pointer;
-      font-weight: 100;
+    }
+
+    .list-sure-btn1 {
+      background: $main;
 
       &:hover {
-        color: $gray;
+        background: $main-dark;
+      }
+    }
+
+    .list-sure-btn2{
+      margin: 0 30px 0 5px;
+      background: $vice;
+
+      &:hover {
+        background: $vice-dark;
       }
     }
   }
+}
 
-  .pop-content {
-    width: $width - 120px;
-    margin: 20px auto 40px;
-    @extend %clear;
+.mes-none{
+
+  a{
+    float: left;
+    margin-left: 30px;
+    width: 60px;
+    display: block;
+    padding: 10px ;
+    background:green;
+    color:white;
   }
 
-  .pop-btn {
-    margin-top: 20px;
-    text-align: right;
-  }
-
-  .pop-confirm {
-    @include color-btn(60px, 30px, 3px, 16px, $main, $main-dark);
-  }
-
-  .pop-cancel {
-    margin-left: 10px;
-    @include color-btn(60px, 30px, 3px, 16px, $gray-light, #bbb);
-    color: black;
+  span{
+    margin-top: 10px;
+    float: left;
+    color: red;
   }
 }
 
-/*file*/
-@mixin like-file($width:100px, $height: 25px, $fontSize:14px) {
-  @include wh($width, $height);
-  color: $main;
-  position: relative;
-  border: 1px solid $main;
-  border-radius: 3px;
-  text-align: center;
-  line-height: $height;
-  font-size: $fontSize;
+@mixin pager() {
+  margin-top: 50px;
+  float: right;
 
-  &:hover {
-    color: $main-dark;
-  }
+  td{
+    padding: 0 10px;
 
-  .original-input-file {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+    a{
+      color: #333;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.current-page {
+        color: #45a5e3;
+
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
+      }
+    }
   }
 }

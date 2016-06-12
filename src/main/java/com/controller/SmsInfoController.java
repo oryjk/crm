@@ -1,5 +1,8 @@
 package com.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.order.bean.Order;
+import com.order.service.OrderService;
 import com.sms.bean.SmsInfo;
 import com.sms.bean.SmsTemplate;
 import com.sms.service.SmsInfoService;
@@ -9,13 +12,14 @@ import com.utils.bean.Pagination;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -27,9 +31,10 @@ public class SmsInfoController {
 
     @Autowired
     private SmsInfoService smsInfoService;
-
     @Autowired
     private SmsTempService smsTempService;
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView querySmsInfo(@RequestParam(value = "term", required = false) String term, @RequestParam(value = "currentPage", required = false) Integer currentPage, ModelAndView modelAndView) {
@@ -39,9 +44,21 @@ public class SmsInfoController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id) {
+    public ModelAndView addSmsInfo(ModelAndView modelAndView, @RequestParam(value = "id", required = false) Integer id, @RequestParam(value = "invoiceId", required = false) Integer invoiceId) {
         if (id == null) {
-            modelAndView.addObject("smsInfo", new SmsInfo());
+            SmsInfo smsInfo = new SmsInfo();
+            if (!ObjectUtils.isEmpty(invoiceId)) {
+                smsInfo.setInvoiceId(invoiceId);
+                Order order = orderService.queryOrderById(invoiceId);
+                smsInfo.setGoodsName(order.getGoodsName());
+                smsInfo.setGoodsModel(order.getSpec());
+                smsInfo.setContactId(order.getContactId());
+                smsInfo.setContactName(order.getContactName());
+                smsInfo.setGoodsId(order.getGoodsId());
+                smsInfo.setPhone(order.getMobile());
+                smsInfo.setBillDate(order.getBillDate());
+            }
+            modelAndView.addObject("smsInfo", smsInfo);
         } else {
             modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
         }
@@ -88,13 +105,21 @@ public class SmsInfoController {
             return modelAndView;
         }
         smsInfoService.updateSmsInfo(smsInfo);
-        buildInfoList(null, 1, modelAndView, Constant.PURCHASE_UP);
+        modelAndView.addObject("smsInfo", smsInfo);
+        modelAndView.setViewName("info-add-success");
         return modelAndView;
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView viewSmsInfo(ModelAndView modelAndView, @RequestParam Integer id) {
         modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoById(id));
+        modelAndView.setViewName("info-detail");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "viewByIid", method = RequestMethod.GET)
+    public ModelAndView viewSmsInfoByInvoiceId(ModelAndView modelAndView, @RequestParam Integer invoiceId) {
+        modelAndView.addObject("smsInfo", smsInfoService.querySmsInfoByInvoiceId(invoiceId));
         modelAndView.setViewName("info-detail");
         return modelAndView;
     }
@@ -109,6 +134,22 @@ public class SmsInfoController {
         }
         modelAndView.setViewName("temp-add");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/newTemp", method = RequestMethod.POST)
+    @ResponseBody
+    public String newTemplate(ModelAndView modelAndView, @Validated SmsTemplate smsTemplate, BindingResult bindingResult) {
+        Map<String, Object> result = new HashMap<>();
+        if (bindingResult.hasErrors()) {
+            result.put("code", 0);
+        }
+        try {
+            smsTempService.createSmsTemp(smsTemplate);
+            result.put("code", 1);
+        } catch (Exception e) {
+            result.put("code", 0);
+        }
+        return new JSONObject(result).toJSONString();
     }
 
     //  编辑完短信模板后,保存,可能添加或更新

@@ -6,6 +6,7 @@
 	</parameterMap>
 	<resultMap id="smsInfoResult" type="com.sms.bean.SmsInfo">
 		<id column="id" property="id"/>
+		<result column="invoice_id" property="invoiceId"/>
 		<result column="contact_id" property="contactId"/>
 		<result column="contact_name" property="contactName"/>
 		<result column="phone" property="phone"/>
@@ -13,6 +14,7 @@
 		<result column="goods_name" property="goodsName"/>
 		<result column="goods_model" property="goodsModel"/>
 		<result column="update_date" property="updateDate"/>
+		<result column="bill_date" property="billDate"/>
 		<result column="send_date" property="sendDate"/>
 		<result column="sms_content" property="smsContent"/>
 		<result column="done" property="done"/>
@@ -21,8 +23,8 @@
 
 
 	<insert id="createSmsInfo" parameterMap="smsInfoParam" useGeneratedKeys="true" keyProperty="id">
-			INSERT INTO CI_SMS_INFO(contact_id,contact_name,phone,goods_id,goods_name,goods_model,update_date,send_date,sms_content,done,sms_type) VALUES
-			(#{contactId},#{contactName},#{phone},#{goodsId},#{goodsName},#{goodsModel},#{updateDate},#{sendDate},#{smsContent},#{done},#{smsType})
+			INSERT INTO CI_SMS_INFO(invoice_id,contact_id,contact_name,phone,goods_id,goods_name,goods_model,update_date,bill_date,send_date,sms_content,done,sms_type) VALUES
+			(#{invoiceId},#{contactId},#{contactName},#{phone},#{goodsId},#{goodsName},#{goodsModel},#{updateDate},#{billDate},#{sendDate},#{smsContent},#{done},#{smsType})
 	</insert>
 
 	<update id="updateSmsInfo" parameterMap="smsInfoParam">
@@ -34,6 +36,9 @@
 		SELECT * FROM CI_SMS_INFO WHERE 1=1
 		<include refid="conditionalQuery"/>
 		<include refid="pagination"/>
+	</select>
+	<select id="querySmsInfoByInvoiceId" parameterType="int" resultMap="smsInfoResult">
+		SELECT * FROM CI_SMS_INFO WHERE invoice_id=#{invoiceId}
 	</select>
 	<select id="querySmsInfoCount" parameterMap="smsInfoParam" resultType="int">
 		SELECT COUNT(ID) FROM CI_SMS_INFO WHERE 1=1

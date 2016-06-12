@@ -1,19 +1,33 @@
 /*import
 **************************************************************************************************************************************************/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
-/*select*/
-/*color-btn*/
-/*cost*/
-/*progress-bar*/
-/*page-box*/
-/*pop-up*/
-/*file*/
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
+.mes-none a {
+  float: left;
+  margin-left: 30px;
+  width: 60px;
+  display: block;
+  padding: 10px;
+  background: green;
+  color: white; }
+
+.mes-none span {
+  margin-top: 10px;
+  float: left;
+  color: red; }
+
 /*
 html5doctor.com Reset Stylesheet
 v1.4.1
@@ -113,7 +127,7 @@ a {
   text-decoration: none; }
 
 .link-btn {
-  color: #5a98e6; }
+  color: #45a5e3; }
   .link-btn:hover {
     text-decoration: underline; }
 
@@ -130,8 +144,12 @@ a {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 40px;
+  border-radius: 4px;
+  font-size: 16px;
   color: white;
   background: #f59a99; }
+  .back:hover {
+    background: #fb6666; }
 
 .header {
   width: 100%;
@@ -140,31 +158,25 @@ a {
   .header .header-content {
     width: 1200px;
     height: 60px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    line-height: 60px; }
     .header .header-content h1 {
       float: left;
+      padding-left: 35px;
       height: 60px;
-      line-height: 60px;
-      font-size: 23px;
-      color: white; }
-    .header .header-content .header-name {
+      font-size: 19px;
+      color: white;
+      background: url("../core/image/gear.png") no-repeat 10px 19px; }
+    .header .header-content .header-handle {
       float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-name img {
-        float: left;
-        margin-top: 11px;
-        margin-right: 20px; }
-      .header .header-content .header-name span {
-        float: right;
+      height: 60px; }
+      .header .header-content .header-handle a {
         color: white;
         font-size: 14px; }
-    .header .header-content .header-logout {
-      float: right;
-      height: 60px;
-      line-height: 60px; }
-      .header .header-content .header-logout a {
-        color: white; }
+        .header .header-content .header-handle a:hover {
+          text-decoration: underline; }
+    .header .header-content .header-handle-item {
+      margin-right: 10px; }
 
 /* style
 *****************************/

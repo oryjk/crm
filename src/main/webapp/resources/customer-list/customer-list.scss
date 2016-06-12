@@ -9,7 +9,7 @@
 '../core/scss/generalStyle';
 
 @include header;
-
+@include content-head;
 
 
 /*style
@@ -21,202 +21,20 @@
   margin: 0 auto;
 }
 
-.content-head {
-  margin: 40px auto;
-  overflow: hidden;
-}
-
-.home-btn-box {
-  float: left;
-}
-
-.home-btn {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 10px 40px;
-  color: white;
-  background: #45a5e3;
-}
-
-.content-searchBox{
-  float: right;
-  width: 660px;
-}
-
-.content-search{
-  float: left;
-  border: 1px solid #d0e4f2;
-  width: 600px;
-  height: 40px;
-  padding: 5px 10px;
-
-}
-
-.content-search-btn{
-  border: none;
-  width: 60px;
-  height: 40px;
-  background:#d0e4f2 url("../core/image/search.png") no-repeat center center;
-}
 
 .content-list{
-  width: 1200px;
-  margin:  0 auto;
-
-
-  td{
-    width: 200px;
-    text-align: center;
-  }
-
-  .list-title{
-
-    td{
-      line-height: 60px;
-      height: 60px;
-      color: white;
-      background: #45a5e3;
-    }
-  }
-
-  .list-bottom,
-  .list-top{
-
-    td{
-      height: 50px;
-      line-height: 50px;
-      color: #333;
-      background: #f3f3f3;
-    }
-
-    .list-delete{
-      padding: 3px;
-      height: 20px;
-      width: 10px;
-      color:#81bbe1 ;
-      font-size: 14px;
-
-      &:hover{
-        color: red;
-      }
-    }
-
-  }
-
-  .list-bottom{
-    td{
-      background:#e2ecf3 ;
-    }
-  }
+  @include list-general;
 }
 
 .list-sure{
-  position: fixed;
-  top:50%;
-  left: 50%;
-  width: 300px;
-  height: 180px;
-  margin-top: -100px;
-  margin-left: -150px;
-  border: 1px solid #ccc;
-  border-radius: 5px ;
-  background: white;
-
-
-  .list-sure-title{
-    border-radius: 5px ;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    height: 30px;
-    background:#81bbe1;
-  }
-
-  .list-sure-content{
-    margin:  0 auto;
-    width: 250px;
-    padding: 30px 0;
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5 ;
-    color: #333;
-  }
-
-  .list-sure-btn{
-
-    a{
-      margin-top: 30px;
-      margin-left: 80px;
-      padding-right: 40px;
-      float: left;
-      color: #333;
-    }
-
-    .list-sure-btn1{
-      border-right:1px solid #e5e5e5 ;
-    }
-    .list-sure-btn2{
-      margin-left: 40px;
-    }
-  }
+  @include pop;
 }
 
 .list-page{
-  margin-top: 50px;
-  float: right;
-
-  td{
-    padding: 0 10px;
-
-    a{
-      color: #333;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &.current-page {
-        color: #45a5e3;
-
-        &:hover {
-          text-decoration: none;
-          cursor: default;
-        }
-      }
-    }
-
-  }
+  @include pager;
 }
 
-.list-none{
-  margin-top: 100px;
-  width: 1200px;
-  height: 200px;
-  text-align: center;
-  line-height: 250px;
-  color: #666;
-  background: url("../core/image/list-none.png") no-repeat 300px center;
-}
 
-.sort-up {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/up.png");
-  &.sort-choose {
-    background: url("../core/image/up-now.png");
-  }
-}
-
-.sort-down {
-  display: inline-block;
-  vertical-align: middle;
-  width: 16px;
-  height: 16px;
-  background: url("../core/image/down.png");
-  &.sort-choose {
-    background: url("../core/image/down-now.png");
-  }
-}
 
 
 
